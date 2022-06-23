@@ -10,14 +10,26 @@ import SwiftUI
 struct AnalyticView: View {
     var body: some View {
         NavigationView {
-            ScrollView {
-                ZStack {
-                    Color.black.ignoresSafeArea()
-                    
+            ZStack {
+                Color("BackgroundAppColor").ignoresSafeArea()
+                
+                ScrollView {
                     VStack(alignment: .leading) {
                         Text("Your Sleepiest Day of the Week")
                             .bold()
                             .font(.title)
+                            .overlay {
+                                LinearGradient(
+                                    colors: [Color("GradientTextColor"), .purple],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                                .mask {
+                                    Text("Your Sleepiest Day of the Week")
+                                        .bold()
+                                        .font(.title)
+                                }
+                            }
                         
                         SummaryView()
                             .padding(.bottom)
@@ -25,6 +37,18 @@ struct AnalyticView: View {
                         Text("Weekly Activity")
                             .bold()
                             .font(.title)
+                            .overlay {
+                                LinearGradient(
+                                    colors: [Color("GradientTextColor"), .purple],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                                .mask {
+                                    Text("Weekly Activity")
+                                        .bold()
+                                        .font(.title)
+                                }
+                            }
                         
                         Text("You slept an average of 7 hr 23 min over the last 7 days.")
                             .font(.caption)
@@ -36,6 +60,18 @@ struct AnalyticView: View {
                         Text("Most Played Sessions")
                             .bold()
                             .font(.title)
+                            .overlay {
+                                LinearGradient(
+                                    colors: [Color("GradientTextColor"), .purple],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                                .mask {
+                                    Text("Most Played Sessions")
+                                        .bold()
+                                        .font(.title)
+                                }
+                            }
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
@@ -51,9 +87,16 @@ struct AnalyticView: View {
                         }
                     }
                 }
+                .padding(.horizontal)
             }
-            .padding()
             .navigationTitle("Your Sleep")
+            .toolbar {
+                Button {
+                    // Share Function
+                } label: {
+                    Image(systemName: "square.and.arrow.up")
+                }
+            }
         }
     }
 }
@@ -106,7 +149,7 @@ struct SummaryView: View {
             .padding()
         }
         .frame(width: 360, height: 187)
-        .background(Color("CardColor").opacity(0.4))
+        .background(Color("CardColor").opacity(0.2))
         .cornerRadius(14.0)
     }
 }
@@ -147,7 +190,7 @@ struct ChartView: View {
             .padding(.vertical)
         }
         .frame(width: 360, height: 187)
-        .background(Color("CardColor").opacity(0.4))
+        .background(Color("CardColor").opacity(0.2))
         .cornerRadius(14.0)
     }
 }

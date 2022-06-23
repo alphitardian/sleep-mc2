@@ -15,11 +15,11 @@ struct MusicView: View {
                 ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading) {
                         VStack(alignment: .leading){
-                            Text("Sleeping with Nature")
+                            Text("Ready To Fall Asleep?")
                                 .bold()
                                 .font(.title3)
                                 .foregroundColor(.white)
-                            Text("in bed")
+                            Text("Fall into the sweetest dream with these new sonic experiences")
                                 .font(.caption)
                         }.padding(.horizontal)
                         ScrollView(.horizontal, showsIndicators: false) {
@@ -84,7 +84,14 @@ struct MusicView: View {
                         
                     }
                 }
-                .navigationTitle("Session")
+            }
+            .navigationTitle("Session")
+            .toolbar {
+                Button {
+                    // Schedule Function
+                } label: {
+                    Image(systemName: "clock")
+                }
             }
         }
     }

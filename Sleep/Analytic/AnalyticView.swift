@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct AnalyticView: View {
+    
+    @StateObject private var analyticViewModel = AnalyticViewModel()
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -50,11 +53,11 @@ struct AnalyticView: View {
                                 }
                             }
                         
-                        Text("You slept an average of 7 hr 23 min over the last 7 days.")
+                        Text("You slept an average of \(analyticViewModel.getSleepAverage()) over the last \(analyticViewModel.sleepData.count) days.")
                             .font(.caption)
                             .foregroundColor(Color("SecondaryTextColor"))
                         
-                        ChartView()
+                        ChartView(viewModel: analyticViewModel)
                             .padding(.bottom)
                         
                         Text("Most Played Sessions")
@@ -95,6 +98,13 @@ struct AnalyticView: View {
                     // Share Function
                 } label: {
                     Image(systemName: "square.and.arrow.up")
+                }
+            }
+        }
+        .onAppear {
+            analyticViewModel.getHealthKitAuthentication { success in
+                if success {
+                    analyticViewModel.getSleepData()
                 }
             }
         }
@@ -155,18 +165,24 @@ struct SummaryView: View {
 }
 
 struct ChartView: View {
+    
+    @ObservedObject var viewModel: AnalyticViewModel
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             // Background Chart
             HStack(spacing: 24) {
                 ForEach(0..<7) { day in
+                    let chartDay = day >= viewModel.sleepData.count ? "Day" : viewModel.sleepData[day].startDate.getDay()
+                    
                     VStack {
+                        Spacer()
                         Rectangle()
                             .fill(Color("ChartBackgroundColor"))
                             .frame(width: 16, height: 120)
                             .cornerRadius(8)
                         
-                        Text("Day")
+                        Text(chartDay)
                             .font(.footnote)
                     }
                 }
@@ -176,13 +192,17 @@ struct ChartView: View {
             // Value Chart
             HStack(spacing: 24) {
                 ForEach(0..<7) { day in
+                    let chartHeight = day >= viewModel.sleepData.count ? 0 : viewModel.calculateChartValue(text: viewModel.sleepData[day].hours)
+                    let chartDay = day >= viewModel.sleepData.count ? "Day" : viewModel.sleepData[day].startDate.getDay()
+                    
                     VStack {
+                        Spacer()
                         Rectangle()
                             .fill(Color.purple)
-                            .frame(width: 16, height: 80)
+                            .frame(width: 16, height: chartHeight)
                             .cornerRadius(8)
                         
-                        Text("Day")
+                        Text(chartDay)
                             .font(.footnote)
                     }
                 }

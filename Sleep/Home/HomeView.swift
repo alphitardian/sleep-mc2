@@ -21,7 +21,6 @@ struct HomeView: View {
                     Image(systemName: "moon.fill")
                     Text("Your Sleep")
                 }
-            
         }
     }
 }

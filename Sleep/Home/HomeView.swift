@@ -19,7 +19,7 @@ struct HomeView: View {
             AnalyticView()
                 .tabItem {
                     Image(systemName: "moon.fill")
-                    Text("Analytic")
+                    Text("Your Sleep")
                 }
             
         }

@@ -22,7 +22,7 @@ struct MusicView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(0..<5) {i in
-                                HighlightCollectionView(text:"song\(i)", img: "CollectionView\(i)")
+                                HighlightCollectionView(session: "\(i) Hour Session", text:"song\(i)",img: "CollectionView\(i)")
                             }
                         }
                         .padding()
@@ -88,16 +88,33 @@ struct MusicView_Previews: PreviewProvider {
 }
 
 struct HighlightCollectionView: View {
-    
+
+    var session = ""
     var text = ""
     var img = ""
     var body: some View {
         VStack{
-            Image(img)
-                .resizable()
-                .scaledToFill()
-                .frame(width:342, height:223)
+            ZStack(alignment: .leading) {
+                Image(img)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width:342, height:223)
                 .cornerRadius(25)
+                
+                Text(text)
+                    .bold()
+                    .font(.largeTitle)
+                    .foregroundColor(.white)
+                    .lineLimit(2)
+                    .multilineTextAlignment(.leading)
+                    .padding(.horizontal, 8)
+                    .shadow(color: .black, radius: 2, x: 0, y: 0)
+                
+                Text(session)
+                    .foregroundColor(.white)
+                    .offset(x: 210, y: 90)
+                    .shadow(color: .black, radius: 2, x: 0, y: 0)
+            }
             Text(text)
                 .font(.caption)
         }
@@ -124,11 +141,14 @@ struct NormalCollectionView: View {
                 .lineLimit(2)
                 .multilineTextAlignment(.leading)
                 .padding(.horizontal, 8)
+                .shadow(color: .black, radius: 2, x: 0, y: 0)
+                
             
             Text(session)
                 .foregroundColor(.white)
                 .font(.caption2)
                 .offset(x: 60, y: 60)
+                .shadow(color: .black, radius: 2, x: 0, y: 0)
         }
         .frame(width:141, height:141)
     }

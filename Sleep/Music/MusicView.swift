@@ -39,7 +39,11 @@ struct MusicView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(0..<5) {i in
-                                NormalCollectionView(text:"song\(i)", img: "CollectionView\(i)")
+                                NormalCollectionView(
+                                    title:"Deep In The Sea",
+                                    session: "1 Hour Session",
+                                    img: "CollectionView\(i)"
+                                )
                                 
                             }
                         }
@@ -57,7 +61,11 @@ struct MusicView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(0..<5) {i in
-                                NormalCollectionView(text:"song\(i)", img: "CollectionView\(i)")
+                                NormalCollectionView(
+                                    title:"Deep In The Sea",
+                                    session: "1 Hour Session",
+                                    img: "CollectionView\(i)"
+                                )
                             }
                         }
                         .padding(.leading)
@@ -98,8 +106,10 @@ struct HighlightCollectionView: View {
 
 struct NormalCollectionView: View {
     
-    var text = ""
+    var title = ""
+    var session = ""
     var img = ""
+    
     var body: some View {
         ZStack(alignment: .leading) {
             Image(img)
@@ -107,21 +117,15 @@ struct NormalCollectionView: View {
                 .cornerRadius(6)
                 .frame(width:141, height:141)
             
-            VStack {
-                Spacer()
-                
-                Text("Deep In The Sea")
-                    .bold()
-                    .font(.title2)
-                    .foregroundColor(.white)
-                    .lineLimit(2)
-                    .multilineTextAlignment(.leading)
-                    .padding(.horizontal, 8)
-                
-                Spacer()
-            }
+            Text(title)
+                .bold()
+                .font(.title2)
+                .foregroundColor(.white)
+                .lineLimit(2)
+                .multilineTextAlignment(.leading)
+                .padding(.horizontal, 8)
             
-            Text("1 Hour Session")
+            Text(session)
                 .foregroundColor(.white)
                 .font(.caption2)
                 .offset(x: 60, y: 60)

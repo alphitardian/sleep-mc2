@@ -15,8 +15,9 @@ struct MusicView: View {
                     VStack(alignment: .leading){
                         Text("Sleeping with Nature")
                             .bold()
-                            .font(.title2)
+                            .font(.title3)
                         Text("in bed")
+                            .font(.caption)
                     }.padding(.horizontal)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
@@ -26,14 +27,15 @@ struct MusicView: View {
                         }
                         .padding()
                     }
-                    Divider() .frame(height: 2) .background(.gray) .padding()
+                    Divider()
+                        .frame(height: 1)
+                        .background(.gray)
+                        .padding()
                     
-                    VStack(alignment: .leading){
-                        Text("Sleeping with Nature")
-                            .bold()
-                            .font(.title2)
-                        Text("in forest")
-                    }.padding(.horizontal)
+                    Text("Sleeping with Nature")
+                        .bold()
+                        .font(.title3)
+                        .padding(.horizontal)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(0..<5) {i in
@@ -41,25 +43,29 @@ struct MusicView: View {
                                 
                             }
                         }
-                        .padding()
+                        .padding(.leading)
                     }
-                    Divider() .frame(height: 2) .background(.gray) .padding()
+                    Divider()
+                        .frame(height: 1)
+                        .background(.gray)
+                        .padding()
                     
-                    VStack(alignment: .leading){
-                        Text("5 Mins Session")
-                            .bold()
-                            .font(.title2)
-                        Text("no sleep")
-                    }.padding(.horizontal)
+                    Text("5 Mins Session")
+                        .bold()
+                        .font(.title3)
+                        .padding(.horizontal)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(0..<5) {i in
                                 NormalCollectionView(text:"song\(i)", img: "CollectionView\(i)")
                             }
                         }
-                        .padding()
+                        .padding(.leading)
                     }
-                    Divider() .frame(height: 2) .background(.gray) .padding()
+                    Divider()
+                        .frame(height: 1)
+                        .background(.gray)
+                        .padding()
                     
                 }
             } .navigationTitle("Session")
@@ -82,9 +88,10 @@ struct HighlightCollectionView: View {
             Image(img)
                 .resizable()
                 .scaledToFill()
-                .frame(width:350, height:200)
-                .cornerRadius(20)
+                .frame(width:342, height:223)
+                .cornerRadius(25)
             Text(text)
+                .font(.caption)
         }
     }
 }
@@ -94,13 +101,31 @@ struct NormalCollectionView: View {
     var text = ""
     var img = ""
     var body: some View {
-        VStack{
+        ZStack(alignment: .leading) {
             Image(img)
                 .resizable()
-                .scaledToFill()
-                .frame(width:100, height:100)
-                .cornerRadius(20)
-            Text(text)
+                .cornerRadius(6)
+                .frame(width:141, height:141)
+            
+            VStack {
+                Spacer()
+                
+                Text("Deep In The Sea")
+                    .bold()
+                    .font(.title2)
+                    .foregroundColor(.white)
+                    .lineLimit(2)
+                    .multilineTextAlignment(.leading)
+                    .padding(.horizontal, 8)
+                
+                Spacer()
+            }
+            
+            Text("1 Hour Session")
+                .foregroundColor(.white)
+                .font(.caption2)
+                .offset(x: 60, y: 60)
         }
+        .frame(width:141, height:141)
     }
 }

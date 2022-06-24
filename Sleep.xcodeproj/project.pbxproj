@@ -14,17 +14,30 @@
 		AA36903728602FD600593328 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA36903628602FD600593328 /* ContentView.swift */; };
 		AA36903928602FD700593328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA36903828602FD700593328 /* Assets.xcassets */; };
 		AA36903C28602FD700593328 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA36903B28602FD700593328 /* Preview Assets.xcassets */; };
+		AA3690682864870400593328 /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3690672864870400593328 /* HealthStore.swift */; };
+		AA36906A2864879D00593328 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3690692864879D00593328 /* DateExtension.swift */; };
+		AA36906C286487BA00593328 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA36906B286487BA00593328 /* TimeIntervalExtension.swift */; };
+		AA36906F2864882100593328 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA36906E2864882100593328 /* HealthKit.framework */; };
+		AA36907228648BF500593328 /* AnalyticViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA36907128648BF400593328 /* AnalyticViewModel.swift */; };
+		AA36907428649F8A00593328 /* SleepActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA36907328649F8A00593328 /* SleepActivity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		207D2C7C2862ACEE008FE742 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		207D2C802862AEB0008FE742 /* MusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicView.swift; sourceTree = "<group>"; };
 		207D2C832862AEE9008FE742 /* AnalyticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticView.swift; sourceTree = "<group>"; };
-		AA36903128602FD600593328 /* Sleep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sleep.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA36903128602FD600593328 /* Sleepify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sleepify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA36903428602FD600593328 /* SleepApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepApp.swift; sourceTree = "<group>"; };
 		AA36903628602FD600593328 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AA36903828602FD700593328 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA36903B28602FD700593328 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AA3690672864870400593328 /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
+		AA3690692864879D00593328 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		AA36906B286487BA00593328 /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
+		AA36906E2864882100593328 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		AA3690702864886E00593328 /* Sleep.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sleep.entitlements; sourceTree = "<group>"; };
+		AA36907128648BF400593328 /* AnalyticViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticViewModel.swift; sourceTree = "<group>"; };
+		AA36907328649F8A00593328 /* SleepActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepActivity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA36906F2864882100593328 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +72,8 @@
 			isa = PBXGroup;
 			children = (
 				207D2C832862AEE9008FE742 /* AnalyticView.swift */,
+				AA36907128648BF400593328 /* AnalyticViewModel.swift */,
+				AA36907328649F8A00593328 /* SleepActivity.swift */,
 			);
 			path = Analytic;
 			sourceTree = "<group>";
@@ -67,13 +83,14 @@
 			children = (
 				AA36903328602FD600593328 /* Sleep */,
 				AA36903228602FD600593328 /* Products */,
+				AA36906D2864882100593328 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		AA36903228602FD600593328 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AA36903128602FD600593328 /* Sleep.app */,
+				AA36903128602FD600593328 /* Sleepify.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,6 +98,8 @@
 		AA36903328602FD600593328 /* Sleep */ = {
 			isa = PBXGroup;
 			children = (
+				AA3690702864886E00593328 /* Sleep.entitlements */,
+				AA369066286486ED00593328 /* Helper */,
 				207D2C822862AECE008FE742 /* Analytic */,
 				AA36903428602FD600593328 /* SleepApp.swift */,
 				AA36903628602FD600593328 /* ContentView.swift */,
@@ -100,6 +119,24 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		AA369066286486ED00593328 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				AA3690672864870400593328 /* HealthStore.swift */,
+				AA3690692864879D00593328 /* DateExtension.swift */,
+				AA36906B286487BA00593328 /* TimeIntervalExtension.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		AA36906D2864882100593328 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA36906E2864882100593328 /* HealthKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -117,7 +154,7 @@
 			);
 			name = Sleep;
 			productName = Sleep;
-			productReference = AA36903128602FD600593328 /* Sleep.app */;
+			productReference = AA36903128602FD600593328 /* Sleepify.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -171,10 +208,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				207D2C842862AEE9008FE742 /* AnalyticView.swift in Sources */,
+				AA36906A2864879D00593328 /* DateExtension.swift in Sources */,
+				AA3690682864870400593328 /* HealthStore.swift in Sources */,
 				207D2C7D2862ACEE008FE742 /* HomeView.swift in Sources */,
 				AA36903728602FD600593328 /* ContentView.swift in Sources */,
 				207D2C812862AEB0008FE742 /* MusicView.swift in Sources */,
+				AA36907228648BF500593328 /* AnalyticViewModel.swift in Sources */,
 				AA36903528602FD600593328 /* SleepApp.swift in Sources */,
+				AA36907428649F8A00593328 /* SleepActivity.swift in Sources */,
+				AA36906C286487BA00593328 /* TimeIntervalExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,12 +342,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Sleep/Sleep.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Sleep/Preview Content\"";
 				DEVELOPMENT_TEAM = 4Q6U9MYBJ6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Required to read healthkit data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -329,12 +373,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Sleep/Sleep.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Sleep/Preview Content\"";
 				DEVELOPMENT_TEAM = 4Q6U9MYBJ6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Required to read healthkit data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -18,40 +18,12 @@ struct AnalyticView: View {
                 
                 ScrollView {
                     VStack(alignment: .leading) {
-                        Text("Your Sleepiest Day of the Week")
-                            .bold()
-                            .font(.title)
-                            .overlay {
-                                LinearGradient(
-                                    colors: [Color("GradientTextColor"), .purple],
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
-                                .mask {
-                                    Text("Your Sleepiest Day of the Week")
-                                        .bold()
-                                        .font(.title)
-                                }
-                            }
+                        GradientText(text: "Your Sleepiest Day of the Week")
                         
                         SummaryView()
                             .padding(.bottom)
                         
-                        Text("Weekly Activity")
-                            .bold()
-                            .font(.title)
-                            .overlay {
-                                LinearGradient(
-                                    colors: [Color("GradientTextColor"), .purple],
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
-                                .mask {
-                                    Text("Weekly Activity")
-                                        .bold()
-                                        .font(.title)
-                                }
-                            }
+                        GradientText(text: "Weekly Activity")
                         
                         Text("You slept an average of \(analyticViewModel.getSleepAverage()) over the last \(analyticViewModel.sleepData.count) days.")
                             .font(.caption)
@@ -60,21 +32,7 @@ struct AnalyticView: View {
                         ChartView(viewModel: analyticViewModel)
                             .padding(.bottom)
                         
-                        Text("Most Played Sessions")
-                            .bold()
-                            .font(.title)
-                            .overlay {
-                                LinearGradient(
-                                    colors: [Color("GradientTextColor"), .purple],
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
-                                .mask {
-                                    Text("Most Played Sessions")
-                                        .bold()
-                                        .font(.title)
-                                }
-                            }
+                        GradientText(text: "Most Played Sessions")
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
@@ -89,8 +47,8 @@ struct AnalyticView: View {
                             }
                         }
                     }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
             }
             .navigationTitle("Your Sleep")
             .toolbar {
@@ -115,6 +73,29 @@ struct AnalyticView_Previews: PreviewProvider {
     static var previews: some View {
         AnalyticView()
             .environment(\.colorScheme, .dark)
+    }
+}
+
+struct GradientText: View {
+    
+    var text: String = ""
+    
+    var body: some View {
+        Text(text)
+            .bold()
+            .font(.title)
+            .overlay {
+                LinearGradient(
+                    colors: [Color("GradientTextColor"), .purple],
+                    startPoint: .leading,
+                    endPoint: .trailing
+                )
+                .mask {
+                    Text(text)
+                        .bold()
+                        .font(.title)
+                }
+            }
     }
 }
 

@@ -10,73 +10,89 @@ import SwiftUI
 struct MusicView: View {
     var body: some View {
         NavigationView {
-            ScrollView(showsIndicators: false) {
-                VStack(alignment: .leading) {
-                    VStack(alignment: .leading){
+            ZStack {
+                Color("BackgroundAppColor").ignoresSafeArea()
+                ScrollView(showsIndicators: false) {
+                    VStack(alignment: .leading) {
+                        VStack(alignment: .leading){
+                            Text("Ready To Fall Asleep?")
+                                .bold()
+                                .font(.title3)
+                                .foregroundColor(.white)
+                            Text("Fall into the sweetest dream with these new sonic experiences")
+                                .font(.caption)
+                        }.padding(.horizontal)
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(0..<5) {i in
+                                    HighlightCollectionView(
+                                        session: "\(i) Hour Session",
+                                        text:"Deep In The Sea",
+                                        img: "CollectionView\(i)"
+                                    )
+                                }
+                            }
+                            .padding()
+                        }
+                        Divider()
+                            .frame(height: 1)
+                            .background(.gray.opacity(0.2))
+                            .padding(.bottom)
+                        
                         Text("Sleeping with Nature")
                             .bold()
                             .font(.title3)
-                        Text("in bed")
-                            .font(.caption)
-                    }.padding(.horizontal)
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(0..<5) {i in
-                                HighlightCollectionView(session: "\(i) Hour Session", text:"song\(i)",img: "CollectionView\(i)")
+                            .padding(.horizontal)
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(0..<5) {i in
+                                    NormalCollectionView(
+                                        title:"Deep In The Sea",
+                                        session: "1 Hour Session",
+                                        img: "CollectionView\(i)"
+                                    )
+                                    
+                                }
                             }
+                            .padding(.leading)
                         }
-                        .padding()
-                    }
-                    Divider()
-                        .frame(height: 1)
-                        .background(.gray)
-                        .padding()
-                    
-                    Text("Sleeping with Nature")
-                        .bold()
-                        .font(.title3)
-                        .padding(.horizontal)
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(0..<5) {i in
-                                NormalCollectionView(
-                                    title:"Deep In The Sea",
-                                    session: "1 Hour Session",
-                                    img: "CollectionView\(i)"
-                                )
-                                
+                        Divider()
+                            .frame(height: 1)
+                            .background(.gray.opacity(0.2))
+                            .padding(.vertical)
+                        
+                        Text("5 Mins Session")
+                            .bold()
+                            .font(.title3)
+                            .padding(.horizontal)
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(0..<5) {i in
+                                    NormalCollectionView(
+                                        title:"Deep In The Sea",
+                                        session: "1 Hour Session",
+                                        img: "CollectionView\(i)"
+                                    )
+                                }
                             }
+                            .padding(.leading)
                         }
-                        .padding(.leading)
+                        Divider()
+                            .frame(height: 1)
+                            .background(.gray.opacity(0.2))
+                            .padding(.bottom)
+                        
                     }
-                    Divider()
-                        .frame(height: 1)
-                        .background(.gray)
-                        .padding()
-                    
-                    Text("5 Mins Session")
-                        .bold()
-                        .font(.title3)
-                        .padding(.horizontal)
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(0..<5) {i in
-                                NormalCollectionView(
-                                    title:"Deep In The Sea",
-                                    session: "1 Hour Session",
-                                    img: "CollectionView\(i)"
-                                )
-                            }
-                        }
-                        .padding(.leading)
-                    }
-                    Divider()
-                        .frame(height: 1)
-                        .background(.gray)
-                        .padding()
-                    
                 }
-            } .navigationTitle("Session")
+            }
+            .navigationTitle("Session")
+            .toolbar {
+                Button {
+                    // Schedule Function
+                } label: {
+                    Image(systemName: "clock")
+                }
+            }
         }
     }
 }
@@ -84,11 +100,12 @@ struct MusicView: View {
 struct MusicView_Previews: PreviewProvider {
     static var previews: some View {
         MusicView()
+            .environment(\.colorScheme, .dark)
     }
 }
 
 struct HighlightCollectionView: View {
-
+    
     var session = ""
     var text = ""
     var img = ""
@@ -99,16 +116,17 @@ struct HighlightCollectionView: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width:342, height:223)
-                .cornerRadius(25)
+                    .cornerRadius(25)
                 
                 Text(text)
                     .bold()
-                    .font(.largeTitle)
+                    .font(.system(size: 41))
                     .foregroundColor(.white)
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
-                    .padding(.horizontal, 8)
+                    .padding(.leading, -42)
                     .shadow(color: .black, radius: 2, x: 0, y: 0)
+                    .frame(width: 224)
                 
                 Text(session)
                     .foregroundColor(.white)
@@ -136,13 +154,13 @@ struct NormalCollectionView: View {
             
             Text(title)
                 .bold()
-                .font(.title2)
+                .font(.title)
                 .foregroundColor(.white)
                 .lineLimit(2)
                 .multilineTextAlignment(.leading)
                 .padding(.horizontal, 8)
                 .shadow(color: .black, radius: 2, x: 0, y: 0)
-                
+            
             
             Text(session)
                 .foregroundColor(.white)

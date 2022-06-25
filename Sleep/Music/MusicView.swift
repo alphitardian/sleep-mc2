@@ -80,7 +80,8 @@ struct MusicView: View {
                         Divider()
                             .frame(height: 1)
                             .background(.gray.opacity(0.2))
-                            .padding(.bottom)
+                            .padding(.top, 16)
+                            .padding(.bottom, 64)
                         
                     }
                 }

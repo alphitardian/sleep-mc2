@@ -12,6 +12,7 @@ struct PlayerView: View {
     // PlayerView Parameter
     var animation: Namespace.ID
     @Binding var isPlayerExpanded: Bool
+    @ObservedObject var musicViewModel: MusicViewModel
     
     // Offset for drag gesture
     @State private var offset: CGFloat = 0
@@ -50,7 +51,7 @@ struct PlayerView: View {
                     Spacer()
                 }
                 
-                Image("CollectionView1")
+                Image(musicViewModel.selectedMusic?.imageName ?? "")
                     .resizable()
                     .frame(
                         width: isPlayerExpanded ? 320 : 54,
@@ -60,7 +61,7 @@ struct PlayerView: View {
                     .shadow(color: .black, radius: 10.0)
                 
                 if !isPlayerExpanded {
-                    Text("Deep In The Sea")
+                    Text(musicViewModel.selectedMusic?.title ?? "Unknown")
                         .bold()
                         .font(.title3)
                         .matchedGeometryEffect(id: "Label", in: animation)

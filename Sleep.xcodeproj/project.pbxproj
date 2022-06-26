@@ -22,6 +22,8 @@
 		AA36907428649F8A00593328 /* SleepActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA36907328649F8A00593328 /* SleepActivity.swift */; };
 		AA3690762865B0FA00593328 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3690752865B0FA00593328 /* BlurView.swift */; };
 		AA3690782865B3BE00593328 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3690772865B3BE00593328 /* PlayerView.swift */; };
+		AAEF797E286737C8006A6F99 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF797D286737C8006A6F99 /* Music.swift */; };
+		AAEF798028673895006A6F99 /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF797F28673895006A6F99 /* MusicViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		AA36907328649F8A00593328 /* SleepActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepActivity.swift; sourceTree = "<group>"; };
 		AA3690752865B0FA00593328 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		AA3690772865B3BE00593328 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		AAEF797D286737C8006A6F99 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
+		AAEF797F28673895006A6F99 /* MusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 			children = (
 				207D2C802862AEB0008FE742 /* MusicView.swift */,
 				AA3690772865B3BE00593328 /* PlayerView.swift */,
+				AAEF797D286737C8006A6F99 /* Music.swift */,
+				AAEF797F28673895006A6F99 /* MusicViewModel.swift */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -214,6 +220,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				207D2C842862AEE9008FE742 /* AnalyticView.swift in Sources */,
+				AAEF797E286737C8006A6F99 /* Music.swift in Sources */,
+				AAEF798028673895006A6F99 /* MusicViewModel.swift in Sources */,
 				AA36906A2864879D00593328 /* DateExtension.swift in Sources */,
 				AA3690682864870400593328 /* HealthStore.swift in Sources */,
 				AA3690782865B3BE00593328 /* PlayerView.swift in Sources */,

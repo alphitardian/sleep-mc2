@@ -33,7 +33,7 @@
 		207D2C7C2862ACEE008FE742 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		207D2C802862AEB0008FE742 /* MusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicView.swift; sourceTree = "<group>"; };
 		207D2C832862AEE9008FE742 /* AnalyticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticView.swift; sourceTree = "<group>"; };
-		AA36903128602FD600593328 /* Sleep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sleep.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA36903128602FD600593328 /* Sleepify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sleepify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA36903428602FD600593328 /* SleepApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepApp.swift; sourceTree = "<group>"; };
 		AA36903628602FD600593328 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AA36903828602FD700593328 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 		AA36903228602FD600593328 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AA36903128602FD600593328 /* Sleep.app */,
+				AA36903128602FD600593328 /* Sleepify.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -183,7 +183,7 @@
 			);
 			name = Sleep;
 			productName = Sleep;
-			productReference = AA36903128602FD600593328 /* Sleep.app */;
+			productReference = AA36903128602FD600593328 /* Sleepify.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -396,7 +396,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = id.mobile.Sleepify;
 				PRODUCT_NAME = Sleepify;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -428,7 +428,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = id.mobile.Sleepify;
 				PRODUCT_NAME = Sleepify;
 				SWIFT_EMIT_LOC_STRINGS = YES;

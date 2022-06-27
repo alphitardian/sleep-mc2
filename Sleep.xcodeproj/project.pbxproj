@@ -24,6 +24,9 @@
 		AA3690782865B3BE00593328 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3690772865B3BE00593328 /* PlayerView.swift */; };
 		AAEF797E286737C8006A6F99 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF797D286737C8006A6F99 /* Music.swift */; };
 		AAEF798028673895006A6F99 /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF797F28673895006A6F99 /* MusicViewModel.swift */; };
+		AAEF7991286945CF006A6F99 /* inikah_cinta.wav in Resources */ = {isa = PBXBuildFile; fileRef = AAEF7990286945CF006A6F99 /* inikah_cinta.wav */; };
+		AAEF799328694653006A6F99 /* garageband_trial.wav in Resources */ = {isa = PBXBuildFile; fileRef = AAEF799228694653006A6F99 /* garageband_trial.wav */; };
+		AAEF799528694668006A6F99 /* kunaikan.wav in Resources */ = {isa = PBXBuildFile; fileRef = AAEF799428694668006A6F99 /* kunaikan.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		AA3690772865B3BE00593328 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		AAEF797D286737C8006A6F99 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		AAEF797F28673895006A6F99 /* MusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
+		AAEF7990286945CF006A6F99 /* inikah_cinta.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = inikah_cinta.wav; path = ../../../../Garageband/inikah_cinta.wav; sourceTree = "<group>"; };
+		AAEF799228694653006A6F99 /* garageband_trial.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = garageband_trial.wav; path = ../../../../Garageband/garageband_trial.wav; sourceTree = "<group>"; };
+		AAEF799428694668006A6F99 /* kunaikan.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = kunaikan.wav; path = ../../../../Garageband/kunaikan.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +116,7 @@
 		AA36903328602FD600593328 /* Sleep */ = {
 			isa = PBXGroup;
 			children = (
+				AAEF798F28694554006A6F99 /* Resource */,
 				AA3690702864886E00593328 /* Sleep.entitlements */,
 				AA369066286486ED00593328 /* Helper */,
 				207D2C822862AECE008FE742 /* Analytic */,
@@ -147,6 +154,16 @@
 				AA36906E2864882100593328 /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AAEF798F28694554006A6F99 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				AAEF7990286945CF006A6F99 /* inikah_cinta.wav */,
+				AAEF799228694653006A6F99 /* garageband_trial.wav */,
+				AAEF799428694668006A6F99 /* kunaikan.wav */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,7 +224,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAEF799328694653006A6F99 /* garageband_trial.wav in Resources */,
 				AA36903C28602FD700593328 /* Preview Assets.xcassets in Resources */,
+				AAEF7991286945CF006A6F99 /* inikah_cinta.wav in Resources */,
+				AAEF799528694668006A6F99 /* kunaikan.wav in Resources */,
 				AA36903928602FD700593328 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

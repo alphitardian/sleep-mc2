@@ -13,16 +13,20 @@ class MusicViewModel: ObservableObject {
     lazy var musicData = Music.musicData
     
     @Published private(set) var selectedMusic: Music?
+    @Published private(set) var selectedMusicIndex: Int?
+    @Published private(set) var isMusicPlayed: Bool = false
     
-    private var audioPlayer: AVAudioPlayer?
+    var audioPlayer: AVAudioPlayer?
     
-    func setSelectedMusic(music: Music) {
+    func setSelectedMusic(music: Music, index: Int) {
         selectedMusic = music
+        selectedMusicIndex = index
     }
     
     func playMusic() {
         if let selectedMusic = selectedMusic {
-            if let audioUrl = Bundle.main.url(forResource: selectedMusic.title, withExtension: "mp3") {
+            isMusicPlayed = true
+            if let audioUrl = Bundle.main.url(forResource: selectedMusic.musicName, withExtension: "wav") {
                 do {
                     try audioPlayer = AVAudioPlayer(contentsOf: audioUrl)
                     audioPlayer?.play()
@@ -33,32 +37,42 @@ class MusicViewModel: ObservableObject {
         }
     }
     
-    func pauseMusic() {
-        if let audioPlayer = audioPlayer {
-            audioPlayer.pause()
+    func resumeMusic() {
+        isMusicPlayed.toggle()
+        if selectedMusic != nil {
+            if let audioPlayer = audioPlayer {
+                audioPlayer.play()
+            }
         }
     }
     
-    func nextMusic() {
-        var index = 0
-        index += 1
-        if let audioUrl = Bundle.main.url(forResource: musicData[index].title, withExtension: "mp3") {
+    func pauseMusic() {
+        if let audioPlayer = audioPlayer {
+            audioPlayer.pause()
+            isMusicPlayed.toggle()
+        }
+    }
+    
+    func nextMusic(nextIndex: Int) {
+        if let audioUrl = Bundle.main.url(forResource: musicData[nextIndex].musicName, withExtension: "wav") {
             do {
                 try audioPlayer = AVAudioPlayer(contentsOf: audioUrl)
-                audioPlayer?.play()
+                if isMusicPlayed {
+                    audioPlayer?.play()
+                }
             } catch {
                 print(error.localizedDescription)
             }
         }
     }
     
-    func previousMusic() {
-        var index = 0
-        index -= 1
-        if let audioUrl = Bundle.main.url(forResource: musicData[index].title, withExtension: "mp3") {
+    func previousMusic(previousIndex: Int) {
+        if let audioUrl = Bundle.main.url(forResource: musicData[previousIndex].musicName, withExtension: "wav") {
             do {
                 try audioPlayer = AVAudioPlayer(contentsOf: audioUrl)
-                audioPlayer?.play()
+                if isMusicPlayed {
+                    audioPlayer?.play()
+                }
             } catch {
                 print(error.localizedDescription)
             }

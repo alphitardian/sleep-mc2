@@ -18,7 +18,11 @@ struct HomeView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $tabSelection) {
-                MusicView(musicViewModel: musicViewModel)
+                MusicView(musicViewModel: musicViewModel) {
+                    withAnimation {
+                        isPlayerExpanded.toggle()
+                    }
+                }
                     .tabItem {
                         Image(systemName: "music.note")
                         Text("Sessions")
@@ -39,11 +43,13 @@ struct HomeView: View {
             }
             
             if (tabSelection == 1) {
-                PlayerView(
-                    animation: animation,
-                    isPlayerExpanded: $isPlayerExpanded,
-                    musicViewModel: musicViewModel
-                )
+                if musicViewModel.selectedMusic != nil {
+                    PlayerView(
+                        animation: animation,
+                        isPlayerExpanded: $isPlayerExpanded,
+                        musicViewModel: musicViewModel
+                    )
+                }
             }
         }
     }

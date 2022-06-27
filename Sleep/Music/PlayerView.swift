@@ -18,10 +18,16 @@ struct PlayerView: View {
     @State private var offset: CGFloat = 0
     
     // Slider music range indicator
-    @State private var sliderValue = 50.0
+    @State private var sliderValue = 0.0
+    @State private var isEditingSlider = false
     
     // Safearea for padding usage
     var safeArea = UIApplication.shared.windows.first?.safeAreaInsets
+    
+    // Move the slider value
+    var timer = Timer
+        .publish(every: 0.5, on: .main, in: .common)
+        .autoconnect()
     
     var body: some View {
         VStack {
@@ -71,21 +77,48 @@ struct PlayerView: View {
                 
                 if !isPlayerExpanded {
                     Button {
-                        // Rewind
+                        if var selectedMusicIndex = musicViewModel.selectedMusicIndex {
+                            if selectedMusicIndex == 0 {
+                                let prevIndex = musicViewModel.musicData.count - 1
+                                musicViewModel.nextMusic(nextIndex: prevIndex)
+                                musicViewModel.setSelectedMusic(music: musicViewModel.musicData[prevIndex], index: prevIndex)
+                            } else {
+                                selectedMusicIndex -= 1
+                                musicViewModel.nextMusic(nextIndex: selectedMusicIndex)
+                                musicViewModel.setSelectedMusic(music: musicViewModel.musicData[selectedMusicIndex], index: selectedMusicIndex)
+                            }
+                        }
                     } label: {
                         Image(systemName: "backward.fill")
                             .foregroundColor(.white)
                     }
                     
                     Button {
-                        // Play
+                        if musicViewModel.isMusicPlayed {
+                            musicViewModel.pauseMusic()
+                        } else {
+                            if musicViewModel.selectedMusic != nil {
+                                musicViewModel.resumeMusic()
+                            } else {
+                                musicViewModel.playMusic()
+                            }
+                        }
                     } label: {
-                        Image(systemName: "play.fill")
+                        Image(systemName: musicViewModel.isMusicPlayed ? "pause.fill" : "play.fill")
                             .foregroundColor(.white)
                     }
                     
                     Button {
-                        // Forward
+                        if var selectedMusicIndex = musicViewModel.selectedMusicIndex {
+                            if selectedMusicIndex == musicViewModel.musicData.count - 1 {
+                                musicViewModel.nextMusic(nextIndex: 0)
+                                musicViewModel.setSelectedMusic(music: musicViewModel.musicData[0], index: 0)
+                            } else {
+                                selectedMusicIndex += 1
+                                musicViewModel.nextMusic(nextIndex: selectedMusicIndex)
+                                musicViewModel.setSelectedMusic(music: musicViewModel.musicData[selectedMusicIndex], index: selectedMusicIndex)
+                            }
+                        }
                     } label: {
                         Image(systemName: "forward.fill")
                             .foregroundColor(.white)
@@ -97,7 +130,7 @@ struct PlayerView: View {
             
             VStack(alignment: .leading) {
                 if isPlayerExpanded {
-                    Text("Deep In The Sea")
+                    Text(musicViewModel.selectedMusic?.title ?? "Unknown")
                         .bold()
                         .font(.title)
                         .matchedGeometryEffect(id: "Label", in: animation)
@@ -109,18 +142,27 @@ struct PlayerView: View {
                         .padding(.horizontal, 36)
                         .padding(.bottom, 12)
                     
-                    Slider(value: $sliderValue, in: 1...100)
-                        .accentColor(.purple)
-                        .padding(.horizontal, 36)
+                    if let audioPlayer = musicViewModel.audioPlayer {
+                        Slider(value: $sliderValue, in: 1...audioPlayer.duration) { editing in
+                            isEditingSlider = editing
+                            if !editing {
+                                audioPlayer.currentTime = sliderValue
+                            }
+                        }
+                            .accentColor(.purple)
+                            .padding(.horizontal, 36)
+                    }
                     
                     HStack {
-                        Text("05:28")
-                            .font(.caption)
-                            .foregroundColor(Color("SecondaryTextColor"))
-                        Spacer()
-                        Text("05:28")
-                            .font(.caption)
-                            .foregroundColor(Color("SecondaryTextColor"))
+                        if let audioPlayer = musicViewModel.audioPlayer {
+                            Text(DateComponentsFormatter.positional.string(from: audioPlayer.currentTime) ?? "0:00")
+                                .font(.caption)
+                                .foregroundColor(Color("SecondaryTextColor"))
+                            Spacer()
+                            Text(DateComponentsFormatter.positional.string(from: audioPlayer.duration - audioPlayer.currentTime) ?? "0:00")
+                                .font(.caption)
+                                .foregroundColor(Color("SecondaryTextColor"))
+                        }
                     }
                     .padding(.horizontal, 36)
                     .padding(.top, -10)
@@ -128,9 +170,17 @@ struct PlayerView: View {
                     HStack {
                         Spacer()
                         Button {
-                            // Play
+                            if musicViewModel.isMusicPlayed {
+                                musicViewModel.pauseMusic()
+                            } else {
+                                if musicViewModel.selectedMusic != nil {
+                                    musicViewModel.resumeMusic()
+                                } else {
+                                    musicViewModel.playMusic()
+                                }
+                            }
                         } label: {
-                            Image(systemName: "play.fill")
+                            Image(systemName: musicViewModel.isMusicPlayed ? "pause" : "play.fill")
                                 .resizable()
                                 .frame(width: 42, height: 42)
                                 .foregroundColor(.white)
@@ -164,6 +214,10 @@ struct PlayerView: View {
                 .onEnded(onDragGestureEnded(value:))
                 .onChanged(onDragGestureChanged(value:))
         )
+        .onReceive(timer, perform: { _ in
+            guard let player = musicViewModel.audioPlayer, !isEditingSlider else { return }
+            sliderValue = player.currentTime
+        })
         .ignoresSafeArea()
     }
     

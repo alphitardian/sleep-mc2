@@ -10,6 +10,7 @@ import SwiftUI
 struct MusicView: View {
     
     @ObservedObject var musicViewModel: MusicViewModel
+    var onMusicSelected: () -> Void
     
     var body: some View {
         NavigationView {
@@ -27,14 +28,17 @@ struct MusicView: View {
                         }.padding(.horizontal)
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                                ForEach(musicViewModel.musicData) { music in
+                                ForEach(0..<Int(musicViewModel.musicData.count), id:\.self) { index in
+                                    let music = musicViewModel.musicData[index]
                                     HighlightCollectionView(
                                         session: "\(music.length) Session",
                                         text: music.title,
                                         img: music.imageName
                                     )
                                     .onTapGesture {
-                                        musicViewModel.setSelectedMusic(music: music)
+                                        musicViewModel.setSelectedMusic(music: music, index: index)
+                                        musicViewModel.playMusic()
+                                        onMusicSelected()
                                     }
                                 }
                             }
@@ -51,14 +55,17 @@ struct MusicView: View {
                             .padding(.horizontal)
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                                ForEach(musicViewModel.musicData) { music in
+                                ForEach(0..<Int(musicViewModel.musicData.count), id:\.self) { index in
+                                    let music = musicViewModel.musicData[index]
                                     NormalCollectionView(
                                         title: music.title,
                                         session: "\(music.length) Session",
                                         img: music.imageName
                                     )
                                     .onTapGesture {
-                                        musicViewModel.setSelectedMusic(music: music)
+                                        musicViewModel.setSelectedMusic(music: music, index: index)
+                                        musicViewModel.playMusic()
+                                        onMusicSelected()
                                     }
                                 }
                             }
@@ -108,7 +115,7 @@ struct MusicView: View {
 
 struct MusicView_Previews: PreviewProvider {
     static var previews: some View {
-        MusicView(musicViewModel: MusicViewModel())
+        MusicView(musicViewModel: MusicViewModel(), onMusicSelected: {})
             .environment(\.colorScheme, .dark)
     }
 }

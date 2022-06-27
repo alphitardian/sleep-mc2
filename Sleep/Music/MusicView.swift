@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct MusicView: View {
+    
+    @ObservedObject var musicViewModel: MusicViewModel
+    var onMusicSelected: () -> Void
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -24,12 +28,18 @@ struct MusicView: View {
                         }.padding(.horizontal)
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                                ForEach(0..<5) {i in
+                                ForEach(0..<Int(musicViewModel.musicData.count), id:\.self) { index in
+                                    let music = musicViewModel.musicData[index]
                                     HighlightCollectionView(
-                                        session: "\(i) Hour Session",
-                                        text:"Deep In The Sea",
-                                        img: "CollectionView\(i)"
+                                        session: "\(music.length) Session",
+                                        text: music.title,
+                                        img: music.imageName
                                     )
+                                    .onTapGesture {
+                                        musicViewModel.setSelectedMusic(music: music, index: index)
+                                        musicViewModel.playMusic()
+                                        onMusicSelected()
+                                    }
                                 }
                             }
                             .padding()
@@ -45,13 +55,18 @@ struct MusicView: View {
                             .padding(.horizontal)
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                                ForEach(0..<5) {i in
+                                ForEach(0..<Int(musicViewModel.musicData.count), id:\.self) { index in
+                                    let music = musicViewModel.musicData[index]
                                     NormalCollectionView(
-                                        title:"Deep In The Sea",
-                                        session: "1 Hour Session",
-                                        img: "CollectionView\(i)"
+                                        title: music.title,
+                                        session: "\(music.length) Session",
+                                        img: music.imageName
                                     )
-                                    
+                                    .onTapGesture {
+                                        musicViewModel.setSelectedMusic(music: music, index: index)
+                                        musicViewModel.playMusic()
+                                        onMusicSelected()
+                                    }
                                 }
                             }
                             .padding(.leading)
@@ -80,7 +95,8 @@ struct MusicView: View {
                         Divider()
                             .frame(height: 1)
                             .background(.gray.opacity(0.2))
-                            .padding(.bottom)
+                            .padding(.top, 16)
+                            .padding(.bottom, 64)
                         
                     }
                 }
@@ -99,7 +115,7 @@ struct MusicView: View {
 
 struct MusicView_Previews: PreviewProvider {
     static var previews: some View {
-        MusicView()
+        MusicView(musicViewModel: MusicViewModel(), onMusicSelected: {})
             .environment(\.colorScheme, .dark)
     }
 }

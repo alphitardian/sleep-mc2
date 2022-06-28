@@ -18,9 +18,18 @@ class AnalyticViewModel: ObservableObject {
     }
     
     func getSleepData() {
+        var count = 0
+        var tempData = [SleepActivity]()
         DispatchQueue.main.async {
             self.healthStore.retrieveSleep { data in
-                self.sleepData = data
+                for sleep in data {
+                    // Get 7 data that represent data in current week
+                    if count <= 6 {
+                        tempData.append(sleep)
+                    }
+                    count += 1
+                }
+                self.sleepData = tempData.reversed()
             }
         }
     }

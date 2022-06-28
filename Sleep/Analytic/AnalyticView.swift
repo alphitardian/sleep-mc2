@@ -180,7 +180,7 @@ struct ChartView: View {
                         Spacer()
                         Rectangle()
                             .fill(Color.purple)
-                            .frame(width: 16, height: chartHeight)
+                            .frame(width: 16, height: chartHeight >= 120 ? 120 : chartHeight)
                             .cornerRadius(8)
                         
                         Text(chartDay)

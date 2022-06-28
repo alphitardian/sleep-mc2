@@ -33,7 +33,7 @@ class HealthStore {
         let sleepAnalysis = HKObjectType.categoryType(forIdentifier: .sleepAnalysis)!
         
         // use sortDescriptor to get recent data first
-        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
         
         let query = HKSampleQuery(
             sampleType: sleepAnalysis,

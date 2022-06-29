@@ -26,7 +26,7 @@ class MusicViewModel: ObservableObject {
     func playMusic() {
         if let selectedMusic = selectedMusic {
             isMusicPlayed = true
-            if let audioUrl = Bundle.main.url(forResource: selectedMusic.musicName, withExtension: "wav") {
+            if let audioUrl = Bundle.main.url(forResource: selectedMusic.musicName, withExtension: "mp3") {
                 do {
                     try audioPlayer = AVAudioPlayer(contentsOf: audioUrl)
                     audioPlayer?.play()
@@ -54,7 +54,7 @@ class MusicViewModel: ObservableObject {
     }
     
     func nextMusic(nextIndex: Int) {
-        if let audioUrl = Bundle.main.url(forResource: musicData[nextIndex].musicName, withExtension: "wav") {
+        if let audioUrl = Bundle.main.url(forResource: musicData[nextIndex].musicName, withExtension: "mp3") {
             do {
                 try audioPlayer = AVAudioPlayer(contentsOf: audioUrl)
                 if isMusicPlayed {
@@ -67,7 +67,7 @@ class MusicViewModel: ObservableObject {
     }
     
     func previousMusic(previousIndex: Int) {
-        if let audioUrl = Bundle.main.url(forResource: musicData[previousIndex].musicName, withExtension: "wav") {
+        if let audioUrl = Bundle.main.url(forResource: musicData[previousIndex].musicName, withExtension: "mp3") {
             do {
                 try audioPlayer = AVAudioPlayer(contentsOf: audioUrl)
                 if isMusicPlayed {

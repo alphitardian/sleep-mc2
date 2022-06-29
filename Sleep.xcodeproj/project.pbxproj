@@ -10,6 +10,7 @@
 		207D2C7D2862ACEE008FE742 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207D2C7C2862ACEE008FE742 /* HomeView.swift */; };
 		207D2C812862AEB0008FE742 /* MusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207D2C802862AEB0008FE742 /* MusicView.swift */; };
 		207D2C842862AEE9008FE742 /* AnalyticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207D2C832862AEE9008FE742 /* AnalyticView.swift */; };
+		20FA8559286A974C0094F644 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FA8558286A974C0094F644 /* ScheduleView.swift */; };
 		AA36903528602FD600593328 /* SleepApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA36903428602FD600593328 /* SleepApp.swift */; };
 		AA36903728602FD600593328 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA36903628602FD600593328 /* ContentView.swift */; };
 		AA36903928602FD700593328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA36903828602FD700593328 /* Assets.xcassets */; };
@@ -24,15 +25,13 @@
 		AA3690782865B3BE00593328 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3690772865B3BE00593328 /* PlayerView.swift */; };
 		AAEF797E286737C8006A6F99 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF797D286737C8006A6F99 /* Music.swift */; };
 		AAEF798028673895006A6F99 /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF797F28673895006A6F99 /* MusicViewModel.swift */; };
-		AAEF7991286945CF006A6F99 /* inikah_cinta.wav in Resources */ = {isa = PBXBuildFile; fileRef = AAEF7990286945CF006A6F99 /* inikah_cinta.wav */; };
-		AAEF799328694653006A6F99 /* garageband_trial.wav in Resources */ = {isa = PBXBuildFile; fileRef = AAEF799228694653006A6F99 /* garageband_trial.wav */; };
-		AAEF799528694668006A6F99 /* kunaikan.wav in Resources */ = {isa = PBXBuildFile; fileRef = AAEF799428694668006A6F99 /* kunaikan.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		207D2C7C2862ACEE008FE742 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		207D2C802862AEB0008FE742 /* MusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicView.swift; sourceTree = "<group>"; };
 		207D2C832862AEE9008FE742 /* AnalyticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticView.swift; sourceTree = "<group>"; };
+		20FA8558286A974C0094F644 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		AA36903128602FD600593328 /* Sleepify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sleepify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA36903428602FD600593328 /* SleepApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepApp.swift; sourceTree = "<group>"; };
 		AA36903628602FD600593328 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,9 +48,6 @@
 		AA3690772865B3BE00593328 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		AAEF797D286737C8006A6F99 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		AAEF797F28673895006A6F99 /* MusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
-		AAEF7990286945CF006A6F99 /* inikah_cinta.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = inikah_cinta.wav; path = ../../../../Garageband/inikah_cinta.wav; sourceTree = "<group>"; };
-		AAEF799228694653006A6F99 /* garageband_trial.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = garageband_trial.wav; path = ../../../../Garageband/garageband_trial.wav; sourceTree = "<group>"; };
-		AAEF799428694668006A6F99 /* kunaikan.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = kunaikan.wav; path = ../../../../Garageband/kunaikan.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +117,7 @@
 				AA369066286486ED00593328 /* Helper */,
 				207D2C822862AECE008FE742 /* Analytic */,
 				AA36903428602FD600593328 /* SleepApp.swift */,
+				20FA8558286A974C0094F644 /* ScheduleView.swift */,
 				AA36903628602FD600593328 /* ContentView.swift */,
 				207D2C7F2862AE91008FE742 /* Music */,
 				207D2C7B2862ACBE008FE742 /* Home */,
@@ -159,9 +156,6 @@
 		AAEF798F28694554006A6F99 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				AAEF7990286945CF006A6F99 /* inikah_cinta.wav */,
-				AAEF799228694653006A6F99 /* garageband_trial.wav */,
-				AAEF799428694668006A6F99 /* kunaikan.wav */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -224,10 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAEF799328694653006A6F99 /* garageband_trial.wav in Resources */,
 				AA36903C28602FD700593328 /* Preview Assets.xcassets in Resources */,
-				AAEF7991286945CF006A6F99 /* inikah_cinta.wav in Resources */,
-				AAEF799528694668006A6F99 /* kunaikan.wav in Resources */,
 				AA36903928602FD700593328 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,6 +235,7 @@
 				AAEF798028673895006A6F99 /* MusicViewModel.swift in Sources */,
 				AA36906A2864879D00593328 /* DateExtension.swift in Sources */,
 				AA3690682864870400593328 /* HealthStore.swift in Sources */,
+				20FA8559286A974C0094F644 /* ScheduleView.swift in Sources */,
 				AA3690782865B3BE00593328 /* PlayerView.swift in Sources */,
 				207D2C7D2862ACEE008FE742 /* HomeView.swift in Sources */,
 				AA3690762865B0FA00593328 /* BlurView.swift in Sources */,

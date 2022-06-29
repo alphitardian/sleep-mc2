@@ -84,18 +84,6 @@ struct GradientText: View {
         Text(text)
             .bold()
             .font(.title)
-            .overlay {
-                LinearGradient(
-                    colors: [Color("GradientTextColor"), .purple],
-                    startPoint: .leading,
-                    endPoint: .trailing
-                )
-                .mask {
-                    Text(text)
-                        .bold()
-                        .font(.title)
-                }
-            }
     }
 }
 
@@ -179,9 +167,20 @@ struct ChartView: View {
                     VStack {
                         Spacer()
                         Rectangle()
-                            .fill(Color.purple)
                             .frame(width: 16, height: chartHeight >= 120 ? 120 : chartHeight)
                             .cornerRadius(8)
+                            .overlay {
+                                LinearGradient(
+                                    colors: [Color("GradientTextColor"), .purple],
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                )
+                                .mask {
+                                    Rectangle()
+                                        .frame(width: 16, height: chartHeight >= 120 ? 120 : chartHeight)
+                                        .cornerRadius(8)
+                                }
+                            }
                         
                         Text(chartDay)
                             .font(.footnote)

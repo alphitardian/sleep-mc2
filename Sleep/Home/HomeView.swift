@@ -36,6 +36,7 @@ struct HomeView: View {
                     }
                     .tag(2)
             }
+            .accentColor(.purple)
             .onAppear {
                 let appearance = UITabBarAppearance()
                 appearance.backgroundColor = UIColor(Color("BackgroundAppColor"))

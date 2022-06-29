@@ -90,12 +90,12 @@ struct PlayerView: View {
                         if var selectedMusicIndex = musicViewModel.selectedMusicIndex {
                             if selectedMusicIndex == 0 {
                                 let prevIndex = musicViewModel.musicData.count - 1
-                                musicViewModel.previousMusic(previousIndex: prevIndex)
                                 musicViewModel.setSelectedMusic(music: musicViewModel.musicData[prevIndex], index: prevIndex)
+                                musicViewModel.previousMusic(previousIndex: prevIndex)
                             } else {
                                 selectedMusicIndex -= 1
-                                musicViewModel.previousMusic(previousIndex: selectedMusicIndex)
                                 musicViewModel.setSelectedMusic(music: musicViewModel.musicData[selectedMusicIndex], index: selectedMusicIndex)
+                                musicViewModel.previousMusic(previousIndex: selectedMusicIndex)
                             }
                         }
                     } label: {
@@ -195,12 +195,12 @@ struct PlayerView: View {
                             if var selectedMusicIndex = musicViewModel.selectedMusicIndex {
                                 if selectedMusicIndex == 0 {
                                     let prevIndex = musicViewModel.musicData.count - 1
-                                    musicViewModel.previousMusic(previousIndex: prevIndex)
                                     musicViewModel.setSelectedMusic(music: musicViewModel.musicData[prevIndex], index: prevIndex)
+                                    musicViewModel.previousMusic(previousIndex: prevIndex)
                                 } else {
                                     selectedMusicIndex -= 1
-                                    musicViewModel.previousMusic(previousIndex: selectedMusicIndex)
                                     musicViewModel.setSelectedMusic(music: musicViewModel.musicData[selectedMusicIndex], index: selectedMusicIndex)
+                                    musicViewModel.previousMusic(previousIndex: selectedMusicIndex)
                                 }
                             }
                         } label: {
@@ -269,7 +269,7 @@ struct PlayerView: View {
                         } label: {
                             Image(systemName: "list.dash")
                                 .font(.system(size: 21, weight: .black))
-                                .foregroundColor(Color("IconColor"))
+                                .foregroundColor(isListOpened ? .purple : Color("IconColor"))
                         }
                         
                         if isListOpened {

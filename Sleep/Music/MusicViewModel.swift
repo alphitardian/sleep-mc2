@@ -60,6 +60,12 @@ class MusicViewModel: ObservableObject {
     
     func nextMusic(nextIndex: Int) {
         
+        if let selectedMusicIndex = selectedMusicIndex {
+            if selectedMusicIndex == queueMusic.count {
+                self.selectedMusicIndex = 0
+            }
+        }
+        
         if let audioUrl = Bundle.main.url(forResource: queueMusic[selectedMusicIndex ?? 0].musicName, withExtension: "wav") {
             do {
                 try audioPlayer = AVAudioPlayer(contentsOf: audioUrl)
@@ -70,17 +76,13 @@ class MusicViewModel: ObservableObject {
                 print(error.localizedDescription)
             }
         }
-        
+
         queueMusic.append(musicData[selectedMusicIndex ?? 0])
         queueMusic.removeFirst()
-        print(queueMusic)
     }
     
     func previousMusic(previousIndex: Int) {
-        queueMusic.insert(musicData[selectedMusicIndex ?? 0], at: 0)
-        queueMusic.removeLast()
-        
-        if let audioUrl = Bundle.main.url(forResource: queueMusic.last?.musicName ?? "", withExtension: "wav") {
+        if let audioUrl = Bundle.main.url(forResource: selectedMusic?.musicName ?? "", withExtension: "wav") {
             do {
                 try audioPlayer = AVAudioPlayer(contentsOf: audioUrl)
                 if isMusicPlayed {
@@ -90,6 +92,9 @@ class MusicViewModel: ObservableObject {
                 print(error.localizedDescription)
             }
         }
+        
+        queueMusic.insert(musicData[selectedMusicIndex ?? 0], at: 0)
+        queueMusic.removeLast()
     }
     
     func shuffleMusic() {

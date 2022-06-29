@@ -31,7 +31,7 @@ class MusicViewModel: ObservableObject {
     func playMusic() {
         if let selectedMusic = selectedMusic {
             isMusicPlayed = true
-            if let audioUrl = Bundle.main.url(forResource: selectedMusic.musicName, withExtension: "wav") {
+            if let audioUrl = Bundle.main.url(forResource: selectedMusic.musicName, withExtension: "mp3") {
                 do {
                     try audioPlayer = AVAudioPlayer(contentsOf: audioUrl)
                     audioPlayer?.play()

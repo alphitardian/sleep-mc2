@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MusicView: View {
     
+    @State var showModal = false
     @ObservedObject var musicViewModel: MusicViewModel
     var onMusicSelected: () -> Void
     
@@ -101,10 +102,13 @@ struct MusicView: View {
                     }
                 }
             }
+            .sheetWithDetents(isPresented: $showModal, detents: [.medium()], onDismiss: nil) {
+                ScheduleView(showModal: $showModal)
+            }
             .navigationTitle("Session")
             .toolbar {
                 Button {
-                    // Schedule Function
+                    showModal.toggle()
                 } label: {
                     Image(systemName: "clock")
                 }

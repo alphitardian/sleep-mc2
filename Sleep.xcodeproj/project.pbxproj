@@ -52,6 +52,7 @@
 		AA3690752865B0FA00593328 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		AA3690772865B3BE00593328 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		AA79D292287D13DF002EB787 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		AA79D291287D0BCB002EB787 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AAAA5458286AA6C30077E501 /* PlayingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingListView.swift; sourceTree = "<group>"; };
 		AAEF797D286737C8006A6F99 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		AAEF797F28673895006A6F99 /* MusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
@@ -123,6 +124,7 @@
 		AA36903328602FD600593328 /* Sleep */ = {
 			isa = PBXGroup;
 			children = (
+				AA79D291287D0BCB002EB787 /* Info.plist */,
 				AAEF798F28694554006A6F99 /* Resource */,
 				AA3690702864886E00593328 /* Sleep.entitlements */,
 				AA369066286486ED00593328 /* Helper */,
@@ -397,6 +399,7 @@
 				DEVELOPMENT_TEAM = 7A8Q75M3WV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Sleep/Info.plist;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Required to read healthkit data";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Required to use healthkit data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -429,6 +432,7 @@
 				DEVELOPMENT_TEAM = 7A8Q75M3WV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Sleep/Info.plist;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Required to read healthkit data";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Required to use healthkit data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

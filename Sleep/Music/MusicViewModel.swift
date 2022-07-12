@@ -93,7 +93,7 @@ class MusicViewModel: ObservableObject {
             }
         }
         
-        queueMusic.insert(musicData[selectedMusicIndex ?? 0], at: 0)
+        queueMusic.insert(musicData[selectedMusicIndex ?? 0], at: queueMusic.count)
         queueMusic.removeLast()
     }
     

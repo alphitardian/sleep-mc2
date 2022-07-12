@@ -19,6 +19,7 @@ class MusicViewModel: ObservableObject {
     @Published private(set) var isMusicLoop = false
     
     var audioPlayer: AVAudioPlayer?
+    private var currentScreenBrightness: CGFloat?
     
     func setSelectedMusic(music: Music, index: Int) {
         selectedMusic = music
@@ -31,6 +32,8 @@ class MusicViewModel: ObservableObject {
     func playMusic() {
         if let selectedMusic = selectedMusic {
             isMusicPlayed = true
+            currentScreenBrightness = UIScreen.main.brightness
+            UIScreen.setBrightness(from: currentScreenBrightness ?? CGFloat(0), to: 0.0, duration: 3, ticksPerSecond: 240)
             if let audioUrl = Bundle.main.url(forResource: selectedMusic.musicName, withExtension: "mp3") {
                 do {
                     try audioPlayer = AVAudioPlayer(contentsOf: audioUrl)
@@ -45,6 +48,7 @@ class MusicViewModel: ObservableObject {
     func resumeMusic() {
         isMusicPlayed.toggle()
         if selectedMusic != nil {
+            UIScreen.setBrightness(from: currentScreenBrightness ?? CGFloat(0), to: 0.0, duration: 3, ticksPerSecond: 240)
             if let audioPlayer = audioPlayer {
                 audioPlayer.play()
             }
@@ -54,6 +58,7 @@ class MusicViewModel: ObservableObject {
     func pauseMusic() {
         if let audioPlayer = audioPlayer {
             audioPlayer.pause()
+            UIScreen.setBrightness(from: 0.0, to: currentScreenBrightness ?? CGFloat(0), duration: 3, ticksPerSecond: 240)
             isMusicPlayed.toggle()
         }
     }

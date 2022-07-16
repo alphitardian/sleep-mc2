@@ -175,6 +175,16 @@ struct DetailedPlayerView: View {
                             return
                         }
                         sliderValue = player.currentTime
+                        if sliderValue == 0 {
+                            musicViewModel.stopPlayer {
+                                UIScreen.setBrightness(
+                                    from: 0.0,
+                                    to: Constants.currentBrightness,
+                                    duration: 3,
+                                    ticksPerSecond: 240
+                                )
+                            }
+                        }
                     })
                     HStack {
                         Text(DateComponentsFormatter.positional.string(from: audioPlayer.currentTime) ?? "0:00")

@@ -86,4 +86,11 @@ class MusicViewModel: ObservableObject {
             music.id != selectedMusic?.id
         })
     }
+    
+    func stopPlayer(completion: @escaping () -> Void) {
+        if isMusicPlayed && !isMusicLoop {
+            isMusicPlayed.toggle()
+            completion()
+        }
+    }
 }

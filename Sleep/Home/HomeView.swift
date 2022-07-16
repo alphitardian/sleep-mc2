@@ -21,13 +21,19 @@ struct HomeView: View {
                 MusicView(musicViewModel: musicViewModel) {
                     withAnimation {
                         isPlayerExpanded.toggle()
+                        UIScreen.setBrightness(
+                            from: Constants.currentBrightness,
+                            to: 0.0,
+                            duration: 3,
+                            ticksPerSecond: 240
+                        )
                     }
                 }
-                    .tabItem {
-                        Image(systemName: "music.note")
-                        Text("Sessions")
-                    }
-                    .tag(1)
+                .tabItem {
+                    Image(systemName: "music.note")
+                    Text("Sessions")
+                }
+                .tag(1)
                 
                 AnalyticView()
                     .tabItem {
@@ -41,6 +47,18 @@ struct HomeView: View {
                 let appearance = UITabBarAppearance()
                 appearance.backgroundColor = UIColor(Color("BackgroundAppColor"))
                 UITabBar.appearance().standardAppearance = appearance
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+                // App moved to background
+                if musicViewModel.isMusicPlayed {
+                    UIScreen.setBrightness(from: 0.0, to: Constants.currentBrightness)
+                }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+                // App back to active
+                if musicViewModel.isMusicPlayed {
+                    UIScreen.setBrightness(from: Constants.currentBrightness, to: 0.0)
+                }
             }
             
             if (tabSelection == 1) {

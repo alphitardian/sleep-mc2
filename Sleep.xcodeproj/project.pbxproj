@@ -26,6 +26,7 @@
 		AA79D293287D13DF002EB787 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79D292287D13DF002EB787 /* ViewExtension.swift */; };
 		AAAA5459286AA6C30077E501 /* PlayingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA5458286AA6C30077E501 /* PlayingListView.swift */; };
 		AADFEE4928819CA8004619D6 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADFEE4828819CA8004619D6 /* MusicPlayer.swift */; };
+		AADFEE4B2882B3B7004619D6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADFEE4A2882B3B7004619D6 /* Constants.swift */; };
 		AAEF797E286737C8006A6F99 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF797D286737C8006A6F99 /* Music.swift */; };
 		AAEF798028673895006A6F99 /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF797F28673895006A6F99 /* MusicViewModel.swift */; };
 		AAF80136286C10230026AF1D /* mod_av_forest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AAF80133286C10230026AF1D /* mod_av_forest.mp3 */; };
@@ -56,6 +57,7 @@
 		AA79D292287D13DF002EB787 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		AAAA5458286AA6C30077E501 /* PlayingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingListView.swift; sourceTree = "<group>"; };
 		AADFEE4828819CA8004619D6 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
+		AADFEE4A2882B3B7004619D6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AAEF797D286737C8006A6F99 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		AAEF797F28673895006A6F99 /* MusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
 		AAF80133286C10230026AF1D /* mod_av_forest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = mod_av_forest.mp3; path = ../../../../../Downloads/mod_av_forest.mp3; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				AA36906B286487BA00593328 /* TimeIntervalExtension.swift */,
 				AA79D292287D13DF002EB787 /* ViewExtension.swift */,
 				AADFEE4828819CA8004619D6 /* MusicPlayer.swift */,
+				AADFEE4A2882B3B7004619D6 /* Constants.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				207D2C842862AEE9008FE742 /* AnalyticView.swift in Sources */,
+				AADFEE4B2882B3B7004619D6 /* Constants.swift in Sources */,
 				AAEF797E286737C8006A6F99 /* Music.swift in Sources */,
 				AADFEE4928819CA8004619D6 /* MusicPlayer.swift in Sources */,
 				AAEF798028673895006A6F99 /* MusicViewModel.swift in Sources */,

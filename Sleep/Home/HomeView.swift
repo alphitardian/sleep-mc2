@@ -21,6 +21,12 @@ struct HomeView: View {
                 MusicView(musicViewModel: musicViewModel) {
                     withAnimation {
                         isPlayerExpanded.toggle()
+                        UIScreen.setBrightness(
+                            from: Constants.currentBrightness,
+                            to: 0.0,
+                            duration: 3,
+                            ticksPerSecond: 240
+                        )
                     }
                 }
                     .tabItem {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Music: Identifiable {
+struct Music: Identifiable, Equatable {
     var id: UUID
     var title: String
     var category: String

@@ -17,7 +17,7 @@ enum MusicLoop {
 class MusicPlayer {
     
     static let sharedInstance = MusicPlayer()
-    private var audioPlayer: AVAudioPlayer?
+    var audioPlayer: AVAudioPlayer?
     
     func playMusic(title: String) {
         guard let audioUrl = Bundle.main.url(forResource: title, withExtension: "mp3") else { return }
@@ -30,9 +30,7 @@ class MusicPlayer {
     }
     
     func toggleMusic() {
-        guard let isAudioPlay = audioPlayer?.isPlaying else {
-            return
-        }
+        guard let isAudioPlay = audioPlayer?.isPlaying else { return }
         if isAudioPlay {
             audioPlayer?.stop()
         } else {

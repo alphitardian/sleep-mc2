@@ -37,7 +37,8 @@ struct MusicView: View {
                                         img: music.imageName
                                     )
                                     .onTapGesture {
-                                        musicViewModel.setSelectedMusic(music: music, index: index)
+                                        musicViewModel.setSelectedMusic(music: music)
+                                        musicViewModel.refreshQueue()
                                         musicViewModel.playMusic()
                                         onMusicSelected()
                                     }
@@ -64,7 +65,8 @@ struct MusicView: View {
                                         img: music.imageName
                                     )
                                     .onTapGesture {
-                                        musicViewModel.setSelectedMusic(music: music, index: index)
+                                        musicViewModel.setSelectedMusic(music: music)
+                                        musicViewModel.refreshQueue()
                                         musicViewModel.playMusic()
                                         onMusicSelected()
                                     }

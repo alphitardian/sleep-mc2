@@ -48,7 +48,8 @@ struct PlayingListView: View {
                         .padding(.bottom)
                         .listRowBackground(Color("BackgroundAppColor"))
                         .onTapGesture {
-                            musicViewModel.setSelectedMusic(music: music, index: index + 1)
+                            musicViewModel.setSelectedMusic(music: music)
+                            musicViewModel.refreshQueue()
                             musicViewModel.playMusic()
                         }
                 }

@@ -55,7 +55,9 @@ struct PlayerView: View {
         }
         // if expand then full height
         .frame(maxHeight: isPlayerExpanded ? .infinity : 72)
-        .background(isPlayerExpanded ? Color("BackgroundAppColor") : nil)
+        .background(
+            isPlayerExpanded ? BackgroundVideoView(videoName: "Sleepify-PlayScreen") : nil
+        )
         .offset(y: isPlayerExpanded ? 0 : -48)
         .offset(y: offset)
         .onTapGesture {

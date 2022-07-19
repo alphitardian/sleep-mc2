@@ -58,7 +58,6 @@ struct PlayerView: View {
         .background(
             isPlayerExpanded ? BackgroundVideoView(videoName: "Sleepify-PlayScreen") : nil
         )
-        .offset(y: isPlayerExpanded ? 0 : -48)
         .offset(y: offset)
         .onTapGesture {
             withAnimation(.spring()) {
@@ -98,30 +97,6 @@ struct PlayerView: View {
             if value.translation.height > 0 && isPlayerExpanded {
                 offset = value.translation.height
             }
-        }
-    }
-}
-
-struct PlayerView_Previews: PreviewProvider {
-    
-    @Namespace static var animation
-    @State static var isPlayerExpanded = true
-    static var musicViewModel = MusicViewModel()
-    
-    static var previews: some View {
-        Group {
-            PlayerView(
-                animation: animation,
-                isPlayerExpanded: $isPlayerExpanded,
-                musicViewModel: musicViewModel
-            )
-            TimerSetupView(
-                isTimerOn: .constant(false),
-                isTimerSheetOpen: .constant(false),
-                timerValue: .constant(15),
-                musicViewModel: musicViewModel
-            )
-            HomeView()
         }
     }
 }
@@ -223,7 +198,7 @@ struct DetailedPlayerView: View {
                     } label: {
                         Image(systemName: "stopwatch")
                             .font(.system(size: 24))
-                            .foregroundColor(.white)
+                            .foregroundColor(isTimerOn ? .purple : .white)
                     }
                     Spacer()
                 }
@@ -269,6 +244,7 @@ struct TimerSetupView: View {
     @Binding var isTimerSheetOpen: Bool
     @Binding var timerValue: Int
     @ObservedObject var musicViewModel: MusicViewModel
+    
     @State var hour = 0
     @State var minute = 15
     @State var second = 0
@@ -302,13 +278,19 @@ struct TimerSetupView: View {
                             
                         }
                     } label: {
-                        Text("Done").bold()
+                        Text("Done")
+                            .bold()
+                            .foregroundColor(.purple)
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {
+                    Button {
                         isTimerSheetOpen.toggle()
+                    } label: {
+                        Text("Cancel")
+                            .foregroundColor(.purple)
                     }
+
                 }
             }
             .onAppear {
@@ -369,5 +351,29 @@ struct MiniPlayerView: View {
                 .stroke(.white, lineWidth: 1)
         }
         .padding(.bottom)
+    }
+}
+
+struct PlayerView_Previews: PreviewProvider {
+    
+    @Namespace static var animation
+    @State static var isPlayerExpanded = true
+    static var musicViewModel = MusicViewModel()
+    
+    static var previews: some View {
+        Group {
+            PlayerView(
+                animation: animation,
+                isPlayerExpanded: $isPlayerExpanded,
+                musicViewModel: musicViewModel
+            )
+            TimerSetupView(
+                isTimerOn: .constant(false),
+                isTimerSheetOpen: .constant(false),
+                timerValue: .constant(15),
+                musicViewModel: musicViewModel
+            )
+            HomeView()
+        }
     }
 }

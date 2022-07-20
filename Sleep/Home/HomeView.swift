@@ -9,8 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State private var tabSelection = 1
     @State private var isPlayerExpanded = false
+    @State var isChangeListToggle = false
     @State private var searchText = ""
     @Namespace private var animation
     
@@ -25,7 +25,7 @@ struct HomeView: View {
             }
         }
     }
-        
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             NavigationView {
@@ -42,7 +42,9 @@ struct HomeView: View {
                             .fontWeight(.heavy)
                         SearchBar(searchText: $searchText)
                         MusicView(
+                            animation: animation,
                             musicViewModel: musicViewModel,
+                            isChangeListToggle: $isChangeListToggle,
                             filteredMusic: filteredMusic
                         ) {
                             withAnimation {
@@ -62,21 +64,22 @@ struct HomeView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     Button {
-                        //
+                        withAnimation {
+                            isChangeListToggle.toggle()
+                        }
                     } label: {
-                        Image(systemName: "list.dash")
+                        Image(systemName: isChangeListToggle ? "rectangle.stack" : "rectangle.grid.2x2")
+                            .foregroundColor(.white)
                     }
                 }
             }
             
-            if (tabSelection == 1) {
-                if musicViewModel.selectedMusic != nil {
-                    PlayerView(
-                        animation: animation,
-                        isPlayerExpanded: $isPlayerExpanded,
-                        musicViewModel: musicViewModel
-                    )
-                }
+            if musicViewModel.selectedMusic != nil {
+                PlayerView(
+                    animation: animation,
+                    isPlayerExpanded: $isPlayerExpanded,
+                    musicViewModel: musicViewModel
+                )
             }
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in

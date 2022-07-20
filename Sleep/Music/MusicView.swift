@@ -9,29 +9,52 @@ import SwiftUI
 
 struct MusicView: View {
     
+    var animation: Namespace.ID
     @ObservedObject var musicViewModel: MusicViewModel
+    @Binding var isChangeListToggle: Bool
     var filteredMusic: [Music]
     var onMusicSelected: () -> Void
     
     var body: some View {
-        HorizontalListView(
-            musicViewModel: musicViewModel,
-            filteredMusic: filteredMusic,
-            onMusicSelected: onMusicSelected
-        )
-        //GridListView(musicViewModel: musicViewModel, onMusicSelected: onMusicSelected)
+        ZStack {
+            if isChangeListToggle {
+                GridListView(
+                    animation: animation,
+                    musicViewModel: musicViewModel,
+                    filteredMusic: filteredMusic,
+                    onMusicSelected: onMusicSelected
+                )
+            } else {
+                HorizontalListView(
+                    animation: animation,
+                    musicViewModel: musicViewModel,
+                    filteredMusic: filteredMusic,
+                    onMusicSelected: onMusicSelected
+                )
+            }
+        }
     }
 }
 
 struct MusicView_Previews: PreviewProvider {
+    
+    @Namespace static var animation
+    
     static var previews: some View {
-        MusicView(musicViewModel: MusicViewModel(), filteredMusic: [], onMusicSelected: {})
+        MusicView(
+            animation: animation,
+            musicViewModel: MusicViewModel(),
+            isChangeListToggle: .constant(false),
+            filteredMusic: [],
+            onMusicSelected: {}
+        )
             .environment(\.colorScheme, .dark)
     }
 }
 
 struct HorizontalListView: View {
     
+    var animation: Namespace.ID
     @ObservedObject var musicViewModel: MusicViewModel
     var filteredMusic: [Music]
     var onMusicSelected: () -> Void
@@ -45,6 +68,7 @@ struct HorizontalListView: View {
                         text: music.title,
                         img: music.imageName
                     )
+                    .matchedGeometryEffect(id: music.title, in: animation)
                     .onTapGesture {
                         musicViewModel.setSelectedMusic(music: music)
                         musicViewModel.refreshQueue()
@@ -53,14 +77,16 @@ struct HorizontalListView: View {
                     }
                 }
             }
-            .padding(.horizontal, 52)
+            .padding(.horizontal, UIScreen.main.bounds.width / 8)
         }
     }
 }
 
 struct GridListView: View {
     
+    var animation: Namespace.ID
     @ObservedObject var musicViewModel: MusicViewModel
+    var filteredMusic: [Music]
     var onMusicSelected: () -> Void
     
     private let twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
@@ -68,13 +94,13 @@ struct GridListView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: twoColumnGrid) {
-                ForEach(0..<Int(musicViewModel.musicData.count), id:\.self) { index in
-                    let music = musicViewModel.musicData[index]
+                ForEach(filteredMusic) { music in
                     NormalCollectionView(
                         title: music.title,
                         session: "\(music.length) Session",
                         img: music.imageName
                     )
+                    .matchedGeometryEffect(id: music.title, in: animation)
                     .onTapGesture {
                         musicViewModel.setSelectedMusic(music: music)
                         musicViewModel.refreshQueue()
@@ -83,6 +109,7 @@ struct GridListView: View {
                     }
                 }
             }
+            .padding(.horizontal)
         }
     }
 }
@@ -115,7 +142,7 @@ struct HighlightCollectionView: View {
                         .foregroundColor(.white)
                         .padding()
                         .overlay {
-                            RoundedRectangle (cornerRadius: 50)
+                            RoundedRectangle(cornerRadius: 50)
                                 .stroke(.white, lineWidth: 1)
                         }
                 }
@@ -129,9 +156,9 @@ struct HighlightCollectionView: View {
                     .stroke(.white, lineWidth: 1)
             }
         }
-        .frame(width:285, height:480)
+        .frame(width:285, height: UIScreen.main.bounds.height / 1.75)
         .overlay {
-            RoundedRectangle (cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 10)
                 .stroke(.white, lineWidth: 1)
         }
         
@@ -149,10 +176,10 @@ struct NormalCollectionView: View {
             Image(img)
                 .resizable()
                 .scaledToFill()
-                .frame(width:165, height:173)
+                .frame(width: UIScreen.main.bounds.width / 2.35, height:173)
                 .cornerRadius(10)
                 .overlay {
-                    RoundedRectangle (cornerRadius: 10)
+                    RoundedRectangle(cornerRadius: 10)
                         .stroke(.white, lineWidth: 1)
                 }
             HStack {
@@ -171,7 +198,7 @@ struct NormalCollectionView: View {
                         .font(.caption2)
                         .padding(5)
                         .overlay {
-                            RoundedRectangle (cornerRadius: 50)
+                            RoundedRectangle(cornerRadius: 50)
                                 .stroke(.white, lineWidth: 1)
                         }
                 }
@@ -179,12 +206,14 @@ struct NormalCollectionView: View {
             .padding(10)
             .frame(height: 58)
             .background(.black)
+            .cornerRadius(10)
             .overlay {
                 RoundedRectangle (cornerRadius: 10)
                     .stroke(.white, lineWidth: 1)
             }
         }
-        .frame(width:165, height:173)
+        .frame(width: UIScreen.main.bounds.width / 2.35, height: 173)
+        .padding(.bottom, 10)
     }
 }
 

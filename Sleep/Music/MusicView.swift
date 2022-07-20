@@ -14,108 +14,8 @@ struct MusicView: View {
     var onMusicSelected: () -> Void
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color("BackgroundAppColor").ignoresSafeArea()
-                ScrollView(showsIndicators: false) {
-                    VStack(alignment: .leading) {
-                        VStack(alignment: .leading){
-                            Text("Ready To Fall Asleep?")
-                                .bold()
-                                .font(.title3)
-                                .foregroundColor(.white)
-                            Text("Fall into the sweetest dream with these new sonic experiences")
-                                .font(.caption)
-                        }.padding(.horizontal)
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack {
-                                ForEach(0..<Int(musicViewModel.musicData.count), id:\.self) { index in
-                                    let music = musicViewModel.musicData[index]
-                                    HighlightCollectionView(
-                                        session: "\(music.length) Session",
-                                        text: music.title,
-                                        img: music.imageName
-                                    )
-                                    .onTapGesture {
-                                        musicViewModel.setSelectedMusic(music: music)
-                                        musicViewModel.refreshQueue()
-                                        musicViewModel.playMusic()
-                                        onMusicSelected()
-                                    }
-                                }
-                            }
-                            .padding()
-                        }
-                        Divider()
-                            .frame(height: 1)
-                            .background(.gray.opacity(0.2))
-                            .padding(.bottom)
-                        
-                        Text("Sleeping with Nature")
-                            .bold()
-                            .font(.title3)
-                            .padding(.horizontal)
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack {
-                                ForEach(0..<Int(musicViewModel.musicData.count), id:\.self) { index in
-                                    let music = musicViewModel.musicData[index]
-                                    NormalCollectionView(
-                                        title: music.title,
-                                        session: "\(music.length) Session",
-                                        img: music.imageName
-                                    )
-                                    .onTapGesture {
-                                        musicViewModel.setSelectedMusic(music: music)
-                                        musicViewModel.refreshQueue()
-                                        musicViewModel.playMusic()
-                                        onMusicSelected()
-                                    }
-                                }
-                            }
-                            .padding(.leading)
-                        }
-                        Divider()
-                            .frame(height: 1)
-                            .background(.gray.opacity(0.2))
-                            .padding(.vertical)
-                        
-                        Text("5 Mins Session")
-                            .bold()
-                            .font(.title3)
-                            .padding(.horizontal)
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack {
-                                ForEach(0..<5) {i in
-                                    NormalCollectionView(
-                                        title:"Deep In The Sea",
-                                        session: "1 Hour Session",
-                                        img: "CollectionView\(i)"
-                                    )
-                                }
-                            }
-                            .padding(.leading)
-                        }
-                        Divider()
-                            .frame(height: 1)
-                            .background(.gray.opacity(0.2))
-                            .padding(.top, 16)
-                            .padding(.bottom, 64)
-                        
-                    }
-                }
-            }
-            .sheetWithDetents(isPresented: $showModal, detents: [.medium()], onDismiss: nil) {
-                ScheduleView(showModal: $showModal)
-            }
-            .navigationTitle("Session")
-            .toolbar {
-                Button {
-                    showModal.toggle()
-                } label: {
-                    Image(systemName: "clock")
-                }
-            }
-        }
+        HorizontalListView(musicViewModel: musicViewModel, onMusicSelected: onMusicSelected)
+        //GridListView(musicViewModel: musicViewModel, onMusicSelected: onMusicSelected)
     }
 }
 
@@ -126,6 +26,61 @@ struct MusicView_Previews: PreviewProvider {
     }
 }
 
+struct HorizontalListView: View {
+    
+    @ObservedObject var musicViewModel: MusicViewModel
+    var onMusicSelected: () -> Void
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack (spacing: 24) {
+                ForEach(0..<Int(musicViewModel.musicData.count), id:\.self) { index in
+                    let music = musicViewModel.musicData[index]
+                    HighlightCollectionView(
+                        session: "\(music.length) Session",
+                        text: music.title,
+                        img: music.imageName
+                    )
+                    .onTapGesture {
+                        musicViewModel.setSelectedMusic(music: music)
+                        musicViewModel.refreshQueue()
+                        musicViewModel.playMusic()
+                        onMusicSelected()
+                    }
+                }
+            }
+            .padding(.leading, 36)
+        }
+    }
+}
+
+struct GridListView: View {
+    
+    @ObservedObject var musicViewModel: MusicViewModel
+    var onMusicSelected: () -> Void
+    var body: some View {
+        let twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
+        ScrollView {
+            LazyVGrid(columns: twoColumnGrid) {
+                ForEach(0..<Int(musicViewModel.musicData.count), id:\.self) { index in
+                    let music = musicViewModel.musicData[index]
+                    NormalCollectionView(
+                        title: music.title,
+                        session: "\(music.length) Session",
+                        img: music.imageName
+                    )
+                    
+                    .onTapGesture {
+                        musicViewModel.setSelectedMusic(music: music)
+                        musicViewModel.refreshQueue()
+                        musicViewModel.playMusic()
+                        onMusicSelected()
+                    }
+                }
+            }
+        }
+    }
+}
+
 struct HighlightCollectionView: View {
     
     var session = ""
@@ -133,30 +88,49 @@ struct HighlightCollectionView: View {
     var img = ""
     var body: some View {
         VStack{
-            ZStack(alignment: .leading) {
+            ZStack(alignment: .bottom) {
                 Image(img)
                     .resizable()
                     .scaledToFill()
-                    .frame(width:342, height:223)
-                    .cornerRadius(25)
+                    .frame(width:285, height:580)
+                    .cornerRadius(10)
                 
-                Text(text)
-                    .bold()
-                    .font(.system(size: 41))
-                    .foregroundColor(.white)
-                    .lineLimit(2)
-                    .multilineTextAlignment(.leading)
-                    .padding(.leading, -42)
-                    .shadow(color: .black, radius: 2, x: 0, y: 0)
-                    .frame(width: 224)
                 
-                Text(session)
-                    .foregroundColor(.white)
-                    .offset(x: 210, y: 90)
-                    .shadow(color: .black, radius: 2, x: 0, y: 0)
+                
+                HStack {
+                    Text(text)
+                        .font(.title)
+                        .foregroundColor(.white)
+                        .lineLimit(2)
+                        .multilineTextAlignment(.leading)
+                    
+                        .shadow(color: .black, radius: 2, x: 0, y: 0)
+                    
+                    Spacer()
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "play")
+                            .foregroundColor(.white)
+                            .padding()
+                            .overlay {
+                                RoundedRectangle (cornerRadius: 50)
+                                    .stroke(.white, lineWidth: 1)
+                            }
+                    }
+                }
+                
+                .padding()
+                .background(.black)
+                .overlay {
+                    RoundedRectangle (cornerRadius: 10)
+                        .stroke(.white, lineWidth: 1)
+                }
             }
-            Text(text)
-                .font(.caption)
+            .overlay {
+                RoundedRectangle (cornerRadius: 10)
+                    .stroke(.white, lineWidth: 1)
+            }
         }
     }
 }
@@ -168,28 +142,50 @@ struct NormalCollectionView: View {
     var img = ""
     
     var body: some View {
-        ZStack(alignment: .leading) {
+        ZStack(alignment: .bottom) {
             Image(img)
                 .resizable()
-                .cornerRadius(6)
-                .frame(width:141, height:141)
+                .scaledToFill()
+                .frame(width:165, height:173)
+                .cornerRadius(10)
+                .overlay {
+                    RoundedRectangle (cornerRadius: 10)
+                        .stroke(.white, lineWidth: 1)
+                }
             
-            Text(title)
-                .bold()
-                .font(.title)
-                .foregroundColor(.white)
-                .lineLimit(2)
-                .multilineTextAlignment(.leading)
-                .padding(.horizontal, 8)
-                .shadow(color: .black, radius: 2, x: 0, y: 0)
+            HStack {
+                Text(title)
+                    .font(.subheadline)
+                    .foregroundColor(.white)
+                    .lineLimit(2)
+                    .multilineTextAlignment(.leading)
+                
+                    .shadow(color: .black, radius: 2, x: 0, y: 0)
+                
+                Spacer()
+                Button {
+                    
+                } label: {
+                    Image(systemName: "play")
+                        .foregroundColor(.white)
+                        .font(.caption2)
+                        .padding(5)
+                        .overlay {
+                            RoundedRectangle (cornerRadius: 50)
+                                .stroke(.white, lineWidth: 1)
+                        }
+                }
+            }
             
-            
-            Text(session)
-                .foregroundColor(.white)
-                .font(.caption2)
-                .offset(x: 60, y: 60)
-                .shadow(color: .black, radius: 2, x: 0, y: 0)
+            .padding(10)
+            .frame(height: 58)
+            .background(.black)
+            .overlay {
+                RoundedRectangle (cornerRadius: 10)
+                    .stroke(.white, lineWidth: 1)
+            }
         }
-        .frame(width:141, height:141)
+        .frame(width:165, height:173)
     }
 }
+

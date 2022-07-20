@@ -245,7 +245,6 @@ struct DetailedPlayerView: View {
             width: isPlayerExpanded ? nil : 0,
             height: isPlayerExpanded ? nil : 0
         )
-        .opacity(isPlayerExpanded ? 1 : 0)
     }
 }
 
@@ -358,6 +357,7 @@ struct MiniPlayerView: View {
                 Image(systemName: musicViewModel.isMusicPlayed ? "pause" : "play")
                     .foregroundColor(.white)
                     .font(.title)
+                    .padding(.trailing, 4)
             }
             
         }

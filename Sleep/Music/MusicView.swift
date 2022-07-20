@@ -9,19 +9,23 @@ import SwiftUI
 
 struct MusicView: View {
     
-    @State var showModal = false
     @ObservedObject var musicViewModel: MusicViewModel
+    var filteredMusic: [Music]
     var onMusicSelected: () -> Void
     
     var body: some View {
-        HorizontalListView(musicViewModel: musicViewModel, onMusicSelected: onMusicSelected)
+        HorizontalListView(
+            musicViewModel: musicViewModel,
+            filteredMusic: filteredMusic,
+            onMusicSelected: onMusicSelected
+        )
         //GridListView(musicViewModel: musicViewModel, onMusicSelected: onMusicSelected)
     }
 }
 
 struct MusicView_Previews: PreviewProvider {
     static var previews: some View {
-        MusicView(musicViewModel: MusicViewModel(), onMusicSelected: {})
+        MusicView(musicViewModel: MusicViewModel(), filteredMusic: [], onMusicSelected: {})
             .environment(\.colorScheme, .dark)
     }
 }
@@ -29,12 +33,13 @@ struct MusicView_Previews: PreviewProvider {
 struct HorizontalListView: View {
     
     @ObservedObject var musicViewModel: MusicViewModel
+    var filteredMusic: [Music]
     var onMusicSelected: () -> Void
+    
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack (spacing: 24) {
-                ForEach(0..<Int(musicViewModel.musicData.count), id:\.self) { index in
-                    let music = musicViewModel.musicData[index]
+                ForEach(filteredMusic) { music in
                     HighlightCollectionView(
                         session: "\(music.length) Session",
                         text: music.title,
@@ -48,7 +53,7 @@ struct HorizontalListView: View {
                     }
                 }
             }
-            .padding(.leading, 36)
+            .padding(.horizontal, 52)
         }
     }
 }
@@ -57,8 +62,10 @@ struct GridListView: View {
     
     @ObservedObject var musicViewModel: MusicViewModel
     var onMusicSelected: () -> Void
+    
+    private let twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
+    
     var body: some View {
-        let twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
         ScrollView {
             LazyVGrid(columns: twoColumnGrid) {
                 ForEach(0..<Int(musicViewModel.musicData.count), id:\.self) { index in
@@ -68,7 +75,6 @@ struct GridListView: View {
                         session: "\(music.length) Session",
                         img: music.imageName
                     )
-                    
                     .onTapGesture {
                         musicViewModel.setSelectedMusic(music: music)
                         musicViewModel.refreshQueue()
@@ -86,52 +92,49 @@ struct HighlightCollectionView: View {
     var session = ""
     var text = ""
     var img = ""
+    
     var body: some View {
-        VStack{
-            ZStack(alignment: .bottom) {
-                Image(img)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width:285, height:580)
-                    .cornerRadius(10)
-                
-                
-                
-                HStack {
-                    Text(text)
-                        .font(.title)
+        ZStack(alignment: .bottom) {
+            Image(img)
+                .resizable()
+                .scaledToFill()
+                .frame(width:285)
+                .cornerRadius(10)
+            HStack {
+                Text(text)
+                    .font(.title)
+                    .foregroundColor(.white)
+                    .lineLimit(2)
+                    .multilineTextAlignment(.leading)
+                    .shadow(color: .black, radius: 2, x: 0, y: 0)
+                Spacer()
+                Button {
+                    //
+                } label: {
+                    Image(systemName: "play")
                         .foregroundColor(.white)
-                        .lineLimit(2)
-                        .multilineTextAlignment(.leading)
-                    
-                        .shadow(color: .black, radius: 2, x: 0, y: 0)
-                    
-                    Spacer()
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "play")
-                            .foregroundColor(.white)
-                            .padding()
-                            .overlay {
-                                RoundedRectangle (cornerRadius: 50)
-                                    .stroke(.white, lineWidth: 1)
-                            }
-                    }
-                }
-                
-                .padding()
-                .background(.black)
-                .overlay {
-                    RoundedRectangle (cornerRadius: 10)
-                        .stroke(.white, lineWidth: 1)
+                        .padding()
+                        .overlay {
+                            RoundedRectangle (cornerRadius: 50)
+                                .stroke(.white, lineWidth: 1)
+                        }
                 }
             }
+            .padding()
+            .frame(height: 100)
+            .background(.black)
+            .cornerRadius(10)
             .overlay {
                 RoundedRectangle (cornerRadius: 10)
                     .stroke(.white, lineWidth: 1)
             }
         }
+        .frame(width:285, height:480)
+        .overlay {
+            RoundedRectangle (cornerRadius: 10)
+                .stroke(.white, lineWidth: 1)
+        }
+        
     }
 }
 
@@ -152,19 +155,16 @@ struct NormalCollectionView: View {
                     RoundedRectangle (cornerRadius: 10)
                         .stroke(.white, lineWidth: 1)
                 }
-            
             HStack {
                 Text(title)
                     .font(.subheadline)
                     .foregroundColor(.white)
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
-                
                     .shadow(color: .black, radius: 2, x: 0, y: 0)
-                
                 Spacer()
                 Button {
-                    
+                    //
                 } label: {
                     Image(systemName: "play")
                         .foregroundColor(.white)
@@ -176,7 +176,6 @@ struct NormalCollectionView: View {
                         }
                 }
             }
-            
             .padding(10)
             .frame(height: 58)
             .background(.black)

@@ -11,53 +11,61 @@ struct HomeView: View {
     
     @State private var tabSelection = 1
     @State private var isPlayerExpanded = false
+    @State private var searchText = ""
     @Namespace private var animation
     
     @StateObject private var musicViewModel = MusicViewModel()
+    
+    var filteredMusic: [Music] {
+        if searchText.isEmpty {
+            return musicViewModel.musicData
+        } else {
+            return musicViewModel.musicData.filter { music in
+                music.title.localizedCaseInsensitiveContains(searchText)
+            }
+        }
+    }
         
     var body: some View {
         ZStack(alignment: .bottom) {
-            TabView(selection: $tabSelection) {
-                MusicView(musicViewModel: musicViewModel) {
-                    withAnimation {
-                        isPlayerExpanded.toggle()
-                        UIScreen.setBrightness(
-                            from: Constants.currentBrightness,
-                            to: 0.0,
-                            duration: 3,
-                            ticksPerSecond: 240
-                        )
+            NavigationView {
+                ZStack {
+                    Color("BackgroundAppColor")
+                        .ignoresSafeArea()
+                    Image("BackgroundAppTexture")
+                        .resizable()
+                        .ignoresSafeArea()
+                    VStack {
+                        Text("Soundscapes")
+                            .foregroundColor(.white)
+                            .font(.title)
+                            .fontWeight(.heavy)
+                        SearchBar(searchText: $searchText)
+                        MusicView(
+                            musicViewModel: musicViewModel,
+                            filteredMusic: filteredMusic
+                        ) {
+                            withAnimation {
+                                isPlayerExpanded.toggle()
+                                UIScreen.setBrightness(
+                                    from: Constants.currentBrightness,
+                                    to: 0.0,
+                                    duration: 3,
+                                    ticksPerSecond: 240
+                                )
+                            }
+                        }
+                        Spacer()
                     }
                 }
-                .tabItem {
-                    Image(systemName: "music.note")
-                    Text("Sessions")
-                }
-                .tag(1)
-                
-                AnalyticView()
-                    .tabItem {
-                        Image(systemName: "moon.fill")
-                        Text("Your Sleep")
+                .accentColor(.purple)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    Button {
+                        //
+                    } label: {
+                        Image(systemName: "list.dash")
                     }
-                    .tag(2)
-            }
-            .accentColor(.purple)
-            .onAppear {
-                let appearance = UITabBarAppearance()
-                appearance.backgroundColor = UIColor(Color("BackgroundAppColor"))
-                UITabBar.appearance().standardAppearance = appearance
-            }
-            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
-                // App moved to background
-                if musicViewModel.isMusicPlayed {
-                    UIScreen.setBrightness(from: 0.0, to: Constants.currentBrightness)
-                }
-            }
-            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-                // App back to active
-                if musicViewModel.isMusicPlayed {
-                    UIScreen.setBrightness(from: Constants.currentBrightness, to: 0.0)
                 }
             }
             
@@ -71,6 +79,36 @@ struct HomeView: View {
                 }
             }
         }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+            // App moved to background
+            if musicViewModel.isMusicPlayed {
+                UIScreen.setBrightness(from: 0.0, to: Constants.currentBrightness)
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            // App back to active
+            if musicViewModel.isMusicPlayed {
+                UIScreen.setBrightness(from: Constants.currentBrightness, to: 0.0)
+            }
+        }
+    }
+}
+
+struct SearchBar: View {
+    
+    @Binding var searchText: String
+    
+    var body: some View {
+        HStack {
+            Image(systemName: "magnifyingglass")
+                .foregroundColor(.gray.opacity(0.75))
+            TextField("Search", text: $searchText)
+        }
+        .padding()
+        .frame(height: 42)
+        .background(Color.gray.opacity(0.2))
+        .cornerRadius(10)
+        .padding()
     }
 }
 

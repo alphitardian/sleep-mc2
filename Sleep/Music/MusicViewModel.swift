@@ -39,9 +39,9 @@ class MusicViewModel: ObservableObject {
     
     func nextMusic() {
         // Check if there is any music in queue
+        if !isMusicPlayed { toggleMusic() }
         guard let nextMusic = queueMusic.first else { return }
         musicPlayer.playMusic(title: nextMusic.musicName)
-        if !isMusicPlayed { toggleMusic() }
         
         // Update queue list
         guard let prevSelectedMusic = selectedMusic else { return }
@@ -51,9 +51,9 @@ class MusicViewModel: ObservableObject {
     
     func previousMusic() {
         // Check if there is any music in queue
+        if !isMusicPlayed { toggleMusic() }
         guard let lastMusic = queueMusic.last else { return }
         musicPlayer.playMusic(title: lastMusic.musicName)
-        if !isMusicPlayed { toggleMusic() }
         
         // Update queue list
         guard let prevSelectedMusic = selectedMusic else { return }
@@ -92,5 +92,17 @@ class MusicViewModel: ObservableObject {
             isMusicPlayed.toggle()
             completion()
         }
+    }
+    
+    func convertedTimer(_ seconds: Int) -> (hour: Int, minute: Int, second: Int) {
+        return (seconds / 3600, (seconds % 3600) / 60, seconds % 60)
+    }
+    
+    func hourToSecond(_ hour: Int) -> Int {
+        return hour * 3600
+    }
+    
+    func minuteToSecond(_ minute: Int) -> Int {
+        return minute * 60
     }
 }

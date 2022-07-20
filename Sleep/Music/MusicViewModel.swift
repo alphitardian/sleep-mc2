@@ -94,7 +94,7 @@ class MusicViewModel: ObservableObject {
         }
     }
     
-    func secondsToHoursMinutesSeconds(_ seconds: Int) -> (hour: Int, minute: Int, second: Int) {
+    func convertedTimer(_ seconds: Int) -> (hour: Int, minute: Int, second: Int) {
         return (seconds / 3600, (seconds % 3600) / 60, seconds % 60)
     }
     

@@ -27,6 +27,7 @@
 		AA85D12F288696FB00EF4BE7 /* TimerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA85D12E288696FB00EF4BE7 /* TimerPickerView.swift */; };
 		AA85D1312886DB7300EF4BE7 /* Sleepify-PlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA85D1302886DB7300EF4BE7 /* Sleepify-PlayScreen.mov */; };
 		AA85D1332886DBB900EF4BE7 /* BackgroundVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA85D1322886DBB900EF4BE7 /* BackgroundVideoView.swift */; };
+		AA85D1372887BC4C00EF4BE7 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA85D1362887BC4C00EF4BE7 /* TimerManager.swift */; };
 		AAAA5459286AA6C30077E501 /* PlayingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA5458286AA6C30077E501 /* PlayingListView.swift */; };
 		AADFEE4928819CA8004619D6 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADFEE4828819CA8004619D6 /* MusicPlayer.swift */; };
 		AADFEE4B2882B3B7004619D6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADFEE4A2882B3B7004619D6 /* Constants.swift */; };
@@ -61,6 +62,7 @@
 		AA85D12E288696FB00EF4BE7 /* TimerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPickerView.swift; sourceTree = "<group>"; };
 		AA85D1302886DB7300EF4BE7 /* Sleepify-PlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = "Sleepify-PlayScreen.mov"; path = "../../../../../Downloads/Sleepify-PlayScreen.mov"; sourceTree = "<group>"; };
 		AA85D1322886DBB900EF4BE7 /* BackgroundVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundVideoView.swift; sourceTree = "<group>"; };
+		AA85D1362887BC4C00EF4BE7 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		AAAA5458286AA6C30077E501 /* PlayingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingListView.swift; sourceTree = "<group>"; };
 		AADFEE4828819CA8004619D6 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 		AADFEE4A2882B3B7004619D6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				AA79D292287D13DF002EB787 /* ViewExtension.swift */,
 				AADFEE4828819CA8004619D6 /* MusicPlayer.swift */,
 				AADFEE4A2882B3B7004619D6 /* Constants.swift */,
+				AA85D1362887BC4C00EF4BE7 /* TimerManager.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				AA85D12F288696FB00EF4BE7 /* TimerPickerView.swift in Sources */,
 				AA3690762865B0FA00593328 /* BlurView.swift in Sources */,
 				AA36903728602FD600593328 /* ContentView.swift in Sources */,
+				AA85D1372887BC4C00EF4BE7 /* TimerManager.swift in Sources */,
 				207D2C812862AEB0008FE742 /* MusicView.swift in Sources */,
 				AA36907228648BF500593328 /* AnalyticViewModel.swift in Sources */,
 				AA36903528602FD600593328 /* SleepApp.swift in Sources */,

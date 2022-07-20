@@ -56,7 +56,10 @@ struct PlayerView: View {
         // if expand then full height
         .frame(maxHeight: isPlayerExpanded ? .infinity : 72)
         .background(
-            isPlayerExpanded ? BackgroundVideoView(videoName: "Sleepify-PlayScreen") : nil
+            isPlayerExpanded ? ZStack {
+                BackgroundVideoView(videoName: "Sleepify-PlayScreen")
+                LinearGradient(colors: [.clear, .black.opacity(0.85)], startPoint: .top, endPoint: .bottom)
+            } : nil
         )
         .offset(y: offset)
         .onTapGesture {
@@ -109,15 +112,12 @@ struct DetailedPlayerView: View {
     @Binding var isTimerSheetOpen: Bool
     
     @State var isTimerOn = false
+    @State var isTimerConfirmationOpen = false
     @State var hour = 0
     @State var minute = 0
     @State var second = 0
     @State var timerValue = 0
-    
-    // Move the slider value
-    var timer = Timer
-        .publish(every: 1, on: .main, in: .common)
-        .autoconnect()
+    @StateObject var timerManager = TimerManager()
     
     var body: some View {
         VStack(alignment: .center) {
@@ -131,7 +131,7 @@ struct DetailedPlayerView: View {
                     .padding(.bottom, 2)
                 
                 if isTimerOn {
-                    let (_, minute, second) = musicViewModel.secondsToHoursMinutesSeconds(timerValue)
+                    let (_, minute, second) = musicViewModel.convertedTimer(Int(timerManager.secondsElapsed))
                     Text("\(minute):\(second == 0 ? "00" : "\(second)")")
                         .font(.title3)
                         .foregroundColor(.white)
@@ -146,6 +146,14 @@ struct DetailedPlayerView: View {
                     Button {
                         musicViewModel.toggleMusic()
                         if musicViewModel.isMusicPlayed {
+                            timerManager.start(count: Double(timerValue)) {
+                                if timerManager.secondsElapsed == 0 {
+                                    musicViewModel.toggleMusic()
+                                    timerManager.stop()
+                                    isTimerOn.toggle()
+                                    timerValue = 0
+                                }
+                            }
                             UIScreen.setBrightness(
                                 from: Constants.currentBrightness,
                                 to: 0.0,
@@ -153,6 +161,8 @@ struct DetailedPlayerView: View {
                                 ticksPerSecond: 240
                             )
                         } else {
+                            timerManager.stop()
+                            timerValue = Int(timerManager.secondsElapsed)
                             UIScreen.setBrightness(
                                 from: 0.0,
                                 to: Constants.currentBrightness,
@@ -194,12 +204,24 @@ struct DetailedPlayerView: View {
                     Spacer()
                     // Timer Button
                     Button {
-                        isTimerSheetOpen.toggle()
+                        if isTimerOn {
+                            isTimerConfirmationOpen.toggle()
+                        } else {
+                            isTimerSheetOpen.toggle()
+                        }
                     } label: {
                         Image(systemName: "stopwatch")
                             .font(.system(size: 24))
                             .foregroundColor(isTimerOn ? .purple : .white)
                     }
+                    .confirmationDialog("Do you want to stop the timer?", isPresented: $isTimerConfirmationOpen) {
+                        Button("Stop Timer", role: .destructive) {
+                            isTimerOn.toggle()
+                            timerValue = 0
+                            timerManager.stop()
+                        }
+                    }
+                    .environment(\.colorScheme, .dark)
                     Spacer()
                 }
                 .padding(.top, 16)
@@ -215,7 +237,8 @@ struct DetailedPlayerView: View {
                 isTimerOn: $isTimerOn,
                 isTimerSheetOpen: $isTimerSheetOpen,
                 timerValue: $timerValue,
-                musicViewModel: musicViewModel
+                musicViewModel: musicViewModel,
+                timerManager: timerManager
             )
         }
         .frame(
@@ -223,18 +246,6 @@ struct DetailedPlayerView: View {
             height: isPlayerExpanded ? nil : 0
         )
         .opacity(isPlayerExpanded ? 1 : 0)
-        .onReceive(timer) { _ in
-            if let isAudioPlay = musicViewModel.musicPlayer.audioPlayer?.isPlaying {
-                if isTimerOn {
-                    timerValue = isAudioPlay ? timerValue - 1 : timerValue - 0
-                    if isAudioPlay && timerValue == 0 {
-                        musicViewModel.toggleMusic()
-                        timerValue = 0
-                        isTimerOn = false
-                    }
-                }
-            }
-        }
     }
 }
 
@@ -244,6 +255,7 @@ struct TimerSetupView: View {
     @Binding var isTimerSheetOpen: Bool
     @Binding var timerValue: Int
     @ObservedObject var musicViewModel: MusicViewModel
+    @ObservedObject var timerManager: TimerManager
     
     @State var hour = 0
     @State var minute = 15
@@ -275,7 +287,14 @@ struct TimerSetupView: View {
                             isTimerOn = true
                             isTimerSheetOpen.toggle()
                             timerValue = musicViewModel.minuteToSecond(minute) + second
-                            
+                            timerManager.start(count: Double(timerValue)) {
+                                if timerManager.secondsElapsed == 0 {
+                                    musicViewModel.toggleMusic()
+                                    timerManager.stop()
+                                    isTimerOn.toggle()
+                                    timerValue = 0
+                                }
+                            }
                         }
                     } label: {
                         Text("Done")
@@ -290,7 +309,6 @@ struct TimerSetupView: View {
                         Text("Cancel")
                             .foregroundColor(.purple)
                     }
-
                 }
             }
             .onAppear {
@@ -359,6 +377,7 @@ struct PlayerView_Previews: PreviewProvider {
     @Namespace static var animation
     @State static var isPlayerExpanded = true
     static var musicViewModel = MusicViewModel()
+    static var timerManager = TimerManager()
     
     static var previews: some View {
         Group {
@@ -371,7 +390,8 @@ struct PlayerView_Previews: PreviewProvider {
                 isTimerOn: .constant(false),
                 isTimerSheetOpen: .constant(false),
                 timerValue: .constant(15),
-                musicViewModel: musicViewModel
+                musicViewModel: musicViewModel,
+                timerManager: timerManager
             )
             HomeView()
         }

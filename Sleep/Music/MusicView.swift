@@ -14,7 +14,8 @@ struct MusicView: View {
     var onMusicSelected: () -> Void
     
     var body: some View {
-            HorizontalListView(musicViewModel: musicViewModel, onMusicSelected: onMusicSelected)
+        HorizontalListView(musicViewModel: musicViewModel, onMusicSelected: onMusicSelected)
+        //GridListView(musicViewModel: musicViewModel, onMusicSelected: onMusicSelected)
     }
 }
 
@@ -48,6 +49,34 @@ struct HorizontalListView: View {
                 }
             }
             .padding(.leading, 36)
+        }
+    }
+}
+
+struct GridListView: View {
+    
+    @ObservedObject var musicViewModel: MusicViewModel
+    var onMusicSelected: () -> Void
+    var body: some View {
+        let twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
+        ScrollView {
+            LazyVGrid(columns: twoColumnGrid) {
+                ForEach(0..<Int(musicViewModel.musicData.count), id:\.self) { index in
+                    let music = musicViewModel.musicData[index]
+                    NormalCollectionView(
+                        title: music.title,
+                        session: "\(music.length) Session",
+                        img: music.imageName
+                    )
+                    
+                    .onTapGesture {
+                        musicViewModel.setSelectedMusic(music: music)
+                        musicViewModel.refreshQueue()
+                        musicViewModel.playMusic()
+                        onMusicSelected()
+                    }
+                }
+            }
         }
     }
 }
@@ -113,29 +142,50 @@ struct NormalCollectionView: View {
     var img = ""
     
     var body: some View {
-        ZStack(alignment: .leading) {
+        ZStack(alignment: .bottom) {
             Image(img)
                 .resizable()
-                .cornerRadius(6)
-                .frame(width:141, height:141)
+                .scaledToFill()
+                .frame(width:165, height:173)
+                .cornerRadius(10)
+                .overlay {
+                    RoundedRectangle (cornerRadius: 10)
+                        .stroke(.white, lineWidth: 1)
+                }
             
-            Text(title)
-                .bold()
-                .font(.title)
-                .foregroundColor(.white)
-                .lineLimit(2)
-                .multilineTextAlignment(.leading)
-                .padding(.horizontal, 8)
-                .shadow(color: .black, radius: 2, x: 0, y: 0)
+            HStack {
+                Text(title)
+                    .font(.subheadline)
+                    .foregroundColor(.white)
+                    .lineLimit(2)
+                    .multilineTextAlignment(.leading)
+                
+                    .shadow(color: .black, radius: 2, x: 0, y: 0)
+                
+                Spacer()
+                Button {
+                    
+                } label: {
+                    Image(systemName: "play")
+                        .foregroundColor(.white)
+                        .font(.caption2)
+                        .padding(5)
+                        .overlay {
+                            RoundedRectangle (cornerRadius: 50)
+                                .stroke(.white, lineWidth: 1)
+                        }
+                }
+            }
             
-            
-            Text(session)
-                .foregroundColor(.white)
-                .font(.caption2)
-                .offset(x: 60, y: 60)
-                .shadow(color: .black, radius: 2, x: 0, y: 0)
+            .padding(10)
+            .frame(height: 58)
+            .background(.black)
+            .overlay {
+                RoundedRectangle (cornerRadius: 10)
+                    .stroke(.white, lineWidth: 1)
+            }
         }
-        .frame(width:141, height:141)
+        .frame(width:165, height:173)
     }
 }
 

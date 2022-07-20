@@ -58,7 +58,7 @@ struct PlayerView: View {
         .background(
             isPlayerExpanded ? ZStack {
                 BackgroundVideoView(videoName: "Sleepify-PlayScreen")
-                LinearGradient(colors: [.clear, .black.opacity(0.85)], startPoint: .top, endPoint: .bottom)
+                LinearGradient(colors: [.clear, .black.opacity(0.75)], startPoint: .top, endPoint: .bottom)
             } : nil
         )
         .offset(y: offset)

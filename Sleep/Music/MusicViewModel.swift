@@ -39,9 +39,9 @@ class MusicViewModel: ObservableObject {
     
     func nextMusic() {
         // Check if there is any music in queue
+        if !isMusicPlayed { toggleMusic() }
         guard let nextMusic = queueMusic.first else { return }
         musicPlayer.playMusic(title: nextMusic.musicName)
-        if !isMusicPlayed { toggleMusic() }
         
         // Update queue list
         guard let prevSelectedMusic = selectedMusic else { return }
@@ -51,9 +51,9 @@ class MusicViewModel: ObservableObject {
     
     func previousMusic() {
         // Check if there is any music in queue
+        if !isMusicPlayed { toggleMusic() }
         guard let lastMusic = queueMusic.last else { return }
         musicPlayer.playMusic(title: lastMusic.musicName)
-        if !isMusicPlayed { toggleMusic() }
         
         // Update queue list
         guard let prevSelectedMusic = selectedMusic else { return }

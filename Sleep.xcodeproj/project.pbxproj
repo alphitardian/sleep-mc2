@@ -40,6 +40,7 @@
 		AA97A3C828891B2E00131117 /* 432 Hz - mod_av_rain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3C228891B2E00131117 /* 432 Hz - mod_av_rain.mp3 */; };
 		AA97A3C928891B2E00131117 /* 432 Hz - mod_av_ocean.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3C328891B2E00131117 /* 432 Hz - mod_av_ocean.mp3 */; };
 		AA97A3CA28891B2E00131117 /* 432 Hz - mod_av_forest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3C428891B2E00131117 /* 432 Hz - mod_av_forest.mp3 */; };
+		AA97A3CC2889936000131117 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA97A3CB2889936000131117 /* OnboardingView.swift */; };
 		AAAA5459286AA6C30077E501 /* PlayingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA5458286AA6C30077E501 /* PlayingListView.swift */; };
 		AADFEE4928819CA8004619D6 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADFEE4828819CA8004619D6 /* MusicPlayer.swift */; };
 		AADFEE4B2882B3B7004619D6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADFEE4A2882B3B7004619D6 /* Constants.swift */; };
@@ -84,6 +85,7 @@
 		AA97A3C228891B2E00131117 /* 432 Hz - mod_av_rain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "432 Hz - mod_av_rain.mp3"; path = "../../../../../Downloads/drive-download-20220721T023718Z-001/432 Hz - mod_av_rain.mp3"; sourceTree = "<group>"; };
 		AA97A3C328891B2E00131117 /* 432 Hz - mod_av_ocean.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "432 Hz - mod_av_ocean.mp3"; path = "../../../../../Downloads/drive-download-20220721T023718Z-001/432 Hz - mod_av_ocean.mp3"; sourceTree = "<group>"; };
 		AA97A3C428891B2E00131117 /* 432 Hz - mod_av_forest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "432 Hz - mod_av_forest.mp3"; path = "../../../../../Downloads/drive-download-20220721T023718Z-001/432 Hz - mod_av_forest.mp3"; sourceTree = "<group>"; };
+		AA97A3CB2889936000131117 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		AAAA5458286AA6C30077E501 /* PlayingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingListView.swift; sourceTree = "<group>"; };
 		AADFEE4828819CA8004619D6 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 		AADFEE4A2882B3B7004619D6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			children = (
 				AA3690752865B0FA00593328 /* BlurView.swift */,
 				207D2C7C2862ACEE008FE742 /* HomeView.swift */,
+				AA97A3CB2889936000131117 /* OnboardingView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				AA79D293287D13DF002EB787 /* ViewExtension.swift in Sources */,
 				AA36907428649F8A00593328 /* SleepActivity.swift in Sources */,
 				AA36906C286487BA00593328 /* TimeIntervalExtension.swift in Sources */,
+				AA97A3CC2889936000131117 /* OnboardingView.swift in Sources */,
 				AA85D1332886DBB900EF4BE7 /* BackgroundVideoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

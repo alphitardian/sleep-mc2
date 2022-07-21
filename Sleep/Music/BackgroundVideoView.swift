@@ -56,11 +56,11 @@ struct VideoPlayerView: UIViewRepresentable {
 struct BackgroundVideoView: View {
     
     @State private var player = AVQueuePlayer()
-    let videoName: String
+    @ObservedObject var musicViewModel = MusicViewModel()
     
     var body: some View {
         GeometryReader { geo in
-            VideoPlayerView(videoName: videoName, player: player)
+            VideoPlayerView(videoName: musicViewModel.selectedMusic?.videoName ?? "", player: player)
                 .aspectRatio(contentMode: .fill)
                 .frame(width: geo.size.width, height: geo.size.height)
                 .onAppear {
@@ -68,6 +68,10 @@ struct BackgroundVideoView: View {
                 }
                 .onDisappear {
                     player.pause()
+                }
+                .onChange(of: musicViewModel.selectedMusic) { newValue in
+                    guard let url = Bundle.main.url(forResource: newValue?.videoName ?? "", withExtension: "mov") else { return }
+                    player.replaceCurrentItem(with: AVPlayerItem(url: url))
                 }
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
                     player.pause()

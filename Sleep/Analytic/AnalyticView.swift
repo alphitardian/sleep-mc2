@@ -33,19 +33,6 @@ struct AnalyticView: View {
                             .padding(.bottom)
                         
                         GradientText(text: "Most Played Sessions")
-                        
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack {
-                                ForEach(0..<5) {i in
-                                    NormalCollectionView(
-                                        title:"Deep In The Sea",
-                                        session: "1 Hour Session",
-                                        img: "CollectionView\(i)"
-                                    )
-                                    
-                                }
-                            }
-                        }
                     }
                     .padding(.horizontal)
                 }

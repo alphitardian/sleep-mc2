@@ -188,7 +188,12 @@ struct sheetWithDetentsViewModifier<SwiftUIContent>: ViewModifier where SwiftUIC
     let detents: [UISheetPresentationController.Detent]
     let swiftUIContent: SwiftUIContent
     
-    init(isPresented: Binding<Bool>, detents: [UISheetPresentationController.Detent] = [.medium()] , onDismiss: (() -> Void)? = nil, content: () -> SwiftUIContent) {
+    init(
+        isPresented: Binding<Bool>,
+        detents: [UISheetPresentationController.Detent] = [.medium()],
+        onDismiss: (() -> Void)? = nil,
+        content: () -> SwiftUIContent
+    ) {
         self._isPresented = isPresented
         self.onDismiss = onDismiss
         self.swiftUIContent = content()

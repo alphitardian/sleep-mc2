@@ -28,6 +28,18 @@
 		AA85D1312886DB7300EF4BE7 /* Sleepify-PlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA85D1302886DB7300EF4BE7 /* Sleepify-PlayScreen.mov */; };
 		AA85D1332886DBB900EF4BE7 /* BackgroundVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA85D1322886DBB900EF4BE7 /* BackgroundVideoView.swift */; };
 		AA85D1372887BC4C00EF4BE7 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA85D1362887BC4C00EF4BE7 /* TimerManager.swift */; };
+		AA97A3B9288919D000131117 /* forestPlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3B3288919D000131117 /* forestPlayScreen.mov */; };
+		AA97A3BA288919D000131117 /* oceanPlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3B4288919D000131117 /* oceanPlayScreen.mov */; };
+		AA97A3BB288919D000131117 /* rainPlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3B5288919D000131117 /* rainPlayScreen.mov */; };
+		AA97A3BC288919D000131117 /* classicPlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3B6288919D000131117 /* classicPlayScreen.mov */; };
+		AA97A3BD288919D000131117 /* forestPlayScreen2.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3B7288919D000131117 /* forestPlayScreen2.mov */; };
+		AA97A3BE288919D000131117 /* naturePlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3B8288919D000131117 /* naturePlayScreen.mov */; };
+		AA97A3C528891B2E00131117 /* 432 Hz - mod_av_nature.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3BF28891B2E00131117 /* 432 Hz - mod_av_nature.mp3 */; };
+		AA97A3C628891B2E00131117 /* 432 Hz - mod_av_classic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3C028891B2E00131117 /* 432 Hz - mod_av_classic.mp3 */; };
+		AA97A3C728891B2E00131117 /* 528 Hz - mod_av_forest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3C128891B2E00131117 /* 528 Hz - mod_av_forest.mp3 */; };
+		AA97A3C828891B2E00131117 /* 432 Hz - mod_av_rain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3C228891B2E00131117 /* 432 Hz - mod_av_rain.mp3 */; };
+		AA97A3C928891B2E00131117 /* 432 Hz - mod_av_ocean.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3C328891B2E00131117 /* 432 Hz - mod_av_ocean.mp3 */; };
+		AA97A3CA28891B2E00131117 /* 432 Hz - mod_av_forest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3C428891B2E00131117 /* 432 Hz - mod_av_forest.mp3 */; };
 		AAAA5459286AA6C30077E501 /* PlayingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA5458286AA6C30077E501 /* PlayingListView.swift */; };
 		AADFEE4928819CA8004619D6 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADFEE4828819CA8004619D6 /* MusicPlayer.swift */; };
 		AADFEE4B2882B3B7004619D6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADFEE4A2882B3B7004619D6 /* Constants.swift */; };
@@ -60,6 +72,18 @@
 		AA85D1302886DB7300EF4BE7 /* Sleepify-PlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = "Sleepify-PlayScreen.mov"; path = "../../../../../Downloads/Sleepify-PlayScreen.mov"; sourceTree = "<group>"; };
 		AA85D1322886DBB900EF4BE7 /* BackgroundVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundVideoView.swift; sourceTree = "<group>"; };
 		AA85D1362887BC4C00EF4BE7 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		AA97A3B3288919D000131117 /* forestPlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = forestPlayScreen.mov; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/Asset-Sleepify/forestPlayScreen.mov"; sourceTree = "<group>"; };
+		AA97A3B4288919D000131117 /* oceanPlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = oceanPlayScreen.mov; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/Asset-Sleepify/oceanPlayScreen.mov"; sourceTree = "<group>"; };
+		AA97A3B5288919D000131117 /* rainPlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = rainPlayScreen.mov; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/Asset-Sleepify/rainPlayScreen.mov"; sourceTree = "<group>"; };
+		AA97A3B6288919D000131117 /* classicPlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = classicPlayScreen.mov; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/Asset-Sleepify/classicPlayScreen.mov"; sourceTree = "<group>"; };
+		AA97A3B7288919D000131117 /* forestPlayScreen2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = forestPlayScreen2.mov; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/Asset-Sleepify/forestPlayScreen2.mov"; sourceTree = "<group>"; };
+		AA97A3B8288919D000131117 /* naturePlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = naturePlayScreen.mov; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/Asset-Sleepify/naturePlayScreen.mov"; sourceTree = "<group>"; };
+		AA97A3BF28891B2E00131117 /* 432 Hz - mod_av_nature.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "432 Hz - mod_av_nature.mp3"; path = "../../../../../Downloads/drive-download-20220721T023718Z-001/432 Hz - mod_av_nature.mp3"; sourceTree = "<group>"; };
+		AA97A3C028891B2E00131117 /* 432 Hz - mod_av_classic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "432 Hz - mod_av_classic.mp3"; path = "../../../../../Downloads/drive-download-20220721T023718Z-001/432 Hz - mod_av_classic.mp3"; sourceTree = "<group>"; };
+		AA97A3C128891B2E00131117 /* 528 Hz - mod_av_forest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "528 Hz - mod_av_forest.mp3"; path = "../../../../../Downloads/drive-download-20220721T023718Z-001/528 Hz - mod_av_forest.mp3"; sourceTree = "<group>"; };
+		AA97A3C228891B2E00131117 /* 432 Hz - mod_av_rain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "432 Hz - mod_av_rain.mp3"; path = "../../../../../Downloads/drive-download-20220721T023718Z-001/432 Hz - mod_av_rain.mp3"; sourceTree = "<group>"; };
+		AA97A3C328891B2E00131117 /* 432 Hz - mod_av_ocean.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "432 Hz - mod_av_ocean.mp3"; path = "../../../../../Downloads/drive-download-20220721T023718Z-001/432 Hz - mod_av_ocean.mp3"; sourceTree = "<group>"; };
+		AA97A3C428891B2E00131117 /* 432 Hz - mod_av_forest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "432 Hz - mod_av_forest.mp3"; path = "../../../../../Downloads/drive-download-20220721T023718Z-001/432 Hz - mod_av_forest.mp3"; sourceTree = "<group>"; };
 		AAAA5458286AA6C30077E501 /* PlayingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingListView.swift; sourceTree = "<group>"; };
 		AADFEE4828819CA8004619D6 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 		AADFEE4A2882B3B7004619D6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -182,9 +206,18 @@
 			isa = PBXGroup;
 			children = (
 				AA85D1302886DB7300EF4BE7 /* Sleepify-PlayScreen.mov */,
-				AAF80133286C10230026AF1D /* mod_av_forest.mp3 */,
-				AAF80134286C10230026AF1D /* mod_av_nature.mp3 */,
-				AAF80135286C10230026AF1D /* mod_piano_av.mp3 */,
+				AA97A3B6288919D000131117 /* classicPlayScreen.mov */,
+				AA97A3B3288919D000131117 /* forestPlayScreen.mov */,
+				AA97A3B7288919D000131117 /* forestPlayScreen2.mov */,
+				AA97A3B8288919D000131117 /* naturePlayScreen.mov */,
+				AA97A3B4288919D000131117 /* oceanPlayScreen.mov */,
+				AA97A3B5288919D000131117 /* rainPlayScreen.mov */,
+				AA97A3C028891B2E00131117 /* 432 Hz - mod_av_classic.mp3 */,
+				AA97A3C428891B2E00131117 /* 432 Hz - mod_av_forest.mp3 */,
+				AA97A3BF28891B2E00131117 /* 432 Hz - mod_av_nature.mp3 */,
+				AA97A3C328891B2E00131117 /* 432 Hz - mod_av_ocean.mp3 */,
+				AA97A3C228891B2E00131117 /* 432 Hz - mod_av_rain.mp3 */,
+				AA97A3C128891B2E00131117 /* 528 Hz - mod_av_forest.mp3 */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -247,10 +280,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA97A3BD288919D000131117 /* forestPlayScreen2.mov in Resources */,
+				AA97A3BE288919D000131117 /* naturePlayScreen.mov in Resources */,
+				AA97A3C728891B2E00131117 /* 528 Hz - mod_av_forest.mp3 in Resources */,
+				AA97A3CA28891B2E00131117 /* 432 Hz - mod_av_forest.mp3 in Resources */,
+				AA97A3C828891B2E00131117 /* 432 Hz - mod_av_rain.mp3 in Resources */,
+				AA97A3C928891B2E00131117 /* 432 Hz - mod_av_ocean.mp3 in Resources */,
 				AA36903C28602FD700593328 /* Preview Assets.xcassets in Resources */,
-				AAF80138286C10230026AF1D /* mod_piano_av.mp3 in Resources */,
-				AAF80136286C10230026AF1D /* mod_av_forest.mp3 in Resources */,
+				AA97A3B9288919D000131117 /* forestPlayScreen.mov in Resources */,
+				AA97A3BC288919D000131117 /* classicPlayScreen.mov in Resources */,
 				AA85D1312886DB7300EF4BE7 /* Sleepify-PlayScreen.mov in Resources */,
+				AA97A3C528891B2E00131117 /* 432 Hz - mod_av_nature.mp3 in Resources */,
+				AA97A3BA288919D000131117 /* oceanPlayScreen.mov in Resources */,
+				AA97A3C628891B2E00131117 /* 432 Hz - mod_av_classic.mp3 in Resources */,
+				AA97A3BB288919D000131117 /* rainPlayScreen.mov in Resources */,
 				AA36903928602FD700593328 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,6 +465,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -455,6 +499,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

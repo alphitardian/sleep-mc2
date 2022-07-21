@@ -14,6 +14,8 @@ enum TimerMode {
 
 class TimerManager: ObservableObject {
     
+    static let sharedInstance = TimerManager()
+    
     @Published var secondsElapsed: TimeInterval = 0.0
     @Published var mode: TimerMode = .stopped
     private var timer = Timer()

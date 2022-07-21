@@ -70,6 +70,39 @@ struct PlayerView: View {
                 .onEnded(onDragGestureEnded(value:))
         )
         .ignoresSafeArea()
+        .onAppear {
+            if musicViewModel.isMusicPlayed {
+                UIScreen.setBrightness(
+                    from: Constants.currentBrightness,
+                    to: 0.0,
+                    duration: 0.25
+                )
+            }
+        }
+        .onDisappear {
+            if musicViewModel.isMusicPlayed {
+                UIScreen.setBrightness(
+                    from: 0.0,
+                    to: Constants.currentBrightness,
+                    duration: 0.25
+                )
+            }
+        }
+        .onChange(of: musicViewModel.isMusicPlayed) { newValue in
+            if musicViewModel.isMusicPlayed {
+                UIScreen.setBrightness(
+                    from: Constants.currentBrightness,
+                    to: 0.0,
+                    duration: 0.25
+                )
+            } else {
+                UIScreen.setBrightness(
+                    from: 0.0,
+                    to: Constants.currentBrightness,
+                    duration: 0.25
+                )
+            }
+        }
     }
     
     func onDragGestureEnded(value: DragGesture.Value) {
@@ -152,19 +185,9 @@ struct DetailedPlayerView: View {
                                         timerValue = 0
                                     }
                                 }
-                                UIScreen.setBrightness(
-                                    from: Constants.currentBrightness,
-                                    to: 0.0,
-                                    duration: 0.25
-                                )
                             } else {
                                 timerManager.stop()
                                 timerValue = Int(timerManager.secondsElapsed)
-                                UIScreen.setBrightness(
-                                    from: 0.0,
-                                    to: Constants.currentBrightness,
-                                    duration: 0.25
-                                )
                             }
                         } label: {
                             Image(systemName: musicViewModel.isMusicPlayed ? "pause" : "play")
@@ -361,19 +384,6 @@ struct MiniPlayerView: View {
             // Play/Pause Button
             Button {
                 musicViewModel.toggleMusic()
-                if musicViewModel.isMusicPlayed {
-                    UIScreen.setBrightness(
-                        from: Constants.currentBrightness,
-                        to: 0.0,
-                        duration: 0.25
-                    )
-                } else {
-                    UIScreen.setBrightness(
-                        from: 0.0,
-                        to: Constants.currentBrightness,
-                        duration: 0.25
-                    )
-                }
             } label: {
                 Image(systemName: musicViewModel.isMusicPlayed ? "pause" : "play")
                     .foregroundColor(.white)

@@ -81,18 +81,6 @@ struct HomeView: View {
                     }
                 }
             }
-            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
-                // App moved to background
-                if musicViewModel.isMusicPlayed {
-                    UIScreen.setBrightness(from: 0.0, to: Constants.currentBrightness)
-                }
-            }
-            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-                // App back to active
-                if musicViewModel.isMusicPlayed {
-                    UIScreen.setBrightness(from: Constants.currentBrightness, to: 0.0)
-                }
-            }
             .fullScreenCover(isPresented: $isPlayerExpanded) {
                 PlayerView(
                     animation: animation,

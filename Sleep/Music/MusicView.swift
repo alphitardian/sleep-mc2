@@ -173,7 +173,9 @@ struct HighlightCollectionView: View {
                     .shadow(color: .black, radius: 2, x: 0, y: 0)
                 Spacer()
                 Button {
-                    onToggleMusicClicked()
+                    withAnimation {
+                        onToggleMusicClicked()
+                    }
                 } label: {
                     Image(systemName: music.isPlayed ? "pause" : "play")
                         .foregroundColor(.white)
@@ -228,7 +230,9 @@ struct NormalCollectionView: View {
                     .shadow(color: .black, radius: 2, x: 0, y: 0)
                 Spacer()
                 Button {
-                    onToggleMusicClicked()
+                    withAnimation {
+                        onToggleMusicClicked()
+                    }
                 } label: {
                     Image(systemName: music.isPlayed ? "pause" : "play")
                         .foregroundColor(.white)

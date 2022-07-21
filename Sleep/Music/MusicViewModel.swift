@@ -35,6 +35,7 @@ class MusicViewModel: ObservableObject {
     }
     
     func updateMusic(selectedMusic: Music, isPlayed: Bool) {
+        musicData = Music.musicData
         guard let musicIndex = musicData.firstIndex(where: { music in
             music.id == selectedMusic.id
         }) else { return }

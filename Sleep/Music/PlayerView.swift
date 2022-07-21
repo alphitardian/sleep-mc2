@@ -45,14 +45,6 @@ struct PlayerView: View {
                     isTimerSheetOpen: $isTimerSheetOpened
                 )
             }
-            
-            // Mini Player
-            if !isPlayerExpanded {
-                MiniPlayerView(
-                    animation: animation,
-                    musicViewModel: musicViewModel
-                )
-            }
         }
         // if expand then full height
         .frame(maxHeight: isPlayerExpanded ? .infinity : 72)
@@ -72,7 +64,6 @@ struct PlayerView: View {
         .gesture(
             DragGesture()
                 .onEnded(onDragGestureEnded(value:))
-                .onChanged(onDragGestureChanged(value:))
         )
         .ignoresSafeArea()
     }
@@ -87,7 +78,7 @@ struct PlayerView: View {
                     blendDuration: 0.95)
             ) {
                 // if user drag untill 1/3 screen height then automatically close
-                if value.translation.height > UIScreen.main.bounds.height / 3 {
+                if value.translation.height > UIScreen.main.bounds.height / 6 {
                     isPlayerExpanded = false
                 }
                 
@@ -122,117 +113,116 @@ struct DetailedPlayerView: View {
     @StateObject var timerManager = TimerManager()
     
     var body: some View {
-        VStack(alignment: .center) {
-            if isPlayerExpanded {
-                Text(musicViewModel.selectedMusic?.title ?? "Unknown")
-                    .bold()
-                    .font(.title)
-                    .foregroundColor(.white)
-                    .matchedGeometryEffect(id: "Label", in: animation)
-                    .padding(.horizontal, 36)
-                    .padding(.bottom, 2)
-                
-                if isTimerOn {
-                    let (_, minute, second) = musicViewModel.convertedTimer(Int(timerManager.secondsElapsed))
-                    Text("\(minute):\(second == 0 ? "00" : "\(second)")")
-                        .font(.title3)
+        ZStack {
+            VStack(alignment: .center) {
+                if isPlayerExpanded {
+                    Text(musicViewModel.selectedMusic?.title ?? "Unknown")
+                        .bold()
+                        .font(.title)
                         .foregroundColor(.white)
-                }
-                
-                Spacer()
-                
-                // Music Player Controller
-                HStack {
+                        .matchedGeometryEffect(id: "Label", in: animation)
+                        .padding(.horizontal, 36)
+                        .padding(.bottom, 2)
+                    
+                    if isTimerOn {
+                        let (_, minute, second) = musicViewModel.convertedTimer(Int(timerManager.secondsElapsed))
+                        Text("\(minute):\(second == 0 ? "00" : "\(second)")")
+                            .font(.title3)
+                            .foregroundColor(.white)
+                    }
+                    
                     Spacer()
-                    // Play/Pause Button
-                    Button {
-                        musicViewModel.toggleMusic()
-                        if musicViewModel.isMusicPlayed {
-                            timerManager.start(count: Double(timerValue)) {
-                                if timerManager.secondsElapsed == 0 {
-                                    musicViewModel.toggleMusic()
-                                    timerManager.stop()
-                                    isTimerOn.toggle()
-                                    timerValue = 0
+                    
+                    // Music Player Controller
+                    HStack {
+                        Spacer()
+                        // Play/Pause Button
+                        Button {
+                            musicViewModel.toggleMusic()
+                            if musicViewModel.isMusicPlayed {
+                                timerManager.start(count: Double(timerValue)) {
+                                    if timerManager.secondsElapsed == 0 {
+                                        musicViewModel.toggleMusic()
+                                        timerManager.stop()
+                                        isTimerOn.toggle()
+                                        timerValue = 0
+                                    }
+                                }
+                                UIScreen.setBrightness(
+                                    from: Constants.currentBrightness,
+                                    to: 0.0,
+                                    duration: 0.25
+                                )
+                            } else {
+                                timerManager.stop()
+                                timerValue = Int(timerManager.secondsElapsed)
+                                UIScreen.setBrightness(
+                                    from: 0.0,
+                                    to: Constants.currentBrightness,
+                                    duration: 0.25
+                                )
+                            }
+                        } label: {
+                            Image(systemName: musicViewModel.isMusicPlayed ? "pause" : "play")
+                                .font(.system(size: 24))
+                                .foregroundColor(Color("IconColor"))
+                        }
+                        Spacer()
+                        // Previous Button
+                        Button {
+                            if !musicViewModel.queueMusic.isEmpty {
+                                guard let prevMusic = musicViewModel.queueMusic.last else { return }
+                                musicViewModel.previousMusic()
+                                musicViewModel.setSelectedMusic(music: prevMusic)
+                            }
+                        } label: {
+                            Image(systemName: "backward.end")
+                                .font(.system(size: 24))
+                                .foregroundColor(Color("IconColor"))
+                        }
+                        Spacer()
+                        // Forward Button
+                        Button {
+                            if !musicViewModel.queueMusic.isEmpty {
+                                guard let nextMusic = musicViewModel.queueMusic.first else { return }
+                                musicViewModel.nextMusic()
+                                musicViewModel.setSelectedMusic(music: nextMusic)
+                            }
+                        } label: {
+                            Image(systemName: "forward.end")
+                                .font(.system(size: 24))
+                                .foregroundColor(musicViewModel.queueMusic.first != nil ? Color("IconColor") : .gray)
+                        }
+                        Spacer()
+                        // Timer Button
+                        Button {
+                            if isTimerOn {
+                                isTimerConfirmationOpen.toggle()
+                            } else {
+                                withAnimation {
+                                    isTimerSheetOpen.toggle()
                                 }
                             }
-                            UIScreen.setBrightness(
-                                from: Constants.currentBrightness,
-                                to: 0.0,
-                                duration: 0.25
-                            )
-                        } else {
-                            timerManager.stop()
-                            timerValue = Int(timerManager.secondsElapsed)
-                            UIScreen.setBrightness(
-                                from: 0.0,
-                                to: Constants.currentBrightness,
-                                duration: 0.25
-                            )
+                        } label: {
+                            Image(systemName: "stopwatch")
+                                .font(.system(size: 24))
+                                .foregroundColor(isTimerOn ? .purple : .white)
                         }
-                    } label: {
-                        Image(systemName: musicViewModel.isMusicPlayed ? "pause" : "play")
-                            .font(.system(size: 24))
-                            .foregroundColor(Color("IconColor"))
-                    }
-                    Spacer()
-                    // Previous Button
-                    Button {
-                        if !musicViewModel.queueMusic.isEmpty {
-                            guard let prevMusic = musicViewModel.queueMusic.last else { return }
-                            musicViewModel.previousMusic()
-                            musicViewModel.setSelectedMusic(music: prevMusic)
+                        .confirmationDialog("Do you want to stop the timer?", isPresented: $isTimerConfirmationOpen) {
+                            Button("Stop Timer", role: .destructive) {
+                                isTimerOn.toggle()
+                                timerValue = 0
+                                timerManager.stop()
+                            }
                         }
-                    } label: {
-                        Image(systemName: "backward.end")
-                            .font(.system(size: 24))
-                            .foregroundColor(Color("IconColor"))
+                        .environment(\.colorScheme, .dark)
+                        Spacer()
                     }
-                    Spacer()
-                    // Forward Button
-                    Button {
-                        if !musicViewModel.queueMusic.isEmpty {
-                            guard let nextMusic = musicViewModel.queueMusic.first else { return }
-                            musicViewModel.nextMusic()
-                            musicViewModel.setSelectedMusic(music: nextMusic)
-                        }
-                    } label: {
-                        Image(systemName: "forward.end")
-                            .font(.system(size: 24))
-                            .foregroundColor(musicViewModel.queueMusic.first != nil ? Color("IconColor") : .gray)
-                    }
-                    Spacer()
-                    // Timer Button
-                    Button {
-                        if isTimerOn {
-                            isTimerConfirmationOpen.toggle()
-                        } else {
-                            isTimerSheetOpen.toggle()
-                        }
-                    } label: {
-                        Image(systemName: "stopwatch")
-                            .font(.system(size: 24))
-                            .foregroundColor(isTimerOn ? .purple : .white)
-                    }
-                    .confirmationDialog("Do you want to stop the timer?", isPresented: $isTimerConfirmationOpen) {
-                        Button("Stop Timer", role: .destructive) {
-                            isTimerOn.toggle()
-                            timerValue = 0
-                            timerManager.stop()
-                        }
-                    }
-                    .environment(\.colorScheme, .dark)
-                    Spacer()
+                    .padding(.top, 16)
+                    .padding(.bottom, UIScreen.main.bounds.height / 8)
                 }
-                .padding(.top, 16)
-                .padding(.bottom, UIScreen.main.bounds.height / 8)
             }
-        }
-        .sheetWithDetents(
-            isPresented: $isTimerSheetOpen,
-            detents: [.medium()],
-            onDismiss: nil
-        ) {
+            
             TimerSetupView(
                 isTimerOn: $isTimerOn,
                 isTimerSheetOpen: $isTimerSheetOpen,
@@ -240,11 +230,9 @@ struct DetailedPlayerView: View {
                 musicViewModel: musicViewModel,
                 timerManager: timerManager
             )
+            .cornerRadius(10, corners: [.topRight, .topLeft])
+            .offset(y: isTimerSheetOpen ? UIScreen.main.bounds.height / 2.5 : UIScreen.main.bounds.height)
         }
-        .frame(
-            width: isPlayerExpanded ? nil : 0,
-            height: isPlayerExpanded ? nil : 0
-        )
     }
 }
 
@@ -265,13 +253,17 @@ struct TimerSetupView: View {
             ZStack {
                 Color("BackgroundAppColor")
                     .ignoresSafeArea()
-                TimerPickerView(
-                    hour: $hour,
-                    minute: $minute,
-                    second: $second
-                )
-                .colorInvert()
-                .colorMultiply(.white)
+                VStack {
+                    TimerPickerView(
+                        hour: $hour,
+                        minute: $minute,
+                        second: $second
+                    )
+                    .padding(.top, 24)
+                    .colorInvert()
+                    .colorMultiply(.white)
+                    Spacer()
+                }
             }
             .navigationTitle("Timer")
             .navigationBarTitleDisplayMode(.inline)
@@ -284,7 +276,6 @@ struct TimerSetupView: View {
                                 musicViewModel.toggleMusic()
                             }
                             isTimerOn = true
-                            isTimerSheetOpen.toggle()
                             timerValue = musicViewModel.minuteToSecond(minute) + second
                             timerManager.start(count: Double(timerValue)) {
                                 if timerManager.secondsElapsed == 0 {
@@ -293,6 +284,9 @@ struct TimerSetupView: View {
                                     isTimerOn.toggle()
                                     timerValue = 0
                                 }
+                            }
+                            withAnimation {
+                                isTimerSheetOpen.toggle()
                             }
                         }
                     } label: {
@@ -303,7 +297,9 @@ struct TimerSetupView: View {
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        isTimerSheetOpen.toggle()
+                        withAnimation {
+                            isTimerSheetOpen.toggle()
+                        }
                     } label: {
                         Text("Cancel")
                             .foregroundColor(.purple)
@@ -320,22 +316,45 @@ struct TimerSetupView: View {
 
 struct MiniPlayerView: View {
     
-    var animation: Namespace.ID
     @ObservedObject var musicViewModel: MusicViewModel
+    @Binding var isPlayerExpanded: Bool
     
     var body: some View {
-        HStack(spacing: 14) {
-            Image(musicViewModel.selectedMusic?.imageName ?? "")
-                .frame(width: 46, height: 46)
-                .cornerRadius(36)
-                
+        HStack {
+            Image(musicViewModel.selectedMusic?.imageName ?? "natureCover")
+                .resizable()
+                .frame(width: 50, height: 50)
+                .cornerRadius(10)
             Text(musicViewModel.selectedMusic?.title ?? "Unknown")
-                .bold()
                 .font(.title3)
-                .foregroundColor(.white)
                 .lineLimit(1)
-                .matchedGeometryEffect(id: "Label", in: animation)
             Spacer()
+            // Previous Button
+            Button {
+                if !musicViewModel.queueMusic.isEmpty {
+                    guard let prevMusic = musicViewModel.queueMusic.last else { return }
+                    musicViewModel.previousMusic()
+                    musicViewModel.setSelectedMusic(music: prevMusic)
+                }
+            } label: {
+                Image(systemName: "backward.end")
+                    .font(.system(size: 24))
+                    .foregroundColor(Color("IconColor"))
+            }
+            // Forward Button
+            Button {
+                if !musicViewModel.queueMusic.isEmpty {
+                    guard let nextMusic = musicViewModel.queueMusic.first else { return }
+                    musicViewModel.nextMusic()
+                    musicViewModel.setSelectedMusic(music: nextMusic)
+                }
+            } label: {
+                Image(systemName: "forward.end")
+                    .font(.system(size: 24))
+                    .foregroundColor(musicViewModel.queueMusic.first != nil ? Color("IconColor") : .gray)
+                    .padding(.horizontal)
+            }
+            // Play/Pause Button
             Button {
                 musicViewModel.toggleMusic()
                 if musicViewModel.isMusicPlayed {
@@ -354,19 +373,17 @@ struct MiniPlayerView: View {
             } label: {
                 Image(systemName: musicViewModel.isMusicPlayed ? "pause" : "play")
                     .foregroundColor(.white)
-                    .font(.title)
+                    .font(.title3)
                     .padding(.trailing, 4)
             }
-            
         }
-        .padding(.horizontal, 18)
-        .frame(width: UIScreen.main.bounds.width / 1.25, height: 72)
-        .background(Color("BackgroundAppColor").cornerRadius(36))
-        .overlay {
-            RoundedRectangle(cornerRadius: .infinity)
-                .stroke(.white, lineWidth: 1)
-        }
+        .padding()
         .padding(.bottom)
+        .background(.gray.opacity(0.25))
+        .cornerRadius(10, corners: [.topLeft, .topRight])
+        .onTapGesture {
+            isPlayerExpanded.toggle()
+        }
     }
 }
 

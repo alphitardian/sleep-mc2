@@ -67,8 +67,15 @@ struct HomeView: View {
                             isChangeListToggle.toggle()
                         }
                     } label: {
-                        Image(systemName: isChangeListToggle ? "rectangle.stack" : "rectangle.grid.2x2")
-                            .foregroundColor(.white)
+                        if !isChangeListToggle {
+                            Image(systemName: "rectangle.grid.2x2")
+                                .foregroundColor(.white)
+                        } else {
+                            Image("HorizontalListIcon")
+                                .resizable()
+                                .frame(width: 28, height: 28)
+                                .foregroundColor(.white)
+                        }
                     }
                 }
             }
@@ -84,15 +91,22 @@ struct HomeView: View {
                     UIScreen.setBrightness(from: Constants.currentBrightness, to: 0.0)
                 }
             }
-            
-            if musicViewModel.selectedMusic != nil {
+            .fullScreenCover(isPresented: $isPlayerExpanded) {
                 PlayerView(
                     animation: animation,
                     isPlayerExpanded: $isPlayerExpanded,
                     musicViewModel: musicViewModel
                 )
             }
+            
+            if musicViewModel.selectedMusic != nil {
+                MiniPlayerView(
+                    musicViewModel: musicViewModel,
+                    isPlayerExpanded: $isPlayerExpanded
+                )
+            }
         }
+        .ignoresSafeArea()
     }
 }
 

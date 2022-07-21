@@ -24,6 +24,7 @@ struct MusicView: View {
                     filteredMusic: filteredMusic,
                     onMusicSelected: onMusicSelected
                 )
+                .padding(.bottom, musicViewModel.selectedMusic != nil ? 54 : 0)
             } else {
                 HorizontalListView(
                     animation: animation,
@@ -210,6 +211,7 @@ struct NormalCollectionView: View {
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(.white, lineWidth: 1)
                 }
+                .contentShape(Rectangle())
             HStack {
                 Text(music.title)
                     .font(.subheadline)

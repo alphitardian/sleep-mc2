@@ -12,7 +12,9 @@ struct PlayerView: View {
     // PlayerView Parameter
     var animation: Namespace.ID
     @Binding var isPlayerExpanded: Bool
+    @Binding var isTimerOn: Bool
     @ObservedObject var musicViewModel: MusicViewModel
+    @ObservedObject var timerManager: TimerManager
     
     // Offset for drag gesture
     @State private var offset: CGFloat = 0
@@ -32,7 +34,7 @@ struct PlayerView: View {
                     .padding(.top, 16)
                 
                 Image(systemName: "chevron.down")
-                    .foregroundColor(Color("SecondaryTextColor"))
+                    .foregroundColor(.white.opacity(0.75))
                     .frame(width: 181, height: 3)
                     .padding(.top, 8)
                     .padding(.bottom, 4)
@@ -41,8 +43,10 @@ struct PlayerView: View {
                 DetailedPlayerView(
                     animation: animation,
                     musicViewModel: musicViewModel,
+                    timerManager: timerManager,
                     isPlayerExpanded: $isPlayerExpanded,
-                    isTimerSheetOpen: $isTimerSheetOpened
+                    isTimerSheetOpen: $isTimerSheetOpened,
+                    isTimerOn: $isTimerOn
                 )
             }
         }
@@ -101,16 +105,16 @@ struct DetailedPlayerView: View {
     
     var animation: Namespace.ID
     @ObservedObject var musicViewModel: MusicViewModel
+    @ObservedObject var timerManager: TimerManager
     @Binding var isPlayerExpanded: Bool
     @Binding var isTimerSheetOpen: Bool
+    @Binding var isTimerOn: Bool
     
-    @State var isTimerOn = false
     @State var isTimerConfirmationOpen = false
     @State var hour = 0
     @State var minute = 0
     @State var second = 0
     @State var timerValue = 0
-    @StateObject var timerManager = TimerManager()
     
     var body: some View {
         ZStack {
@@ -126,7 +130,7 @@ struct DetailedPlayerView: View {
                     
                     if isTimerOn {
                         let (_, minute, second) = musicViewModel.convertedTimer(Int(timerManager.secondsElapsed))
-                        Text("\(minute):\(second == 0 ? "00" : "\(second)")")
+                        Text(String(format: "%0.2d:%0.2d", minute, second))
                             .font(.title3)
                             .foregroundColor(.white)
                     }
@@ -215,7 +219,6 @@ struct DetailedPlayerView: View {
                                 timerManager.stop()
                             }
                         }
-                        .environment(\.colorScheme, .dark)
                         Spacer()
                     }
                     .padding(.top, 16)
@@ -277,6 +280,7 @@ struct TimerSetupView: View {
                             }
                             isTimerOn = true
                             timerValue = musicViewModel.minuteToSecond(minute) + second
+                            timerManager.stop()
                             timerManager.start(count: Double(timerValue)) {
                                 if timerManager.secondsElapsed == 0 {
                                     musicViewModel.toggleMusic()
@@ -399,7 +403,9 @@ struct PlayerView_Previews: PreviewProvider {
             PlayerView(
                 animation: animation,
                 isPlayerExpanded: $isPlayerExpanded,
-                musicViewModel: musicViewModel
+                isTimerOn: .constant(false),
+                musicViewModel: musicViewModel,
+                timerManager: timerManager
             )
             TimerSetupView(
                 isTimerOn: .constant(false),

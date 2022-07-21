@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 extension UIScreen {
     
@@ -31,6 +32,20 @@ extension UIScreen {
 extension View {
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape(RoundedCorner(radius: radius, corners: corners))
+    }
+    
+    var keyboardPublisher: AnyPublisher<Bool, Never> {
+        Publishers.Merge(
+            NotificationCenter
+                .default
+                .publisher(for: UIResponder.keyboardWillShowNotification)
+                .map { _ in true },
+            NotificationCenter
+                .default
+                .publisher(for: UIResponder.keyboardWillHideNotification)
+                .map { _ in false })
+        .debounce(for: .seconds(0.1), scheduler: RunLoop.main)
+        .eraseToAnyPublisher()
     }
 }
 

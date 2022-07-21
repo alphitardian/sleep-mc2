@@ -10,11 +10,13 @@ import SwiftUI
 struct HomeView: View {
     
     @State private var isPlayerExpanded = false
-    @State var isChangeListToggle = false
+    @State private var isChangeListToggle = false
+    @State private var isTimerOn = false
     @State private var searchText = ""
     @Namespace private var animation
     
     @StateObject private var musicViewModel = MusicViewModel()
+    @StateObject private var timerManager = TimerManager.sharedInstance
     
     var filteredMusic: [Music] {
         if searchText.isEmpty {
@@ -95,7 +97,9 @@ struct HomeView: View {
                 PlayerView(
                     animation: animation,
                     isPlayerExpanded: $isPlayerExpanded,
-                    musicViewModel: musicViewModel
+                    isTimerOn: $isTimerOn,
+                    musicViewModel: musicViewModel,
+                    timerManager: timerManager
                 )
             }
             

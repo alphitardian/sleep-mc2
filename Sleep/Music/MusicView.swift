@@ -15,6 +15,8 @@ struct MusicView: View {
     var filteredMusic: [Music]
     var onMusicSelected: () -> Void
     
+    @State private var isKeyboardPresented = false
+    
     var body: some View {
         ZStack {
             if isChangeListToggle {
@@ -24,7 +26,7 @@ struct MusicView: View {
                     filteredMusic: filteredMusic,
                     onMusicSelected: onMusicSelected
                 )
-                .padding(.bottom, musicViewModel.selectedMusic != nil ? 54 : 0)
+                .padding(.bottom, musicViewModel.selectedMusic != nil && !isKeyboardPresented ? 54 : 0)
             } else {
                 HorizontalListView(
                     animation: animation,
@@ -33,6 +35,9 @@ struct MusicView: View {
                     onMusicSelected: onMusicSelected
                 )
             }
+        }
+        .onReceive(keyboardPublisher) { newValue in
+            isKeyboardPresented = newValue
         }
     }
 }
@@ -65,21 +70,22 @@ struct HorizontalListView: View {
             HStack (spacing: 24) {
                 ForEach(filteredMusic) { music in
                     HighlightCollectionView(music: music) {
+                        guard let prevSelectedMusic = musicViewModel.selectedMusic else {
+                            musicViewModel.setSelectedMusic(music: music)
+                            musicViewModel.playMusic()
+                            musicViewModel.refreshQueue()
+                            return
+                        }
                         musicViewModel.setSelectedMusic(music: music)
-                        musicViewModel.toggleMusic()
                         musicViewModel.refreshQueue()
                         if musicViewModel.isMusicPlayed {
-                            UIScreen.setBrightness(
-                                from: Constants.currentBrightness,
-                                to: 0.0,
-                                duration: 0.25
-                            )
+                            if music.id == prevSelectedMusic.id {
+                                musicViewModel.toggleMusic()
+                            } else {
+                                musicViewModel.playMusic()
+                            }
                         } else {
-                            UIScreen.setBrightness(
-                                from: 0.0,
-                                to: Constants.currentBrightness,
-                                duration: 0.25
-                            )
+                            musicViewModel.playMusic()
                         }
                     }
                     .matchedGeometryEffect(id: music.title, in: animation)
@@ -110,21 +116,22 @@ struct GridListView: View {
             LazyVGrid(columns: twoColumnGrid) {
                 ForEach(filteredMusic) { music in
                     NormalCollectionView(music: music) {
+                        guard let prevSelectedMusic = musicViewModel.selectedMusic else {
+                            musicViewModel.setSelectedMusic(music: music)
+                            musicViewModel.playMusic()
+                            musicViewModel.refreshQueue()
+                            return
+                        }
                         musicViewModel.setSelectedMusic(music: music)
                         musicViewModel.refreshQueue()
-                        musicViewModel.toggleMusic()
                         if musicViewModel.isMusicPlayed {
-                            UIScreen.setBrightness(
-                                from: Constants.currentBrightness,
-                                to: 0.0,
-                                duration: 0.25
-                            )
+                            if music.id == prevSelectedMusic.id {
+                                musicViewModel.toggleMusic()
+                            } else {
+                                musicViewModel.playMusic()
+                            }
                         } else {
-                            UIScreen.setBrightness(
-                                from: 0.0,
-                                to: Constants.currentBrightness,
-                                duration: 0.25
-                            )
+                            musicViewModel.playMusic()
                         }
                     }
                     .matchedGeometryEffect(id: music.title, in: animation)
@@ -137,6 +144,7 @@ struct GridListView: View {
                 }
             }
             .padding(.horizontal)
+            Spacer(minLength: musicViewModel.selectedMusic != nil ? 36 : 0)
         }
     }
 }
@@ -179,7 +187,7 @@ struct HighlightCollectionView: View {
             }
             .padding()
             .frame(height: 100)
-            .background(.black)
+            .background(Color("BackgroundAppColor"))
             .cornerRadius(10)
             .overlay {
                 RoundedRectangle (cornerRadius: 10)
@@ -191,7 +199,6 @@ struct HighlightCollectionView: View {
             RoundedRectangle(cornerRadius: 10)
                 .stroke(.white, lineWidth: 1)
         }
-        
     }
 }
 
@@ -236,7 +243,7 @@ struct NormalCollectionView: View {
             }
             .padding(10)
             .frame(height: 58)
-            .background(.black)
+            .background(Color("BackgroundAppColor"))
             .cornerRadius(10)
             .overlay {
                 RoundedRectangle (cornerRadius: 10)

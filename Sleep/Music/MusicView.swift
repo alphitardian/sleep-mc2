@@ -63,11 +63,10 @@ struct HorizontalListView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack (spacing: 24) {
                 ForEach(filteredMusic) { music in
-                    HighlightCollectionView(
-                        session: "\(music.length) Session",
-                        text: music.title,
-                        img: music.imageName
-                    )
+                    HighlightCollectionView(music: music) {
+                        musicViewModel.setSelectedMusic(music: music)
+                        musicViewModel.toggleMusic()
+                    }
                     .matchedGeometryEffect(id: music.title, in: animation)
                     .onTapGesture {
                         musicViewModel.setSelectedMusic(music: music)
@@ -95,11 +94,10 @@ struct GridListView: View {
         ScrollView {
             LazyVGrid(columns: twoColumnGrid) {
                 ForEach(filteredMusic) { music in
-                    NormalCollectionView(
-                        title: music.title,
-                        session: "\(music.length) Session",
-                        img: music.imageName
-                    )
+                    NormalCollectionView(music: music) {
+                        musicViewModel.setSelectedMusic(music: music)
+                        musicViewModel.toggleMusic()
+                    }
                     .matchedGeometryEffect(id: music.title, in: animation)
                     .onTapGesture {
                         musicViewModel.setSelectedMusic(music: music)
@@ -116,19 +114,21 @@ struct GridListView: View {
 
 struct HighlightCollectionView: View {
     
-    var session = ""
-    var text = ""
-    var img = ""
+    var music: Music
+    var onToggleMusicClicked: () -> Void
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            Image(img)
-                .resizable()
-                .scaledToFill()
-                .frame(width:285)
-                .cornerRadius(10)
+            VStack {
+                Image(music.imageName)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width:285, height: (UIScreen.main.bounds.height / 1.75) - 90)
+                    .cornerRadius(10)
+                Spacer()
+            }
             HStack {
-                Text(text)
+                Text(music.title)
                     .font(.title)
                     .foregroundColor(.white)
                     .lineLimit(2)
@@ -136,11 +136,12 @@ struct HighlightCollectionView: View {
                     .shadow(color: .black, radius: 2, x: 0, y: 0)
                 Spacer()
                 Button {
-                    //
+                    onToggleMusicClicked()
                 } label: {
-                    Image(systemName: "play")
+                    Image(systemName: music.isPlayed ? "pause" : "play")
                         .foregroundColor(.white)
                         .padding()
+                        .frame(width: 54, height: 54)
                         .overlay {
                             RoundedRectangle(cornerRadius: 50)
                                 .stroke(.white, lineWidth: 1)
@@ -167,13 +168,12 @@ struct HighlightCollectionView: View {
 
 struct NormalCollectionView: View {
     
-    var title = ""
-    var session = ""
-    var img = ""
+    var music: Music
+    var onToggleMusicClicked: () -> Void
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            Image(img)
+            Image(music.imageName)
                 .resizable()
                 .scaledToFill()
                 .frame(width: UIScreen.main.bounds.width / 2.35, height:173)
@@ -183,7 +183,7 @@ struct NormalCollectionView: View {
                         .stroke(.white, lineWidth: 1)
                 }
             HStack {
-                Text(title)
+                Text(music.title)
                     .font(.subheadline)
                     .foregroundColor(.white)
                     .lineLimit(2)
@@ -191,12 +191,13 @@ struct NormalCollectionView: View {
                     .shadow(color: .black, radius: 2, x: 0, y: 0)
                 Spacer()
                 Button {
-                    //
+                    onToggleMusicClicked()
                 } label: {
-                    Image(systemName: "play")
+                    Image(systemName: music.isPlayed ? "pause" : "play")
                         .foregroundColor(.white)
                         .font(.caption2)
                         .padding(5)
+                        .frame(width: 23, height: 23)
                         .overlay {
                             RoundedRectangle(cornerRadius: 50)
                                 .stroke(.white, lineWidth: 1)

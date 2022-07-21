@@ -21,19 +21,31 @@ class MusicViewModel: ObservableObject {
     
     func setSelectedMusic(music: Music) {
         selectedMusic = music
+        if let selectedMusic = selectedMusic {
+            updateMusic(selectedMusic: selectedMusic, isPlayed: true)
+        }
     }
     
     func playMusic() {
         if let selectedMusic = selectedMusic {
             isMusicPlayed = true
             musicPlayer.playMusic(title: selectedMusic.musicName)
+            updateMusic(selectedMusic: selectedMusic, isPlayed: true)
         }
     }
     
+    func updateMusic(selectedMusic: Music, isPlayed: Bool) {
+        guard let musicIndex = musicData.firstIndex(where: { music in
+            music.id == selectedMusic.id
+        }) else { return }
+        musicData[musicIndex].isPlayed = isPlayed
+    }
+    
     func toggleMusic() {
-        if selectedMusic != nil {
+        if let selectedMusic = selectedMusic {
             musicPlayer.toggleMusic()
             isMusicPlayed.toggle()
+            updateMusic(selectedMusic: selectedMusic, isPlayed: isMusicPlayed)
         }
     }
     

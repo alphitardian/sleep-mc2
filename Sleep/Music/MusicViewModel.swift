@@ -57,6 +57,7 @@ class MusicViewModel: ObservableObject {
         
         // Update queue list
         guard let prevSelectedMusic = selectedMusic else { return }
+        updateMusic(selectedMusic: prevSelectedMusic, isPlayed: false)
         queueMusic.append(prevSelectedMusic)
         queueMusic.removeFirst()
     }
@@ -69,6 +70,7 @@ class MusicViewModel: ObservableObject {
         
         // Update queue list
         guard let prevSelectedMusic = selectedMusic else { return }
+        updateMusic(selectedMusic: prevSelectedMusic, isPlayed: false)
         queueMusic.insert(prevSelectedMusic, at: 0)
         queueMusic.removeLast()
     }

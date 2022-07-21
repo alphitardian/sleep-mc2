@@ -52,8 +52,7 @@ struct HomeView: View {
                                 UIScreen.setBrightness(
                                     from: Constants.currentBrightness,
                                     to: 0.0,
-                                    duration: 3,
-                                    ticksPerSecond: 240
+                                    duration: 0.25
                                 )
                             }
                         }
@@ -73,6 +72,18 @@ struct HomeView: View {
                     }
                 }
             }
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+                // App moved to background
+                if musicViewModel.isMusicPlayed {
+                    UIScreen.setBrightness(from: 0.0, to: Constants.currentBrightness)
+                }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+                // App back to active
+                if musicViewModel.isMusicPlayed {
+                    UIScreen.setBrightness(from: Constants.currentBrightness, to: 0.0)
+                }
+            }
             
             if musicViewModel.selectedMusic != nil {
                 PlayerView(
@@ -80,18 +91,6 @@ struct HomeView: View {
                     isPlayerExpanded: $isPlayerExpanded,
                     musicViewModel: musicViewModel
                 )
-            }
-        }
-        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
-            // App moved to background
-            if musicViewModel.isMusicPlayed {
-                UIScreen.setBrightness(from: 0.0, to: Constants.currentBrightness)
-            }
-        }
-        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-            // App back to active
-            if musicViewModel.isMusicPlayed {
-                UIScreen.setBrightness(from: Constants.currentBrightness, to: 0.0)
             }
         }
     }

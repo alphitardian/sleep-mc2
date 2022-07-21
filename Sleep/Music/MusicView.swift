@@ -66,6 +66,20 @@ struct HorizontalListView: View {
                     HighlightCollectionView(music: music) {
                         musicViewModel.setSelectedMusic(music: music)
                         musicViewModel.toggleMusic()
+                        musicViewModel.refreshQueue()
+                        if musicViewModel.isMusicPlayed {
+                            UIScreen.setBrightness(
+                                from: Constants.currentBrightness,
+                                to: 0.0,
+                                duration: 0.25
+                            )
+                        } else {
+                            UIScreen.setBrightness(
+                                from: 0.0,
+                                to: Constants.currentBrightness,
+                                duration: 0.25
+                            )
+                        }
                     }
                     .matchedGeometryEffect(id: music.title, in: animation)
                     .onTapGesture {
@@ -96,7 +110,21 @@ struct GridListView: View {
                 ForEach(filteredMusic) { music in
                     NormalCollectionView(music: music) {
                         musicViewModel.setSelectedMusic(music: music)
+                        musicViewModel.refreshQueue()
                         musicViewModel.toggleMusic()
+                        if musicViewModel.isMusicPlayed {
+                            UIScreen.setBrightness(
+                                from: Constants.currentBrightness,
+                                to: 0.0,
+                                duration: 0.25
+                            )
+                        } else {
+                            UIScreen.setBrightness(
+                                from: 0.0,
+                                to: Constants.currentBrightness,
+                                duration: 0.25
+                            )
+                        }
                     }
                     .matchedGeometryEffect(id: music.title, in: animation)
                     .onTapGesture {

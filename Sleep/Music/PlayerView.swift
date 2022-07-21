@@ -50,14 +50,16 @@ struct PlayerView: View {
             if !isPlayerExpanded {
                 MiniPlayerView(
                     animation: animation,
-                    musicViewModel: musicViewModel                )
+                    musicViewModel: musicViewModel
+                )
             }
         }
         // if expand then full height
         .frame(maxHeight: isPlayerExpanded ? .infinity : 72)
         .background(
             isPlayerExpanded ? ZStack {
-                BackgroundVideoView(videoName: "Sleepify-PlayScreen")
+                Color.black
+                BackgroundVideoView(musicViewModel: musicViewModel)
                 LinearGradient(colors: [.clear, .black.opacity(0.75)], startPoint: .top, endPoint: .bottom)
             } : nil
         )
@@ -157,8 +159,7 @@ struct DetailedPlayerView: View {
                             UIScreen.setBrightness(
                                 from: Constants.currentBrightness,
                                 to: 0.0,
-                                duration: 3,
-                                ticksPerSecond: 240
+                                duration: 0.25
                             )
                         } else {
                             timerManager.stop()
@@ -166,8 +167,7 @@ struct DetailedPlayerView: View {
                             UIScreen.setBrightness(
                                 from: 0.0,
                                 to: Constants.currentBrightness,
-                                duration: 3,
-                                ticksPerSecond: 240
+                                duration: 0.25
                             )
                         }
                     } label: {
@@ -342,15 +342,13 @@ struct MiniPlayerView: View {
                     UIScreen.setBrightness(
                         from: Constants.currentBrightness,
                         to: 0.0,
-                        duration: 3,
-                        ticksPerSecond: 240
+                        duration: 0.25
                     )
                 } else {
                     UIScreen.setBrightness(
                         from: 0.0,
                         to: Constants.currentBrightness,
-                        duration: 3,
-                        ticksPerSecond: 240
+                        duration: 0.25
                     )
                 }
             } label: {

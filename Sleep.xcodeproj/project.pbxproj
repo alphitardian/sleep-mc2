@@ -28,6 +28,12 @@
 		AA85D1312886DB7300EF4BE7 /* Sleepify-PlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA85D1302886DB7300EF4BE7 /* Sleepify-PlayScreen.mov */; };
 		AA85D1332886DBB900EF4BE7 /* BackgroundVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA85D1322886DBB900EF4BE7 /* BackgroundVideoView.swift */; };
 		AA85D1372887BC4C00EF4BE7 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA85D1362887BC4C00EF4BE7 /* TimerManager.swift */; };
+		AA85D14A2888E3C600EF4BE7 /* classicPlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA85D1442888E3C600EF4BE7 /* classicPlayScreen.mov */; };
+		AA85D14B2888E3C600EF4BE7 /* naturePlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA85D1452888E3C600EF4BE7 /* naturePlayScreen.mov */; };
+		AA85D14C2888E3C600EF4BE7 /* rainPlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA85D1462888E3C600EF4BE7 /* rainPlayScreen.mov */; };
+		AA85D14D2888E3C600EF4BE7 /* forestPlayScreen2.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA85D1472888E3C600EF4BE7 /* forestPlayScreen2.mov */; };
+		AA85D14E2888E3C600EF4BE7 /* oceanPlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA85D1482888E3C600EF4BE7 /* oceanPlayScreen.mov */; };
+		AA85D14F2888E3C600EF4BE7 /* forestPlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA85D1492888E3C600EF4BE7 /* forestPlayScreen.mov */; };
 		AAAA5459286AA6C30077E501 /* PlayingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA5458286AA6C30077E501 /* PlayingListView.swift */; };
 		AADFEE4928819CA8004619D6 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADFEE4828819CA8004619D6 /* MusicPlayer.swift */; };
 		AADFEE4B2882B3B7004619D6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADFEE4A2882B3B7004619D6 /* Constants.swift */; };
@@ -60,6 +66,12 @@
 		AA85D1302886DB7300EF4BE7 /* Sleepify-PlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = "Sleepify-PlayScreen.mov"; path = "../../../../../Downloads/Sleepify-PlayScreen.mov"; sourceTree = "<group>"; };
 		AA85D1322886DBB900EF4BE7 /* BackgroundVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundVideoView.swift; sourceTree = "<group>"; };
 		AA85D1362887BC4C00EF4BE7 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		AA85D1442888E3C600EF4BE7 /* classicPlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = classicPlayScreen.mov; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/AlbumArtVisualizer/classicPlayScreen.mov"; sourceTree = "<group>"; };
+		AA85D1452888E3C600EF4BE7 /* naturePlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = naturePlayScreen.mov; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/AlbumArtVisualizer/naturePlayScreen.mov"; sourceTree = "<group>"; };
+		AA85D1462888E3C600EF4BE7 /* rainPlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = rainPlayScreen.mov; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/AlbumArtVisualizer/rainPlayScreen.mov"; sourceTree = "<group>"; };
+		AA85D1472888E3C600EF4BE7 /* forestPlayScreen2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = forestPlayScreen2.mov; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/AlbumArtVisualizer/forestPlayScreen2.mov"; sourceTree = "<group>"; };
+		AA85D1482888E3C600EF4BE7 /* oceanPlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = oceanPlayScreen.mov; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/AlbumArtVisualizer/oceanPlayScreen.mov"; sourceTree = "<group>"; };
+		AA85D1492888E3C600EF4BE7 /* forestPlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = forestPlayScreen.mov; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/AlbumArtVisualizer/forestPlayScreen.mov"; sourceTree = "<group>"; };
 		AAAA5458286AA6C30077E501 /* PlayingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingListView.swift; sourceTree = "<group>"; };
 		AADFEE4828819CA8004619D6 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 		AADFEE4A2882B3B7004619D6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -182,9 +194,12 @@
 			isa = PBXGroup;
 			children = (
 				AA85D1302886DB7300EF4BE7 /* Sleepify-PlayScreen.mov */,
-				AAF80133286C10230026AF1D /* mod_av_forest.mp3 */,
-				AAF80134286C10230026AF1D /* mod_av_nature.mp3 */,
-				AAF80135286C10230026AF1D /* mod_piano_av.mp3 */,
+				AA85D1442888E3C600EF4BE7 /* classicPlayScreen.mov */,
+				AA85D1492888E3C600EF4BE7 /* forestPlayScreen.mov */,
+				AA85D1472888E3C600EF4BE7 /* forestPlayScreen2.mov */,
+				AA85D1452888E3C600EF4BE7 /* naturePlayScreen.mov */,
+				AA85D1482888E3C600EF4BE7 /* oceanPlayScreen.mov */,
+				AA85D1462888E3C600EF4BE7 /* rainPlayScreen.mov */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -248,10 +263,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA36903C28602FD700593328 /* Preview Assets.xcassets in Resources */,
-				AAF80138286C10230026AF1D /* mod_piano_av.mp3 in Resources */,
-				AAF80136286C10230026AF1D /* mod_av_forest.mp3 in Resources */,
+				AA85D14F2888E3C600EF4BE7 /* forestPlayScreen.mov in Resources */,
+				AA85D14A2888E3C600EF4BE7 /* classicPlayScreen.mov in Resources */,
 				AA85D1312886DB7300EF4BE7 /* Sleepify-PlayScreen.mov in Resources */,
+				AA85D14D2888E3C600EF4BE7 /* forestPlayScreen2.mov in Resources */,
 				AA36903928602FD700593328 /* Assets.xcassets in Resources */,
+				AA85D14C2888E3C600EF4BE7 /* rainPlayScreen.mov in Resources */,
+				AA85D14B2888E3C600EF4BE7 /* naturePlayScreen.mov in Resources */,
+				AA85D14E2888E3C600EF4BE7 /* oceanPlayScreen.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

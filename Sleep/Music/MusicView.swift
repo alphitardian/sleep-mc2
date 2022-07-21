@@ -90,10 +90,21 @@ struct HorizontalListView: View {
                     }
                     .matchedGeometryEffect(id: music.title, in: animation)
                     .onTapGesture {
-                        musicViewModel.setSelectedMusic(music: music)
-                        musicViewModel.refreshQueue()
-                        musicViewModel.playMusic()
-                        onMusicSelected()
+                        if musicViewModel.isMusicPlayed {
+                            if music.id == musicViewModel.selectedMusic?.id {
+                                onMusicSelected()
+                            } else {
+                                musicViewModel.setSelectedMusic(music: music)
+                                musicViewModel.refreshQueue()
+                                musicViewModel.playMusic()
+                                onMusicSelected()
+                            }
+                        } else {
+                            musicViewModel.setSelectedMusic(music: music)
+                            musicViewModel.refreshQueue()
+                            musicViewModel.playMusic()
+                            onMusicSelected()
+                        }
                     }
                 }
             }
@@ -136,10 +147,21 @@ struct GridListView: View {
                     }
                     .matchedGeometryEffect(id: music.title, in: animation)
                     .onTapGesture {
-                        musicViewModel.setSelectedMusic(music: music)
-                        musicViewModel.refreshQueue()
-                        musicViewModel.playMusic()
-                        onMusicSelected()
+                        if musicViewModel.isMusicPlayed {
+                            if music.id == musicViewModel.selectedMusic?.id {
+                                onMusicSelected()
+                            } else {
+                                musicViewModel.setSelectedMusic(music: music)
+                                musicViewModel.refreshQueue()
+                                musicViewModel.playMusic()
+                                onMusicSelected()
+                            }
+                        } else {
+                            musicViewModel.setSelectedMusic(music: music)
+                            musicViewModel.refreshQueue()
+                            musicViewModel.playMusic()
+                            onMusicSelected()
+                        }
                     }
                 }
             }

@@ -19,10 +19,35 @@ class MusicViewModel: ObservableObject {
     var musicData = Music.musicData
     var musicPlayer = MusicPlayer.sharedInstance
     
+    init() {
+        musicPlayer.setupRemoteCommandCenter {
+            // Play Command
+            self.toggleMusic()
+        } handlePauseCommand: {
+            // Pause Command
+            self.toggleMusic()
+        } handleNextCommand: {
+            // Next Command
+            if !self.queueMusic.isEmpty {
+                guard let nextMusic = self.queueMusic.first else { return }
+                self.nextMusic()
+                self.setSelectedMusic(music: nextMusic)
+            }
+        } handlePreviousCommand: {
+            // Prev Command
+            if !self.queueMusic.isEmpty {
+                guard let prevMusic = self.queueMusic.last else { return }
+                self.previousMusic()
+                self.setSelectedMusic(music: prevMusic)
+            }
+        }
+    }
+    
     func setSelectedMusic(music: Music) {
         selectedMusic = music
         if let selectedMusic = selectedMusic {
             updateMusic(selectedMusic: selectedMusic, isPlayed: true)
+            musicPlayer.setupNowPlaying(music: selectedMusic)
         }
     }
     
@@ -55,6 +80,7 @@ class MusicViewModel: ObservableObject {
         if !isMusicPlayed { toggleMusic() }
         guard let nextMusic = queueMusic.first else { return }
         musicPlayer.playMusic(title: nextMusic.musicName)
+        self.musicPlayer.setupNowPlaying(music: nextMusic)
         
         // Update queue list
         guard let prevSelectedMusic = selectedMusic else { return }
@@ -68,6 +94,7 @@ class MusicViewModel: ObservableObject {
         if !isMusicPlayed { toggleMusic() }
         guard let lastMusic = queueMusic.last else { return }
         musicPlayer.playMusic(title: lastMusic.musicName)
+        self.musicPlayer.setupNowPlaying(music: lastMusic)
         
         // Update queue list
         guard let prevSelectedMusic = selectedMusic else { return }

@@ -286,7 +286,6 @@ struct TimerSetupView: View {
                         second: $second
                     )
                     .padding(.top, 24)
-                    .colorInvert()
                     .colorMultiply(.white)
                     Spacer()
                 }

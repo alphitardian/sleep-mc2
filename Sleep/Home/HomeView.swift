@@ -12,6 +12,7 @@ struct HomeView: View {
     @State private var isPlayerExpanded = false
     @State private var isChangeListToggle = false
     @State private var isTimerOn = false
+    @State private var isOnboardingActive = false
     @State private var searchText = ""
     @Namespace private var animation
     
@@ -89,6 +90,15 @@ struct HomeView: View {
                     musicViewModel: musicViewModel,
                     timerManager: timerManager
                 )
+            }
+            .fullScreenCover(isPresented: $isOnboardingActive) {
+                OnboardingView()
+            }
+            .onAppear {
+                let isSessionAvailable = UserDefaults.standard.bool(forKey: "Session")
+                if !isSessionAvailable {
+                    isOnboardingActive.toggle()
+                }
             }
             
             if musicViewModel.selectedMusic != nil {

@@ -332,6 +332,7 @@ struct TimerSetupView: View {
                     }
                 }
             }
+            .colorScheme(.dark)
             .onAppear {
                 UINavigationBar.appearance()
                     .titleTextAttributes = [.foregroundColor:UIColor.white]

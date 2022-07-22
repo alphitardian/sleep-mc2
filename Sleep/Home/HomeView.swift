@@ -95,7 +95,10 @@ struct HomeView: View {
                 OnboardingView()
             }
             .onAppear {
-                isOnboardingActive.toggle()
+                let isSessionAvailable = UserDefaults.standard.bool(forKey: "Session")
+                if !isSessionAvailable {
+                    isOnboardingActive.toggle()
+                }
             }
             
             if musicViewModel.selectedMusic != nil {

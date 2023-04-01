@@ -13,6 +13,7 @@ workflows:
             BUNDLE_ID: "id.mobile.Sleepify"
             XCODE_WORKSPACE: "Sleep.xcworkspace" # <-- Put the name of your Xcode workspace here
             XCODE_SCHEME: "Sleep" # <-- Put the name of your Xcode scheme here
+            APP_ID: 1631774171
         scripts:
           - name: Set up code signing settings on Xcode project
             script: xcode-project use-profiles

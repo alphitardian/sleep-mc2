@@ -35,13 +35,13 @@
 		AA97A3C928891B2E00131117 /* 432 Hz - mod_av_ocean.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3C328891B2E00131117 /* 432 Hz - mod_av_ocean.mp3 */; };
 		AA97A3CA28891B2E00131117 /* 432 Hz - mod_av_forest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3C428891B2E00131117 /* 432 Hz - mod_av_forest.mp3 */; };
 		AA97A3CC2889936000131117 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA97A3CB2889936000131117 /* OnboardingView.swift */; };
-		AA97A3D3288A3D1E00131117 /* classicPlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3CD288A3D1E00131117 /* classicPlayScreen.mov */; };
-		AA97A3D4288A3D1E00131117 /* forestPlayScreen2.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3CE288A3D1E00131117 /* forestPlayScreen2.mov */; };
-		AA97A3D5288A3D1E00131117 /* naturePlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3CF288A3D1E00131117 /* naturePlayScreen.mov */; };
-		AA97A3D6288A3D1E00131117 /* oceanPlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3D0288A3D1E00131117 /* oceanPlayScreen.mov */; };
-		AA97A3D7288A3D1E00131117 /* rainPlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3D1288A3D1E00131117 /* rainPlayScreen.mov */; };
-		AA97A3D8288A3D1E00131117 /* forestPlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3D2288A3D1E00131117 /* forestPlayScreen.mov */; };
 		AAAA5459286AA6C30077E501 /* PlayingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA5458286AA6C30077E501 /* PlayingListView.swift */; };
+		AAC0BB9B29912BDA0078EDBF /* rainPlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AAC0BB9529912BDA0078EDBF /* rainPlayScreen.mov */; };
+		AAC0BB9C29912BDA0078EDBF /* forestPlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AAC0BB9629912BDA0078EDBF /* forestPlayScreen.mov */; };
+		AAC0BB9D29912BDA0078EDBF /* oceanPlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AAC0BB9729912BDA0078EDBF /* oceanPlayScreen.mov */; };
+		AAC0BB9E29912BDA0078EDBF /* classicPlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AAC0BB9829912BDA0078EDBF /* classicPlayScreen.mov */; };
+		AAC0BB9F29912BDA0078EDBF /* naturePlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AAC0BB9929912BDA0078EDBF /* naturePlayScreen.mov */; };
+		AAC0BBA029912BDA0078EDBF /* forestPlayScreen2.mov in Resources */ = {isa = PBXBuildFile; fileRef = AAC0BB9A29912BDA0078EDBF /* forestPlayScreen2.mov */; };
 		AADFEE4928819CA8004619D6 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADFEE4828819CA8004619D6 /* MusicPlayer.swift */; };
 		AADFEE4B2882B3B7004619D6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADFEE4A2882B3B7004619D6 /* Constants.swift */; };
 		AAEF797E286737C8006A6F99 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF797D286737C8006A6F99 /* Music.swift */; };
@@ -80,13 +80,13 @@
 		AA97A3C328891B2E00131117 /* 432 Hz - mod_av_ocean.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "432 Hz - mod_av_ocean.mp3"; path = "../../../../../Downloads/drive-download-20220721T023718Z-001/432 Hz - mod_av_ocean.mp3"; sourceTree = "<group>"; };
 		AA97A3C428891B2E00131117 /* 432 Hz - mod_av_forest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "432 Hz - mod_av_forest.mp3"; path = "../../../../../Downloads/drive-download-20220721T023718Z-001/432 Hz - mod_av_forest.mp3"; sourceTree = "<group>"; };
 		AA97A3CB2889936000131117 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		AA97A3CD288A3D1E00131117 /* classicPlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = classicPlayScreen.mov; path = ../../../../SleepifyAsset/classicPlayScreen.mov; sourceTree = "<group>"; };
-		AA97A3CE288A3D1E00131117 /* forestPlayScreen2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = forestPlayScreen2.mov; path = ../../../../SleepifyAsset/forestPlayScreen2.mov; sourceTree = "<group>"; };
-		AA97A3CF288A3D1E00131117 /* naturePlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = naturePlayScreen.mov; path = ../../../../SleepifyAsset/naturePlayScreen.mov; sourceTree = "<group>"; };
-		AA97A3D0288A3D1E00131117 /* oceanPlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = oceanPlayScreen.mov; path = ../../../../SleepifyAsset/oceanPlayScreen.mov; sourceTree = "<group>"; };
-		AA97A3D1288A3D1E00131117 /* rainPlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = rainPlayScreen.mov; path = ../../../../SleepifyAsset/rainPlayScreen.mov; sourceTree = "<group>"; };
-		AA97A3D2288A3D1E00131117 /* forestPlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = forestPlayScreen.mov; path = ../../../../SleepifyAsset/forestPlayScreen.mov; sourceTree = "<group>"; };
 		AAAA5458286AA6C30077E501 /* PlayingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingListView.swift; sourceTree = "<group>"; };
+		AAC0BB9529912BDA0078EDBF /* rainPlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = rainPlayScreen.mov; sourceTree = "<group>"; };
+		AAC0BB9629912BDA0078EDBF /* forestPlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = forestPlayScreen.mov; sourceTree = "<group>"; };
+		AAC0BB9729912BDA0078EDBF /* oceanPlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = oceanPlayScreen.mov; sourceTree = "<group>"; };
+		AAC0BB9829912BDA0078EDBF /* classicPlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = classicPlayScreen.mov; sourceTree = "<group>"; };
+		AAC0BB9929912BDA0078EDBF /* naturePlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = naturePlayScreen.mov; sourceTree = "<group>"; };
+		AAC0BB9A29912BDA0078EDBF /* forestPlayScreen2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = forestPlayScreen2.mov; sourceTree = "<group>"; };
 		AADFEE4828819CA8004619D6 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 		AADFEE4A2882B3B7004619D6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AAEF797D286737C8006A6F99 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
@@ -208,13 +208,13 @@
 		AAEF798F28694554006A6F99 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				AAC0BB9829912BDA0078EDBF /* classicPlayScreen.mov */,
+				AAC0BB9629912BDA0078EDBF /* forestPlayScreen.mov */,
+				AAC0BB9A29912BDA0078EDBF /* forestPlayScreen2.mov */,
+				AAC0BB9929912BDA0078EDBF /* naturePlayScreen.mov */,
+				AAC0BB9729912BDA0078EDBF /* oceanPlayScreen.mov */,
+				AAC0BB9529912BDA0078EDBF /* rainPlayScreen.mov */,
 				AA85D1302886DB7300EF4BE7 /* Sleepify-PlayScreen.mov */,
-				AA97A3CD288A3D1E00131117 /* classicPlayScreen.mov */,
-				AA97A3D2288A3D1E00131117 /* forestPlayScreen.mov */,
-				AA97A3CE288A3D1E00131117 /* forestPlayScreen2.mov */,
-				AA97A3CF288A3D1E00131117 /* naturePlayScreen.mov */,
-				AA97A3D0288A3D1E00131117 /* oceanPlayScreen.mov */,
-				AA97A3D1288A3D1E00131117 /* rainPlayScreen.mov */,
 				AA97A3C028891B2E00131117 /* 432 Hz - mod_av_classic.mp3 */,
 				AA97A3C428891B2E00131117 /* 432 Hz - mod_av_forest.mp3 */,
 				AA97A3BF28891B2E00131117 /* 432 Hz - mod_av_nature.mp3 */,
@@ -252,6 +252,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				KnownAssetTags = (
+					classicPlayScreen,
+					forestPlayScreen,
+					forestPlayScreen2,
+					naturePlayScreen,
+					oceanPlayScreen,
+					rainPlayScreen,
+				);
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
@@ -283,21 +291,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA97A3D7288A3D1E00131117 /* rainPlayScreen.mov in Resources */,
-				AA97A3D6288A3D1E00131117 /* oceanPlayScreen.mov in Resources */,
 				AA97A3C728891B2E00131117 /* 528 Hz - mod_av_forest.mp3 in Resources */,
-				AA97A3D5288A3D1E00131117 /* naturePlayScreen.mov in Resources */,
 				AA97A3CA28891B2E00131117 /* 432 Hz - mod_av_forest.mp3 in Resources */,
+				AAC0BB9B29912BDA0078EDBF /* rainPlayScreen.mov in Resources */,
+				AAC0BB9D29912BDA0078EDBF /* oceanPlayScreen.mov in Resources */,
 				AA97A3C828891B2E00131117 /* 432 Hz - mod_av_rain.mp3 in Resources */,
 				AA97A3C928891B2E00131117 /* 432 Hz - mod_av_ocean.mp3 in Resources */,
 				AA36903C28602FD700593328 /* Preview Assets.xcassets in Resources */,
 				AA85D1312886DB7300EF4BE7 /* Sleepify-PlayScreen.mov in Resources */,
 				AA97A3C528891B2E00131117 /* 432 Hz - mod_av_nature.mp3 in Resources */,
 				AA97A3C628891B2E00131117 /* 432 Hz - mod_av_classic.mp3 in Resources */,
-				AA97A3D4288A3D1E00131117 /* forestPlayScreen2.mov in Resources */,
 				AA36903928602FD700593328 /* Assets.xcassets in Resources */,
-				AA97A3D8288A3D1E00131117 /* forestPlayScreen.mov in Resources */,
-				AA97A3D3288A3D1E00131117 /* classicPlayScreen.mov in Resources */,
+				AAC0BB9E29912BDA0078EDBF /* classicPlayScreen.mov in Resources */,
+				AAC0BB9C29912BDA0078EDBF /* forestPlayScreen.mov in Resources */,
+				AAC0BBA029912BDA0078EDBF /* forestPlayScreen2.mov in Resources */,
+				AAC0BB9F29912BDA0078EDBF /* naturePlayScreen.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,7 +484,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = id.mobile.Sleepify;
 				PRODUCT_NAME = Sleepify;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -510,7 +518,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = id.mobile.Sleepify;
 				PRODUCT_NAME = Sleepify;
 				SWIFT_EMIT_LOC_STRINGS = YES;

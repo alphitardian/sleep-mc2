@@ -1,0 +1,44 @@
+workflows:
+    sleepify-testflight-workflow:
+        name: Sleepify Testflight Workflow
+        max_build_duration: 120
+        instance_type: mac_mini_m1
+        integrations:
+          app_store_connect: Codemagic CI/CD
+        environment:
+          ios-signing:
+            distribution_type: app_store # or: ad_hoc | development | enterprise
+            bundle_identifier: id.mobile.Sleepify
+          vars:
+            BUNDLE_ID: "id.mobile.Sleepify"
+            XCODE_WORKSPACE: "Sleep.xcworkspace" # <-- Put the name of your Xcode workspace here
+            XCODE_SCHEME: "Sleep" # <-- Put the name of your Xcode scheme here
+        scripts:
+          - name: Set up code signing settings on Xcode project
+            script: xcode-project use-profiles
+          - name: Increment build number
+            script: | 
+              cd $CM_BUILD_DIR
+              LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
+              agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
+          - name: Build ipa for distribution
+            script: | 
+              xcode-project build-ipa \
+                --workspace "$CM_BUILD_DIR/$XCODE_WORKSPACE" \
+                --scheme "$XCODE_SCHEME"
+        artifacts:
+          - build/ios/ipa/*.ipa
+          - /tmp/xcodebuild_logs/*.log
+          - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+          - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+        publishing:
+          app_store_connect:
+            auth: integration
+
+            # Configuration related to TestFlight (optional)
+            # Note: This action is performed during post-processing.
+            submit_to_testflight: true
+
+            # Configuration related to App Store (optional)
+            # Note: This action is performed during post-processing.
+            submit_to_app_store: false

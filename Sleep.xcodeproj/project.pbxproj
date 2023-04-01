@@ -11,6 +11,14 @@
 		207D2C812862AEB0008FE742 /* MusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207D2C802862AEB0008FE742 /* MusicView.swift */; };
 		207D2C842862AEE9008FE742 /* AnalyticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207D2C832862AEE9008FE742 /* AnalyticView.swift */; };
 		20FA8559286A974C0094F644 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FA8558286A974C0094F644 /* ScheduleView.swift */; };
+		AA33679229D896DB00F7E152 /* 528 Hz - mod_av_forest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA33678A29D896D100F7E152 /* 528 Hz - mod_av_forest.mp3 */; };
+		AA33679329D896DB00F7E152 /* 432 Hz - mod_av_forest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA33678B29D896D500F7E152 /* 432 Hz - mod_av_forest.mp3 */; };
+		AA33679429D896DB00F7E152 /* 432 Hz - mod_av_rain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA33678C29D896D600F7E152 /* 432 Hz - mod_av_rain.mp3 */; };
+		AA33679529D896DB00F7E152 /* 440 Hz - hitomikuroishi_prayerforlove.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA33678D29D896D600F7E152 /* 440 Hz - hitomikuroishi_prayerforlove.mp3 */; };
+		AA33679629D896DB00F7E152 /* 432 Hz - mod_av_nature.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA33678E29D896D800F7E152 /* 432 Hz - mod_av_nature.mp3 */; };
+		AA33679729D896DB00F7E152 /* 440 Hz - hitomikuroishi_snowflakes.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA33678F29D896D900F7E152 /* 440 Hz - hitomikuroishi_snowflakes.mp3 */; };
+		AA33679829D896DB00F7E152 /* 432 Hz - mod_av_ocean.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA33679029D896DB00F7E152 /* 432 Hz - mod_av_ocean.mp3 */; };
+		AA33679929D896DB00F7E152 /* 432 Hz - mod_av_classic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA33679129D896DB00F7E152 /* 432 Hz - mod_av_classic.mp3 */; };
 		AA36903528602FD600593328 /* SleepApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA36903428602FD600593328 /* SleepApp.swift */; };
 		AA36903728602FD600593328 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA36903628602FD600593328 /* ContentView.swift */; };
 		AA36903928602FD700593328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA36903828602FD700593328 /* Assets.xcassets */; };
@@ -28,12 +36,6 @@
 		AA85D1312886DB7300EF4BE7 /* Sleepify-PlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA85D1302886DB7300EF4BE7 /* Sleepify-PlayScreen.mov */; };
 		AA85D1332886DBB900EF4BE7 /* BackgroundVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA85D1322886DBB900EF4BE7 /* BackgroundVideoView.swift */; };
 		AA85D1372887BC4C00EF4BE7 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA85D1362887BC4C00EF4BE7 /* TimerManager.swift */; };
-		AA97A3C528891B2E00131117 /* 432 Hz - mod_av_nature.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3BF28891B2E00131117 /* 432 Hz - mod_av_nature.mp3 */; };
-		AA97A3C628891B2E00131117 /* 432 Hz - mod_av_classic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3C028891B2E00131117 /* 432 Hz - mod_av_classic.mp3 */; };
-		AA97A3C728891B2E00131117 /* 528 Hz - mod_av_forest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3C128891B2E00131117 /* 528 Hz - mod_av_forest.mp3 */; };
-		AA97A3C828891B2E00131117 /* 432 Hz - mod_av_rain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3C228891B2E00131117 /* 432 Hz - mod_av_rain.mp3 */; };
-		AA97A3C928891B2E00131117 /* 432 Hz - mod_av_ocean.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3C328891B2E00131117 /* 432 Hz - mod_av_ocean.mp3 */; };
-		AA97A3CA28891B2E00131117 /* 432 Hz - mod_av_forest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA97A3C428891B2E00131117 /* 432 Hz - mod_av_forest.mp3 */; };
 		AA97A3CC2889936000131117 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA97A3CB2889936000131117 /* OnboardingView.swift */; };
 		AAAA5459286AA6C30077E501 /* PlayingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA5458286AA6C30077E501 /* PlayingListView.swift */; };
 		AAC0BB9B29912BDA0078EDBF /* rainPlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AAC0BB9529912BDA0078EDBF /* rainPlayScreen.mov */; };
@@ -53,6 +55,14 @@
 		207D2C802862AEB0008FE742 /* MusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicView.swift; sourceTree = "<group>"; };
 		207D2C832862AEE9008FE742 /* AnalyticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticView.swift; sourceTree = "<group>"; };
 		20FA8558286A974C0094F644 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
+		AA33678A29D896D100F7E152 /* 528 Hz - mod_av_forest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "528 Hz - mod_av_forest.mp3"; sourceTree = "<group>"; };
+		AA33678B29D896D500F7E152 /* 432 Hz - mod_av_forest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "432 Hz - mod_av_forest.mp3"; sourceTree = "<group>"; };
+		AA33678C29D896D600F7E152 /* 432 Hz - mod_av_rain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "432 Hz - mod_av_rain.mp3"; sourceTree = "<group>"; };
+		AA33678D29D896D600F7E152 /* 440 Hz - hitomikuroishi_prayerforlove.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "440 Hz - hitomikuroishi_prayerforlove.mp3"; sourceTree = "<group>"; };
+		AA33678E29D896D800F7E152 /* 432 Hz - mod_av_nature.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "432 Hz - mod_av_nature.mp3"; sourceTree = "<group>"; };
+		AA33678F29D896D900F7E152 /* 440 Hz - hitomikuroishi_snowflakes.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "440 Hz - hitomikuroishi_snowflakes.mp3"; sourceTree = "<group>"; };
+		AA33679029D896DB00F7E152 /* 432 Hz - mod_av_ocean.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "432 Hz - mod_av_ocean.mp3"; sourceTree = "<group>"; };
+		AA33679129D896DB00F7E152 /* 432 Hz - mod_av_classic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "432 Hz - mod_av_classic.mp3"; sourceTree = "<group>"; };
 		AA36903128602FD600593328 /* Sleepify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sleepify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA36903428602FD600593328 /* SleepApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepApp.swift; sourceTree = "<group>"; };
 		AA36903628602FD600593328 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,12 +83,6 @@
 		AA85D1302886DB7300EF4BE7 /* Sleepify-PlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = "Sleepify-PlayScreen.mov"; path = "../../../../../Downloads/Sleepify-PlayScreen.mov"; sourceTree = "<group>"; };
 		AA85D1322886DBB900EF4BE7 /* BackgroundVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundVideoView.swift; sourceTree = "<group>"; };
 		AA85D1362887BC4C00EF4BE7 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
-		AA97A3BF28891B2E00131117 /* 432 Hz - mod_av_nature.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "432 Hz - mod_av_nature.mp3"; path = "../../../../../Downloads/drive-download-20220721T023718Z-001/432 Hz - mod_av_nature.mp3"; sourceTree = "<group>"; };
-		AA97A3C028891B2E00131117 /* 432 Hz - mod_av_classic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "432 Hz - mod_av_classic.mp3"; path = "../../../../../Downloads/drive-download-20220721T023718Z-001/432 Hz - mod_av_classic.mp3"; sourceTree = "<group>"; };
-		AA97A3C128891B2E00131117 /* 528 Hz - mod_av_forest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "528 Hz - mod_av_forest.mp3"; path = "../../../../../Downloads/drive-download-20220721T023718Z-001/528 Hz - mod_av_forest.mp3"; sourceTree = "<group>"; };
-		AA97A3C228891B2E00131117 /* 432 Hz - mod_av_rain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "432 Hz - mod_av_rain.mp3"; path = "../../../../../Downloads/drive-download-20220721T023718Z-001/432 Hz - mod_av_rain.mp3"; sourceTree = "<group>"; };
-		AA97A3C328891B2E00131117 /* 432 Hz - mod_av_ocean.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "432 Hz - mod_av_ocean.mp3"; path = "../../../../../Downloads/drive-download-20220721T023718Z-001/432 Hz - mod_av_ocean.mp3"; sourceTree = "<group>"; };
-		AA97A3C428891B2E00131117 /* 432 Hz - mod_av_forest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "432 Hz - mod_av_forest.mp3"; path = "../../../../../Downloads/drive-download-20220721T023718Z-001/432 Hz - mod_av_forest.mp3"; sourceTree = "<group>"; };
 		AA97A3CB2889936000131117 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		AAAA5458286AA6C30077E501 /* PlayingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingListView.swift; sourceTree = "<group>"; };
 		AAC0BB9529912BDA0078EDBF /* rainPlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = rainPlayScreen.mov; sourceTree = "<group>"; };
@@ -208,6 +212,14 @@
 		AAEF798F28694554006A6F99 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				AA33679129D896DB00F7E152 /* 432 Hz - mod_av_classic.mp3 */,
+				AA33678B29D896D500F7E152 /* 432 Hz - mod_av_forest.mp3 */,
+				AA33678E29D896D800F7E152 /* 432 Hz - mod_av_nature.mp3 */,
+				AA33679029D896DB00F7E152 /* 432 Hz - mod_av_ocean.mp3 */,
+				AA33678C29D896D600F7E152 /* 432 Hz - mod_av_rain.mp3 */,
+				AA33678D29D896D600F7E152 /* 440 Hz - hitomikuroishi_prayerforlove.mp3 */,
+				AA33678F29D896D900F7E152 /* 440 Hz - hitomikuroishi_snowflakes.mp3 */,
+				AA33678A29D896D100F7E152 /* 528 Hz - mod_av_forest.mp3 */,
 				AAC0BB9829912BDA0078EDBF /* classicPlayScreen.mov */,
 				AAC0BB9629912BDA0078EDBF /* forestPlayScreen.mov */,
 				AAC0BB9A29912BDA0078EDBF /* forestPlayScreen2.mov */,
@@ -215,12 +227,6 @@
 				AAC0BB9729912BDA0078EDBF /* oceanPlayScreen.mov */,
 				AAC0BB9529912BDA0078EDBF /* rainPlayScreen.mov */,
 				AA85D1302886DB7300EF4BE7 /* Sleepify-PlayScreen.mov */,
-				AA97A3C028891B2E00131117 /* 432 Hz - mod_av_classic.mp3 */,
-				AA97A3C428891B2E00131117 /* 432 Hz - mod_av_forest.mp3 */,
-				AA97A3BF28891B2E00131117 /* 432 Hz - mod_av_nature.mp3 */,
-				AA97A3C328891B2E00131117 /* 432 Hz - mod_av_ocean.mp3 */,
-				AA97A3C228891B2E00131117 /* 432 Hz - mod_av_rain.mp3 */,
-				AA97A3C128891B2E00131117 /* 528 Hz - mod_av_forest.mp3 */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -291,18 +297,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA97A3C728891B2E00131117 /* 528 Hz - mod_av_forest.mp3 in Resources */,
-				AA97A3CA28891B2E00131117 /* 432 Hz - mod_av_forest.mp3 in Resources */,
 				AAC0BB9B29912BDA0078EDBF /* rainPlayScreen.mov in Resources */,
 				AAC0BB9D29912BDA0078EDBF /* oceanPlayScreen.mov in Resources */,
-				AA97A3C828891B2E00131117 /* 432 Hz - mod_av_rain.mp3 in Resources */,
-				AA97A3C928891B2E00131117 /* 432 Hz - mod_av_ocean.mp3 in Resources */,
 				AA36903C28602FD700593328 /* Preview Assets.xcassets in Resources */,
+				AA33679329D896DB00F7E152 /* 432 Hz - mod_av_forest.mp3 in Resources */,
+				AA33679629D896DB00F7E152 /* 432 Hz - mod_av_nature.mp3 in Resources */,
 				AA85D1312886DB7300EF4BE7 /* Sleepify-PlayScreen.mov in Resources */,
-				AA97A3C528891B2E00131117 /* 432 Hz - mod_av_nature.mp3 in Resources */,
-				AA97A3C628891B2E00131117 /* 432 Hz - mod_av_classic.mp3 in Resources */,
+				AA33679429D896DB00F7E152 /* 432 Hz - mod_av_rain.mp3 in Resources */,
+				AA33679729D896DB00F7E152 /* 440 Hz - hitomikuroishi_snowflakes.mp3 in Resources */,
 				AA36903928602FD700593328 /* Assets.xcassets in Resources */,
+				AA33679929D896DB00F7E152 /* 432 Hz - mod_av_classic.mp3 in Resources */,
 				AAC0BB9E29912BDA0078EDBF /* classicPlayScreen.mov in Resources */,
+				AA33679829D896DB00F7E152 /* 432 Hz - mod_av_ocean.mp3 in Resources */,
+				AA33679229D896DB00F7E152 /* 528 Hz - mod_av_forest.mp3 in Resources */,
+				AA33679529D896DB00F7E152 /* 440 Hz - hitomikuroishi_prayerforlove.mp3 in Resources */,
 				AAC0BB9C29912BDA0078EDBF /* forestPlayScreen.mov in Resources */,
 				AAC0BBA029912BDA0078EDBF /* forestPlayScreen2.mov in Resources */,
 				AAC0BB9F29912BDA0078EDBF /* naturePlayScreen.mov in Resources */,

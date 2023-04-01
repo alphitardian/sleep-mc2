@@ -33,7 +33,6 @@
 		AA3690782865B3BE00593328 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3690772865B3BE00593328 /* PlayerView.swift */; };
 		AA79D293287D13DF002EB787 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79D292287D13DF002EB787 /* ViewExtension.swift */; };
 		AA85D12F288696FB00EF4BE7 /* TimerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA85D12E288696FB00EF4BE7 /* TimerPickerView.swift */; };
-		AA85D1312886DB7300EF4BE7 /* Sleepify-PlayScreen.mov in Resources */ = {isa = PBXBuildFile; fileRef = AA85D1302886DB7300EF4BE7 /* Sleepify-PlayScreen.mov */; };
 		AA85D1332886DBB900EF4BE7 /* BackgroundVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA85D1322886DBB900EF4BE7 /* BackgroundVideoView.swift */; };
 		AA85D1372887BC4C00EF4BE7 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA85D1362887BC4C00EF4BE7 /* TimerManager.swift */; };
 		AA97A3CC2889936000131117 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA97A3CB2889936000131117 /* OnboardingView.swift */; };
@@ -80,7 +79,6 @@
 		AA79D291287D0BCB002EB787 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AA79D292287D13DF002EB787 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		AA85D12E288696FB00EF4BE7 /* TimerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPickerView.swift; sourceTree = "<group>"; };
-		AA85D1302886DB7300EF4BE7 /* Sleepify-PlayScreen.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = "Sleepify-PlayScreen.mov"; path = "../../../../../Downloads/Sleepify-PlayScreen.mov"; sourceTree = "<group>"; };
 		AA85D1322886DBB900EF4BE7 /* BackgroundVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundVideoView.swift; sourceTree = "<group>"; };
 		AA85D1362887BC4C00EF4BE7 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		AA97A3CB2889936000131117 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -226,7 +224,6 @@
 				AAC0BB9929912BDA0078EDBF /* naturePlayScreen.mov */,
 				AAC0BB9729912BDA0078EDBF /* oceanPlayScreen.mov */,
 				AAC0BB9529912BDA0078EDBF /* rainPlayScreen.mov */,
-				AA85D1302886DB7300EF4BE7 /* Sleepify-PlayScreen.mov */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -302,7 +299,6 @@
 				AA36903C28602FD700593328 /* Preview Assets.xcassets in Resources */,
 				AA33679329D896DB00F7E152 /* 432 Hz - mod_av_forest.mp3 in Resources */,
 				AA33679629D896DB00F7E152 /* 432 Hz - mod_av_nature.mp3 in Resources */,
-				AA85D1312886DB7300EF4BE7 /* Sleepify-PlayScreen.mov in Resources */,
 				AA33679429D896DB00F7E152 /* 432 Hz - mod_av_rain.mp3 in Resources */,
 				AA33679729D896DB00F7E152 /* 440 Hz - hitomikuroishi_snowflakes.mp3 in Resources */,
 				AA36903928602FD700593328 /* Assets.xcassets in Resources */,
